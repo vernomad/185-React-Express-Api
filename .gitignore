@@ -6,4 +6,4 @@ txt
 /clients/*
 
 # But do not ignore the dist folder
-!/clients/dist
+!/clients/dist/
