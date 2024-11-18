@@ -4,11 +4,14 @@
   "description": "version of 185",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon src/index.ts",
+    "build": "tsc && npm run build:client",
+    "build:client": "npm run build --prefix clients",
+    "backend": "nodemon src/index.ts",
     "serve": "node dist/index.js",
     "client": "npm run dev --prefix clients",
-    "dev": "concurrently \"npm run start\" \"npm run client\""
+    "dev": "concurrently \"npm run backend\" \"npm run client\"",
+    "start": "concurrently \"npm run serve\" \"npm run client:serve\"",
+    "client:serve": "vite preview --outDir clients/dist"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +27,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },

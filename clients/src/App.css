@@ -28,7 +28,7 @@
   }
 } */
 
-.AppDrawer {
+/* .AppDrawer {
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -103,7 +103,7 @@
         z-index: -1;
       }
   }
-}
+} */
 
 @media(max-width: 750px) {
   .contact-grid {

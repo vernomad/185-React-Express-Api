@@ -1,3 +1,9 @@
 .env
 node_modules
 txt
+
+# Ignore everything in the clients folder
+/clients/*
+
+# But do not ignore the dist folder
+!/clients/dist
