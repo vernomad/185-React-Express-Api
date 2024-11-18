@@ -3,7 +3,7 @@ node_modules
 txt
 /dist
 
-
+/*
 !/clients
 # Ignore everything in the clients folder
 /clients/*
