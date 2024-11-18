@@ -1738,3 +1738,10 @@
 20241119	07:31:13	d70bd772-063d-4a26-83a5-12649c2e88ed	GET	No origin	/favicon.ico
 20241119	07:31:13	d5484dc3-8a3b-4366-8fee-6b4774a3efb1	GET	No origin	/assets/cockpit3.jpg
 20241119	07:31:13	c1e3595b-cc09-4d4a-ab8d-440cabf6b581	GET	No origin	/logo192.png
+20241119	09:23:12	ebf80291-b6ea-4fce-a2e2-dcd6e7378439	GET	No origin	/admin
+20241119	09:23:12	b6fb3f5e-3a75-4bd2-bcc5-7db469bbf4f2	GET	http://localhost:3500	/assets/index-C3ozGWvT.js
+20241119	09:23:12	607bc410-96e4-41d0-8d55-9498b4920281	GET	http://localhost:3500	/assets/index-DnSWwjOs.css
+20241119	09:23:12	091879bb-a25f-41b2-8e06-14724be0e8d0	GET	No origin	/api/auth/verify
+20241119	09:23:12	4da46baf-ea71-4a06-9d69-f52af1d3b5f6	GET	No origin	/favicon.ico
+20241119	09:23:12	b181e6d5-32ed-4a83-aa5a-312c9bf46a54	GET	No origin	/user.svg
+20241119	09:23:12	55bb2a9c-e4d3-4973-a390-39a619943256	GET	No origin	/api/user
