@@ -10,8 +10,9 @@
     "serve": "node dist/index.js",
     "client": "npm run dev --prefix clients",
     "dev": "concurrently \"npm run backend\" \"npm run client\"",
-    "start": "npm run build && concurrently \"npm run serve\" \"npm run client:serve\"",
-    "client:serve": "npm run preview --prefix clients"
+    "start": "npm run clean && npm run build && concurrently \"npm run serve\" \"npm run client:serve\"",
+    "client:serve": "npm run preview --prefix clients",
+    "clean": "rimraf dist"
   },
   "author": "",
   "license": "ISC",

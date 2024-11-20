@@ -1,64 +1,42 @@
 import ThemeButton from './ThemeButton.tsx';
-import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Drawer from './Drawer.tsx';
-import { useUser } from '../useUser';
-import Logout from "../components/LogoutButton";
-
-interface ContactProp {
-  contactDetails: React.ReactNode;
-}
+import SidebarController from './SidebarController.tsx';
+import LoggedIn from './LoggedIn.tsx';
 
 
-export default function Header({contactDetails}: ContactProp) {
-   const {user} = useUser()
-   const location = useLocation();
 
+export default function Header() {
+
+  const contactDetails = <><div className="container-address">Address and extra content</div></>
+  
   return (
     <header>
       <div className="theme-selector" title='admin-link'>
-      <a href='/admin' ><ThemeButton /> </a> 
+      <Link to='/admin' ><ThemeButton /> </Link> 
       </div>
       
     <ul className='navUl'>
-      <li><a href="/" id="menu-home">Home</a></li>
-      <li><a href="/about" id="menu-about">About</a></li>
-      <li><a href="/projects" id="menu-projects">Projects</a></li>
+     <li><Link to="/" id='menu-home'>Home</Link></li>
+     <li> <Link to="/about" id='menu-home'>Info</Link></li>
+     <li> <Link to="/projects" id='menu-home'>Pro's</Link></li>
+     
       <Drawer contactDetails={contactDetails} />
     </ul>
-    <label className='hamburger'>
-      <input type='checkbox' name='checkbox'></input>
-      </label>
-    <aside className='sidebar'>
-    <ul className='navUi'>
-      <li><a href="/" id="menu-home">Home</a></li>
-      <li><a href="/about" id="menu-about">About</a></li>
-      <li><a href="/projects" id="menu-projects">Projects</a></li>
-      <Drawer contactDetails={contactDetails} />
-    </ul>
-    </aside>
-    
-    {location.pathname === '/' ? (
-        <div className='App-logo-positioning'>
-          <div className="App-logo">
-            <img src='./logo192.png' alt='' />
-          </div>
-        </div>
-      ): (
-        <div className='App-logo-positioning'>
-          <div className="App-logo">
-            {user ? (
-              <>
-              <img src={user.image} alt='' />
-              <Logout />
-              </>
-              
-            ): (
-              <></>
-            )}
-            
-          </div>
-        </div>
-      )}
+<SidebarController />
+  <label className="hamburger" htmlFor='menu-toggle'>
+  <input type="checkbox" name="checkbox" id="menu-toggle"></input>
+</label>
+<aside className="sidebar" id="sidebar">
+  <ul className="navUi">
+    <li><Link to="/" id="menu-home">Home</Link></li>
+    <li><Link to="/about" id="menu-about">Info</Link></li>
+    <li><Link to="/projects" id="menu-projects">Pro's</Link></li>
+    <Drawer contactDetails={contactDetails}  />
+  </ul>
+</aside>
+
+<LoggedIn />
     </header>
   )
 }

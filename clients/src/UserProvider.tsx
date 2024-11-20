@@ -32,15 +32,20 @@ export const UserProvider = ({ children }: UserProviderProps) => {
           credentials: 'include',
         });
 
-        if (response.ok) {
+        if (!response.ok) {
+          if (response.status === 401) {
+            // Handle unauthorized state
+            console.log('User is not authenticated.');
+          }
+          setUserToken(null);
+          setIsAuthenticated(false);
+          setUser(null);
+          
+        } else {
           const result = await response.json();
           setUserToken(result.userToken);
           setIsAuthenticated(true);
           setUser(result.user)
-        } else {
-          setUserToken(null);
-          setIsAuthenticated(false);
-          setUser(null);
         }
       } catch (error) {
         console.error('Error verifying authentication:', error);

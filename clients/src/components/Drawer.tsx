@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, useDragControls, PanInfo } from "framer-motion";
 import { BsFillTelephoneFill, BsArrow90DegRight } from 'react-icons/bs';
 import { SiMinutemailer } from 'react-icons/si';
 import { FaMapPin, FaSalesforce } from 'react-icons/fa';
 import { MdContactMail } from 'react-icons/md';
 
-const Drawer = ({ contactDetails }: { contactDetails: React.ReactNode }) => {
+type Props = {
+  contactDetails: React.ReactNode;
+}
+
+const Drawer = ({contactDetails}: Props) => {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-
 
   const dragControls = useDragControls();
 
@@ -77,24 +81,18 @@ const Drawer = ({ contactDetails }: { contactDetails: React.ReactNode }) => {
         transition={{ type: "spring", bounce: 0.15, delay: 0.1, duration: 0.6 }}
       >
         <div className="grab-scroll"></div>
-        {/* <div className="navigation-container">
-          <a href="/" className="nav_link ">Home</a>
-          <a href="/about" className="nav_link ">About</a>
-          <a href="/gallery" className="nav_link ">Gallery</a>
-        </div> */}
-
         <div className="contact-container">
           <h3 className="drawer-title ">Contact Details</h3>
           <div className="contact-grid ">
           <SiMinutemailer className="icon-email "/>
             <ul>          
-              <li><a href="mailto:aaron@185restorations.co.nz">aaron@185restorations.co.nz</a></li>
-              <li><a href="mailto:phil@185restorations.co.nz">phil@185restorations.co.nz</a></li>
+              <li><Link onClick={() => setDrawerOpen(false)} to="mailto:aaron@185restorations.co.nz">aaron@185restorations.co.nz</Link></li>
+              <li><Link onClick={() => setDrawerOpen(false)} to="mailto:phil@185restorations.co.nz">phil@185restorations.co.nz</Link></li>
             </ul>
             <BsFillTelephoneFill className="icon-phone" />
             <ul>
-              <li>Aaron: <a href="tel:0225732530">0225732530</a></li>
-              <li>Phil: <a href="tel:0272056868">0272056868</a></li>
+              <li>Aaron: <Link onClick={() => setDrawerOpen(false)} to="tel:0225732530">0225732530</Link></li>
+              <li>Phil: <Link onClick={() => setDrawerOpen(false)} to="tel:0272056868">0272056868</Link></li>
             </ul>
           </div>
         </div>
@@ -103,12 +101,12 @@ const Drawer = ({ contactDetails }: { contactDetails: React.ReactNode }) => {
           <div className="contact-grid">
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><a href='/find-us'><FaMapPin className="inline mr-4" />Find us on a map</a></li>
-              <li><a href='/contact-form'><MdContactMail className="inline mr-4" />Contact form</a></li>
+              <li><Link onClick={() => setDrawerOpen(false)} to='/find-us'><FaMapPin className="inline mr-4" />Find us on a map</Link></li>
+              <li><Link onClick={() => setDrawerOpen(false)}  to='/contact-form'><MdContactMail className="inline mr-4" />Contact form</Link></li>
             </ul>
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><a href='/for-sale'><FaSalesforce className="inline mr-4" />Stuff for sale</a></li>
+              <li><Link onClick={() => setDrawerOpen(false)}  to='/for-sale'><FaSalesforce className="inline mr-4" />Stuff for sale</Link></li>
             </ul>
           </div>
         </div>
