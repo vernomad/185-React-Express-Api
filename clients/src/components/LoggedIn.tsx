@@ -16,7 +16,7 @@ export default function LoggedIn() {
       ): (
         <>
         <div className='App-logo-positioning'>
-          <button  className="App-logo">
+          <div  className="App-logo">
             {user ? (
               <>
               <img src={user.image} alt='' />
@@ -27,7 +27,7 @@ export default function LoggedIn() {
               <></>
             )}
             
-          </button>
+          </div>
         </div>
          {/* <div role='menu' data-popover="true" className="profile-menu">
         

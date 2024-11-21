@@ -5,7 +5,7 @@
  --clr-ft-dark: #2e2e2e;
  --clr-ft-light: rgb(206, 206, 206);
  --foreG: #2e2e2e;
- --backG: #808080;
+ --backG: #8c8a8a;
  --ft-title: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
  sans-serif;
@@ -107,7 +107,6 @@ header {
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: gray;
 
   .theme-selector {
     justify-self: flex-start;
@@ -405,8 +404,13 @@ h1 span {
   }
   .theme-selector {
     justify-self: flex-end!important;
-    rotate: 142deg!important;
+    rotate: 179deg!important;
+    padding: .5rem 1rem!important;
   }
+  .theme-selector svg {
+    font-size: 2.9rem!important;
+  }
+ 
   .hero {
     min-height: 60dvh;
   }

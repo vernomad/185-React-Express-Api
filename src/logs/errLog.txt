@@ -1,0 +1,2 @@
+20241122	09:22:45	bff73afa-fe61-4e0e-b4fb-7029411f63b2	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /
+20241122	09:22:45	0ef1658b-8563-40c1-860c-7253d18a7a4f	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /favicon.ico
