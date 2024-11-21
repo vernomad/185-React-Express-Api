@@ -21,7 +21,7 @@ const errorHandler = (err: any, req: Request, res: Response) => {
     }
 
     // Send the error response with the correct status code
-    res.status(statusCode).send({
+    res.status(statusCode).json({
         error: {
             name: errorName,
             message: errorMessage,
