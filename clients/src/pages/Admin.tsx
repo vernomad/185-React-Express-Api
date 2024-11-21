@@ -7,11 +7,12 @@ export default function Admin() {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState<string | null>(null);
 
+  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
+
  useEffect(() => {
     const fetchUserData = async () => {
-      try {
-       
-        const response = await fetch("http://localhost:3500/api/user", {
+      try {      
+        const response = await fetch(`${baseUrl}/api/user`, {
           method: "GET",
           headers: userToken ? { "Authorization": `Bearer ${userToken}` } : {},
           // headers: {
@@ -34,7 +35,7 @@ export default function Admin() {
     };
 
     fetchUserData();
-  }, [userToken]); 
+  }, [userToken, baseUrl]); 
 let content
   if (user?.roles.includes('Admin')) {
     content = <div>User is Admin</div>;
