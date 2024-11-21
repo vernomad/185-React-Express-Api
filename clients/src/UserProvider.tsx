@@ -24,10 +24,12 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
+
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const response = await fetch('http://localhost:3500/api/auth/verify', {
+        const response = await fetch(`${baseUrl}/api/auth/verify`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -56,7 +58,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     };
 
     verifyAuth();
-  }, []);
+  }, [baseUrl]);
 
   if (loading) {
     return <div>Loading...</div>;

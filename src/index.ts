@@ -12,7 +12,7 @@ import cors from 'cors';
 import corsOptions from './config/corsOptions';
 import logger from './middleware/logEvents';
 import errorHandler from './middleware/errorHandler';
-import verifyJWT from './middleware/verifyJWT';
+//import verifyJWT from './middleware/verifyJWT';
 import requireAuth from './middleware/authMiddleware';
 import credentials from './middleware/credentials';
 import cookieParser from 'cookie-parser';
@@ -58,7 +58,7 @@ app.get('*', (req, res) => {
 });
 
 // Global error handler
-app.use(errorHandler);
+//app.use(errorHandler);
 
 connectDB();
 app.listen(port, () => {
