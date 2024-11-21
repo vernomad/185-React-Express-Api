@@ -149,7 +149,7 @@ export const verifyUser = async (req: Request, res: Response ) => {
     // If verification fails, send a 403 response
     console.error("JWT verification failed:", err);
    res.status(403).json({ isAuthenticated: false });
-   return
+  
   }
 };
 

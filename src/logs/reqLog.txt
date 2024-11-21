@@ -2208,3 +2208,27 @@
 20241121	16:16:40	40947596-5230-4299-8689-b235b9e97b72	GET	No origin	/user.svg
 20241121	16:16:40	f65b50c1-e61a-4c77-ba1b-72f3e530810e	GET	http://localhost:3500	/assets/Admin-B1-osyNu.js
 20241121	16:16:40	dba66822-7020-41f7-99b6-cb44e60a2990	GET	No origin	/api/user
+20241121	19:04:56	1772b003-a4ca-4765-b550-acfb85efec2f	GET	No origin	/
+20241121	19:04:56	bb7f73e5-66f0-4ab3-a4b9-307ace654f1c	GET	http://localhost:3500	/assets/index-DW0fssQK.js
+20241121	19:04:56	eaea694f-8cc4-4c23-b08a-7fb9fe6d9e46	GET	http://localhost:3500	/assets/index-HkK1Ub30.css
+20241121	19:04:56	6ee630fc-25a7-4755-9b08-1ab47ca2b225	GET	No origin	/api/auth/verify
+20241121	19:04:56	01ae8a06-4c4e-48b6-9046-73e9f9800c4d	GET	http://localhost:3500	/assets/Home--OGrbFH-.js
+20241121	19:04:56	981e6d2b-9feb-4e01-9ed0-5feb27a30619	GET	No origin	/logo192.png
+20241121	19:04:56	cd513486-5fab-4bac-9f6c-3c69f6e9602e	GET	No origin	/assets/cockpit3.jpg
+20241121	19:05:03	98d0bd00-79c8-49b1-b51e-8f66c145b264	GET	http://localhost:3500	/assets/Admin-B1-osyNu.js
+20241121	19:05:03	ba6c0ead-ed57-499a-b8b7-2ea73ed95890	GET	No origin	/user.svg
+20241121	19:05:03	8b32595a-16f0-43d2-8326-b02cb9399636	GET	No origin	/api/user
+20241121	19:05:06	3bf26dd0-1f26-4c94-a2b8-5e9c16ab3746	DELETE	http://localhost:3500	/api/auth/logout
+20241121	19:05:06	c43a0051-866c-4a18-8322-724ff390f82d	GET	No origin	/login
+20241121	19:05:06	7946fd02-8790-4d5d-99ba-55ace1706790	GET	http://localhost:3500	/assets/index-DW0fssQK.js
+20241121	19:05:06	554493ae-aba4-4217-9aad-f4f7502a1bae	GET	http://localhost:3500	/assets/index-HkK1Ub30.css
+20241121	19:05:06	decc4af5-96d4-4978-bd71-38e92defc1e8	GET	No origin	/api/auth/verify
+20241121	19:05:06	aa092996-f04f-4137-acb3-57a055987870	GET	http://localhost:3500	/assets/Login-B5bm30y4.js
+20241121	19:05:14	f9bb6336-2876-4108-a7af-94819be702b7	POST	http://localhost:3500	/api/auth/login
+20241121	19:05:14	7fa9ad03-d8d2-4f16-a3e7-db2165a0f570	GET	No origin	/admin
+20241121	19:05:14	0bfcadbc-3aa5-4f45-9f9b-006c65712f7e	GET	http://localhost:3500	/assets/index-DW0fssQK.js
+20241121	19:05:14	b5002732-e8cd-4313-bd26-8c13df7529da	GET	http://localhost:3500	/assets/index-HkK1Ub30.css
+20241121	19:05:14	fbe4dbd8-4c04-4f2c-85a2-cb57b66ac4b3	GET	No origin	/api/auth/verify
+20241121	19:05:14	27102c41-2dfa-4208-ac88-e9ff44aa93a2	GET	No origin	/user.svg
+20241121	19:05:14	e31962ec-79ba-4f60-a1d6-786166abe085	GET	http://localhost:3500	/assets/Admin-B1-osyNu.js
+20241121	19:05:14	4ce18e66-7e8c-48b3-b584-e2076e72cbfe	GET	No origin	/api/user

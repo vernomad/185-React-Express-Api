@@ -14,6 +14,7 @@ export function validateData(schema: z.ZodObject<any, any>) {
             message: `${issue.path.join('.')} to ${issue.message}`,
         }))
         res.status(StatusCodes.BAD_REQUEST).json({ error: 'Invalid data', details: errorMessages });
+        return
       } else {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
       }

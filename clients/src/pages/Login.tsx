@@ -44,7 +44,7 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
         setIsFetching(true);
         setFormError("")
         setMessage("")
-        const res = await fetch('http://localhost:3500/api/auth/login', {
+        const res = await fetch(`${process.env.BASE_URL}/api/auth/login`, {
             method: "POST",
             headers: {
               'content-type': 'application/json',
