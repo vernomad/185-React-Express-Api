@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import logEvents from "./logEvents";
 
 // Error handler middleware
-const errorHandler = (err: any, req: Request, res: Response) => {
+const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     const errorName = err.name || "UnknownError";
     const errorMessage = err.message || "No error message provided";
     const statusCode = err.status || 500;  // Use custom error status code if available, otherwise default to 500

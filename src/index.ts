@@ -57,10 +57,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../clients/dist', 'index.html'));
 });
 
-// Global error handler
-//app.use(errorHandler);
 
 connectDB();
+
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
