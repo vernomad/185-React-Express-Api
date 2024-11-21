@@ -23,6 +23,7 @@ export default function Login() {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
 
+  console.log("Login Form:", import.meta.env.VITE_BASE_URL);
 
 
   const {
@@ -59,9 +60,10 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
           } else {
            const loginMessage = await res.json()
            setMessage(loginMessage.message)
+           console.log("Login Form:", import.meta.env.VITE_BASE_URL);
           startTransition(() => {
             reset()
-            window.location.href = '/admin'; 
+           // window.location.href = '/admin'; 
           })
           setIsFetching(false);
           }

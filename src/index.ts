@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
+console.log("From the Server",process.env.VITE_BASE_URL); // Should print the URL correctly
+
 import express from 'express';
 const app = express();
 import { connectDB } from "./config/db";

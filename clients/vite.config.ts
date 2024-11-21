@@ -13,4 +13,7 @@ export default defineConfig({
       '/api': 'http://localhost:3500', // Proxy API requests to the backend
     }
   },
+  define: {
+    'process.env.VITE_BASE_URL': JSON.stringify(process.env.VITE_BASE_URL),
+  },
 })
