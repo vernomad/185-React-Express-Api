@@ -1,18 +1,32 @@
 import { Request, Response } from "express";
-import logEvents from "./logEvents"
+import logEvents from "./logEvents";
 
-// const errorHandler = (err: Error, req: Request, res: Response ) => {
-//     logEvents.logEvents(`${err.name}: ${err.message}`, 'errLog.txt');
-//     console.error(err.stack)
-//     res.status(500).send(err.message);
-// }
-const errorHandler = (err: Error, req: Request, res: Response) => {
+// Error handler middleware
+const errorHandler = (err: any, req: Request, res: Response) => {
     const errorName = err.name || "UnknownError";
     const errorMessage = err.message || "No error message provided";
-    
-    logEvents.logEvents(`${errorName}: ${errorMessage}`, 'errLog.txt');
-    console.error(err.stack || `${errorName}: ${errorMessage}`);
-    
-    res.status(500).send(errorMessage);
+    const statusCode = err.status || 500;  // Use custom error status code if available, otherwise default to 500
+
+    // Log detailed error information
+    logEvents.logEvents(
+        `${errorName}: ${errorMessage} - ${req.method} ${req.originalUrl}`, 
+        'errLog.txt'
+    );
+
+    // Log the stack trace if available
+    if (err.stack) {
+        console.error(err.stack);
+    } else {
+        console.error(`${errorName}: ${errorMessage}`);
+    }
+
+    // Send the error response with the correct status code
+    res.status(statusCode).send({
+        error: {
+            name: errorName,
+            message: errorMessage,
+        },
+    });
 };
-export default errorHandler
+
+export default errorHandler;

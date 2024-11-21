@@ -6,7 +6,7 @@ import slugify from '../utils/slugify';
 import * as bcryptjs from "bcryptjs";
 const saltRounds = 10;
 
-import { handleError } from './errors';
+//import { handleError } from './errors';
 import { ErrorWithStatusCode } from './errors';
 import jwt from 'jsonwebtoken';
 import { UserRoleType } from '../models/user/UserLog';
@@ -75,20 +75,21 @@ export const loginUser = async (req: Request, res: Response) => {
   const foundUser = await usersCollection.findOne({ username: username });
 
   if (!foundUser) {
-    handleError(new ErrorWithStatusCode("User not found", 401), res);
+    throw new ErrorWithStatusCode("User not found", 401);
     return; 
   }
 
   const passwordMatch = await bcryptjs.compare(password, foundUser.password);
   if (!passwordMatch) {
-    handleError(new ErrorWithStatusCode("Incorrect match username and password", 401), res);
+    throw new ErrorWithStatusCode("Incorrect match username and password", 401);
     return; 
   }
     //const roles = foundUser.roles ? Object.values(foundUser.roles) : [];
-    // const secret = process.env.JWT_SECRET;
-    // if (!secret) {
-    //   throw new Error("JWT_SECRET is not defined in environment variables.");
-    // }
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new ErrorWithStatusCode("JWT_SECRET is not defined", 500);
+      return;
+    }
 
     const accessToken = jwt.sign(
       {
@@ -115,7 +116,7 @@ export const loginUser = async (req: Request, res: Response) => {
         maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
         //maxAge: 30 * 1000// 30s in milliseconds
       });
-      res.json({ message: 'User logged in successfully' });     
+     res.json({ message: 'User logged in successfully' });     
 };
 
 
