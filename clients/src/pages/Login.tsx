@@ -23,7 +23,7 @@ export default function Login() {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
 
-  console.log("Login Form:", import.meta.env.VITE_BASE_URL);
+  console.log("Login Form:", process.env.VITE_BASE_URL);
 
 
   const {
@@ -45,7 +45,7 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
         setIsFetching(true);
         setFormError("")
         setMessage("")
-        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/auth/login`, {
+        const res = await fetch(`${process.env.VITE_BASE_URL}/api/auth/login`, {
             method: "POST",
             headers: {
               'content-type': 'application/json',
