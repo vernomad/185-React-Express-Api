@@ -23,7 +23,7 @@ export default function Login() {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
 
-  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
+  const baseUrl = process.env.VITE_BASE_URL || 'http://localhost:3500';
 
   console.log("Login Form:", baseUrl);
 
