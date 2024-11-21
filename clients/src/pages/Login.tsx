@@ -65,7 +65,7 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
            console.log("Login Form:", import.meta.env.VITE_BASE_URL);
           startTransition(() => {
             reset()
-           // window.location.href = '/admin'; 
+           window.location.href = '/admin'; 
           })
           setIsFetching(false);
           }
