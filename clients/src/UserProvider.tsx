@@ -24,7 +24,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const baseUrl = process.env.VITE_BASE_URL || 'http://localhost:3500';
+  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
 
   useEffect(() => {
     const verifyAuth = async () => {
