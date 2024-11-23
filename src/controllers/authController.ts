@@ -156,11 +156,22 @@ export const verifyUser = async (req: Request, res: Response ) => {
   }
 };
 
+// export const logoutUser = async (req: Request, res: Response) => {
+//   res.cookie("accessToken", "", { maxAge: 1 });
+//   res.json({message: "Logged out!"})
+// }
+
+
+
 export const logoutUser = async (req: Request, res: Response) => {
-  res.cookie("accessToken", "", { maxAge: 1 });
-  res.json({message: "Logged out!"})
-}
+  // Clear the cookie by setting the same attributes
+  res.cookie("accessToken", "", {
+    httpOnly: true,
+    sameSite: "strict", // Match the original cookie's attribute
+    secure: process.env.NODE_ENV === "production", // Match the original cookie's attribute
+    maxAge: 0, // Set to 0 to immediately expire the cookie
+    path: "/", // Match the original cookie's path
+  });
 
-
-
-
+  res.status(200).json({ message: "Logged out!" });
+};
