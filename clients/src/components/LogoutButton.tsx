@@ -1,6 +1,5 @@
 import { useState, useTransition } from "react";
 import { SlLogout } from "react-icons/sl";
-import { useRoutes } from "react-router-dom";
 
 
 
@@ -10,7 +9,13 @@ export default function Logout() {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
   
-  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
+  let baseUrl = ''
+
+  if (import.meta.env.MODE === 'development') {
+    baseUrl = import.meta.env.VITE_DEV_URL
+  } else {
+    baseUrl = import.meta.env.VITE_BASE_URL
+  }
 
     const handleLogout = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -38,11 +43,7 @@ export default function Logout() {
             setIsFetching(false); // Reset fetching state
         }
     }
-    const routes = useRoutes([
-    
-        {
-          path: "admin",
-          element: (
+  return (
             <>
         {error && <span className="errors">{error}</span>}
         <button type="button"
@@ -53,8 +54,7 @@ export default function Logout() {
         </button>
         </>
           )
-         }
-        ])
-        return routes
+       
+
 }
 

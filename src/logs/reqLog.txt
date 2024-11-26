@@ -279,3 +279,109 @@
 20241122	14:22:33	f9edc6b8-59da-4d2a-a741-505e95c7a26f	DELETE	http://localhost:5173	/api/auth/logout
 20241122	14:27:54	11355358-323b-45ed-ba6c-88fecd3dcb0b	OPTIONS	http://localhost:5173	/api/auth/logout
 20241122	14:27:54	5f0aeb49-c2a2-44b8-80b1-86cf8163d9f1	DELETE	http://localhost:5173	/api/auth/logout
+20241124	14:54:42	bfe69b4f-b279-4f5a-baed-01792ef4a226	GET	No origin	/
+20241124	14:54:43	d427bfd5-5475-46f6-8b2b-f124322882a0	GET	http://localhost:3500	/assets/index-DdMOeC_F.css
+20241124	14:54:43	89704cbf-b1b5-40dd-8ea5-b1a3460cdad4	GET	http://localhost:3500	/assets/index-cmwzCSgU.js
+20241124	14:54:43	a1255622-89a8-4420-b2a7-6b80a057fe63	GET	No origin	/favicon.ico
+20241124	14:55:00	d9683c4c-f0f0-453b-aad0-349db492a704	GET	No origin	/
+20241124	14:55:00	e816ff07-c225-429a-9c26-224576200423	GET	http://localhost:3500	/assets/index-cmwzCSgU.js
+20241124	14:55:00	dcca67e2-be09-4dc1-b8a5-87a4aa6e1787	GET	http://localhost:3500	/assets/index-DdMOeC_F.css
+20241124	14:55:00	5854bdd1-dc2a-4b4b-9468-cb7f973af649	GET	No origin	/favicon.ico
+20241124	14:55:04	7d405642-e635-404c-a4cb-7ba4cdc0904a	GET	http://localhost:3500	/assets/Home-BiBRB9B6.js
+20241124	14:55:04	6cf25a11-44b9-467c-956c-23ced57376d2	GET	No origin	/logo192.png
+20241124	14:55:04	9b705d8d-02c8-4ef4-b98f-627934a8592f	GET	No origin	/assets/cockpit3.jpg
+20241124	14:55:23	498875f9-c54f-447a-a4c4-051bbb722574	GET	http://localhost:3500	/assets/Login-BsnGIyBZ.js
+20241124	14:55:44	185c0a30-e219-4294-a919-b1b75d97a2c8	GET	No origin	/assets/index-DdMOeC_F.css
+20241124	15:01:18	693eb9e9-ffc9-4bd5-bb9b-325abce058b7	GET	No origin	/
+20241124	15:01:18	60c4cad2-346b-4df2-97e3-0b37cb97b4fe	GET	http://localhost:3500	/assets/index-D0ZkuP0U.js
+20241124	15:01:18	26e1ba33-2d29-4d6f-a3bf-c98f3c3a8d25	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:01:34	678da240-6fed-4433-88ad-63b677d86980	GET	No origin	/logo192.png
+20241124	15:01:34	b46b35bc-cc2e-4283-8ca7-5acb9152c5ee	GET	http://localhost:3500	/assets/Home-CwBiLu5z.js
+20241124	15:01:34	be5be614-e34a-4495-befb-5ea568915823	GET	No origin	/assets/cockpit3.jpg
+20241124	15:04:57	37a7eb8b-3f3e-458a-a296-d95c5114d6cb	GET	No origin	/
+20241124	15:04:57	0e7a8ce0-9428-4e2f-a721-54a94bc2fe6b	GET	http://localhost:3500	/assets/index-D0ZkuP0U.js
+20241124	15:04:57	793ecd2a-4133-4eee-a315-03dbda7a17fa	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:04:57	ffb7369a-2c30-43d7-82ec-89ed0281f7a9	GET	No origin	/favicon.ico
+20241124	15:05:18	fe40c730-234c-4f01-b8e9-c4a663bb0966	GET	http://localhost:3500	/assets/Home-CwBiLu5z.js
+20241124	15:05:18	a3af84e1-caf4-4ea1-8d0b-5e647b063ff5	GET	No origin	/logo192.png
+20241124	15:05:18	c6bcf040-2e9e-4fd5-9e83-f591355b6929	GET	No origin	/assets/cockpit3.jpg
+20241124	15:05:31	623d05b0-f778-4435-893e-3f92ef24d627	GET	http://localhost:3500	/assets/Login-DVH5w8RK.js
+20241124	15:06:05	11599413-3dce-4827-ba8a-5c65d93c8ea0	GET	No origin	/assets/index-f4jX2Ljn.css
+20241124	15:16:54	e847a95f-7d2c-4c59-9739-298fbbcf13f1	GET	No origin	/login
+20241124	15:16:54	e87edeec-a795-4dda-b87a-c0dd409ec475	GET	http://localhost:3500	/assets/index-DyaI-ShK.js
+20241124	15:16:54	1b5fee49-51b8-41f8-9e53-f1e183ad0545	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:16:54	b7d1e709-93f3-43e3-b13f-324356aa0fd6	GET	No origin	/favicon.ico
+20241124	15:17:15	0d59a62c-d64f-4804-ba10-ab08650c1c37	GET	http://localhost:3500	/assets/Login-Csu3JRNN.js
+20241124	15:17:43	fb2ccff3-7de4-4a67-b702-aa2d2dc373c4	POST	http://localhost:3500	/undefined/api/auth/login
+20241124	15:26:16	dbbb3f29-f3b4-4df8-bc33-bfe81dd27733	POST	http://localhost:3500	/undefined/api/auth/login
+20241124	15:26:39	bda38054-9aad-40d1-8ed6-82723f7ccae5	GET	No origin	/login
+20241124	15:26:39	faae2e07-6432-401a-8fc3-903048bf85e8	GET	http://localhost:3500	/assets/index-DyaI-ShK.js
+20241124	15:26:39	a6a7c580-af09-4d99-89cc-1785238cfff5	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:26:39	5384cb9e-9828-4476-8550-5338640af324	GET	No origin	/favicon.ico
+20241124	15:27:01	a9ed624e-3b9e-447e-921b-7ecd634dd46f	GET	http://localhost:3500	/assets/Login-Csu3JRNN.js
+20241124	15:30:45	22662464-5cc4-404c-b911-6bce923aa56e	GET	No origin	/login
+20241124	15:30:45	25463017-9884-4284-ba32-11b9194d51ac	GET	http://localhost:3500	/assets/index-DyaI-ShK.js
+20241124	15:30:45	dbfd4eae-9d08-4831-9a4a-5f0e6e16a313	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:30:45	e84a4679-074e-42f9-9286-ea55149ca8d1	GET	No origin	/favicon.ico
+20241124	15:31:06	9067f8e1-d614-4a53-ad4f-c4d5775366f2	GET	http://localhost:3500	/assets/Login-Csu3JRNN.js
+20241124	15:31:55	cdfbd46d-28e2-4ab1-bbfc-304c570bef07	POST	http://localhost:3500	/undefined/api/auth/login
+20241124	15:52:55	f919dda0-daa4-48bb-96ea-2dd43e5388dc	GET	No origin	/
+20241124	15:52:55	28c466af-2d73-44ee-af27-e246814d8b1a	GET	http://localhost:3500	/assets/index-DaGZUZoP.js
+20241124	15:52:55	5edb5eeb-57f4-414c-bda5-1ab5b9829745	GET	http://localhost:3500	/assets/index-f4jX2Ljn.css
+20241124	15:53:16	957a15df-fc64-4d06-b0f7-38a0c7fe86c6	GET	No origin	/assets/index-f4jX2Ljn.css
+20241124	15:53:16	bc34c8de-0daf-4e51-adeb-429d8cacd1ec	GET	http://localhost:3500	/assets/Home-B6wDipwW.js
+20241124	15:53:16	9b19fee7-cf72-4697-b44f-c031a345a5db	GET	No origin	/logo192.png
+20241124	15:53:16	116ab729-0ba1-4e58-92e6-39076d48ea08	GET	No origin	/assets/cockpit3.jpg
+20241124	15:53:19	219fadd4-b1b4-48b0-94aa-2b61ef1011fc	GET	http://localhost:3500	/assets/Login-qi0FDIES.js
+20241124	15:54:56	d8f98f9f-fbe8-4330-8f26-31f4cd2ad9d5	GET	http://localhost:5173	/api/auth/verify
+20241124	15:54:56	7421d0ea-9dc5-471a-9588-28912dccf42e	GET	http://localhost:5173	/api/auth/verify
+20241124	15:55:10	42730665-54f2-49a4-968f-d2af64b17879	OPTIONS	http://localhost:5173	/api/auth/login
+20241124	15:55:10	de7952af-a249-4eee-a760-8de3b04755d1	POST	http://localhost:5173	/api/auth/login
+20241124	15:55:10	ae28bfa8-7054-4aee-b758-4bfa2eea94bc	GET	http://localhost:5173	/api/auth/verify
+20241124	15:55:10	b52ed7cd-88aa-4746-926e-487f381d9160	GET	http://localhost:5173	/api/auth/verify
+20241124	15:56:15	4d47c70d-959d-4ebc-8652-e09c6e4bab30	OPTIONS	http://localhost:5173	/api/user
+20241124	15:56:15	c27df44c-6959-45ab-a223-59e13b9e72cc	GET	http://localhost:5173	/api/user
+20241124	15:56:49	38d5693e-0306-4455-a5f4-f8ce29ee01b6	OPTIONS	http://localhost:5173	/api/auth/logout
+20241124	15:56:49	eb9d449a-0ae9-4b71-848f-da88cd94af45	DELETE	http://localhost:5173	/api/auth/logout
+20241124	15:56:50	daf0cc23-b552-4e1e-83a0-a79d1bdfc339	GET	http://localhost:5173	/api/auth/verify
+20241124	15:56:50	741cfca4-5068-498c-a5b2-3bb346e7d27f	GET	http://localhost:5173	/api/auth/verify
+20241124	15:57:09	9482485d-ce84-4180-93ee-1cc74ac5e1b3	OPTIONS	http://localhost:5173	/api/auth/login
+20241124	15:57:09	51e7b7b8-cbe0-4fb5-8fc5-bd2d52c58635	POST	http://localhost:5173	/api/auth/login
+20241124	15:57:09	a5bd0db0-7829-489d-857f-b64f153904fd	GET	http://localhost:5173	/api/auth/verify
+20241124	15:57:09	aaf43b76-e82e-46bb-a5a2-0c78c2eb0cc4	GET	http://localhost:5173	/api/auth/verify
+20241124	15:57:09	8cc29aad-287b-479e-bd0f-fa160b8f5ea9	OPTIONS	http://localhost:5173	/api/user
+20241124	15:57:09	b7007ce9-24a7-49cf-a418-c7f083336442	OPTIONS	http://localhost:5173	/api/user
+20241124	15:57:09	76be76a4-2fde-4e59-8d10-d82c7e82fb5c	GET	http://localhost:5173	/api/user
+20241124	15:57:09	924600ce-1de1-454b-a9c5-d9d243ca4c94	GET	http://localhost:5173	/api/user
+20241124	15:59:48	df5da80b-99b9-441b-b1e5-9e7d11983ceb	OPTIONS	http://localhost:5173	/api/user
+20241124	15:59:48	14f2d645-ab16-49e0-ab79-27ec4df62003	OPTIONS	http://localhost:5173	/api/user
+20241124	15:59:48	a94a8715-24d7-42d4-88e7-e3b0bd05a1f9	GET	http://localhost:5173	/api/user
+20241124	15:59:48	dbbef3eb-f9b8-4143-beac-96a278a0f5dc	GET	http://localhost:5173	/api/user
+20241124	15:59:56	58b4761b-29c4-4e1f-987d-8be664f90453	OPTIONS	http://localhost:5173	/api/auth/logout
+20241124	15:59:56	72b203ee-7d97-4e2d-8795-a166d23d4c90	DELETE	http://localhost:5173	/api/auth/logout
+20241124	15:59:56	cb66b292-605d-4a72-957b-c5d2f10efc4b	GET	http://localhost:5173	/api/auth/verify
+20241124	15:59:56	5e2ac4ce-d251-4f2e-b8d7-18ea8b2254e8	GET	http://localhost:5173	/api/auth/verify
+20241124	16:00:16	711cf577-9211-41f9-8ddf-1a99d217e667	OPTIONS	http://localhost:5173	/api/auth/login
+20241124	16:00:16	d2c5a9e7-bcef-40ec-ba21-4c36674774f7	POST	http://localhost:5173	/api/auth/login
+20241124	16:00:16	26d6035a-4c35-4c77-99de-8253ad2c9209	GET	http://localhost:5173	/api/auth/verify
+20241124	16:00:16	314b51ea-2af7-4a0e-b0d1-1ff8a70af45a	GET	http://localhost:5173	/api/auth/verify
+20241124	16:00:16	1ecddadd-590e-40ca-a290-42e00e97a655	OPTIONS	http://localhost:5173	/api/user
+20241124	16:00:16	b50a467c-fec8-46dd-b0e4-df6461fbadf9	OPTIONS	http://localhost:5173	/api/user
+20241124	16:00:16	f38d6d66-ca09-4408-b557-dd7655bb3548	GET	http://localhost:5173	/api/user
+20241124	16:00:16	e284acd0-2b7c-433d-820a-7241b0b843fc	GET	http://localhost:5173	/api/user
+20241124	16:01:20	6dce293e-e46f-45bb-a6c2-365d49694aef	OPTIONS	http://localhost:5173	/api/user
+20241124	16:01:20	61db7c73-d01e-4af5-9ba1-d9a5f39745c9	OPTIONS	http://localhost:5173	/api/user
+20241124	16:01:20	ee06f70f-5653-49a2-b1f4-99850ac3c493	GET	http://localhost:5173	/api/user
+20241124	16:01:20	b2397fc5-7b98-4514-bea8-6453a9612615	GET	http://localhost:5173	/api/user
+20241124	16:03:50	52774c8a-c225-49e7-b392-78a1868f9729	GET	http://localhost:5173	/api/auth/verify
+20241124	16:03:50	be8f5115-667f-4ec8-8173-0b4ebf00100b	GET	http://localhost:5173	/api/auth/verify
+20241124	16:03:51	037aa8f6-73ef-4a83-a8a0-d9fea0de6a06	OPTIONS	http://localhost:5173	/api/user
+20241124	16:03:51	b0de0c39-e456-4abd-8421-ffef7e6c4a04	OPTIONS	http://localhost:5173	/api/user
+20241124	16:03:51	3e1cc8d0-cf44-474f-bf97-f4c8c3fd7d07	GET	http://localhost:5173	/api/user
+20241124	16:03:51	87fe1417-8712-4935-98e7-e67f55c58d55	GET	http://localhost:5173	/api/user
+20241124	16:04:02	aa96eb2e-a3e6-4d6a-aa75-ec453d00b071	OPTIONS	http://localhost:5173	/api/auth/logout
+20241124	16:04:02	9b792da0-d2d6-4b77-b978-cefc30e91596	DELETE	http://localhost:5173	/api/auth/logout
+20241124	16:04:02	8f53a2f2-ba8c-485b-b0d0-a849cd480f2a	GET	http://localhost:5173	/api/auth/verify
+20241124	16:04:02	5d177c66-5f4a-48df-bff9-b05007ac027d	GET	http://localhost:5173	/api/auth/verify
+20241127	08:46:43	dc1bc9a8-9bc5-43aa-b307-b85f911ed737	GET	http://localhost:5173	/api/auth/verify
+20241127	08:46:43	ac633164-06fe-4e9d-aadb-f4eece993ddc	GET	http://localhost:5173	/api/auth/verify

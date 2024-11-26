@@ -7,7 +7,13 @@ export default function Admin() {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState<string | null>(null);
 
-  const baseUrl = process.env.VITE_BASE_URL || 'https://185.valab.cloud';
+  let baseUrl = ''
+
+  if (import.meta.env.MODE === 'development') {
+    baseUrl = import.meta.env.VITE_DEV_URL
+  } else {
+    baseUrl = import.meta.env.VITE_BASE_URL
+  }
 
  useEffect(() => {
     const fetchUserData = async () => {
@@ -15,9 +21,6 @@ export default function Admin() {
         const response = await fetch(`${baseUrl}/api/user`, {
           method: "GET",
           headers: userToken ? { "Authorization": `Bearer ${userToken}` } : {},
-          // headers: {
-          //   "Authorization": userToken ? `Bearer ${userToken}` : "",
-          // },
           credentials: "include", // To send cookies with the request
         });
 

@@ -10,11 +10,14 @@
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
  sans-serif;
 
+ --radius: .4rem;
  --bar-width: 60px;
  --bar-height: 8px;
  --hamb-gap: 6px;
  --hamb-margin: 1rem;
- --animation-timing: 0.4s cubic-bezier(0.985, 0.135, 0.15, 0.76);
+ --animation-timing: 250ms ease-out;
+ --animation-delay: .2s;
+ /* --animation-timing: 0.4s cubic-bezier(0.985, 0.135, 0.15, 0.76); */
  --hamb-height: calc(var(--bar-height) * 3 + var(--hamb-gap) * 2);
 }
 *{
@@ -99,6 +102,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family:'Courier New', Courier, monospace;
   background-color: var(--backG);
+  /* background-image: url("/assets/bckgroud.jpg");
+  background-repeat: no-repeat, repeat;
+  height: 100%;
+  background-size: cover; */
 }
 header {
     display: grid;
@@ -111,7 +118,7 @@ header {
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: var(--backG);
+    /* background-color: var(--backG); */
 
   .theme-selector {
     justify-self: flex-start;
@@ -140,7 +147,6 @@ header {
     text-decoration: none;
     color: var(--clr-ft-dark);
     font-weight: 900;
-    font-size: 1.25rem;
   }
   /* li a:hover {
     background-color: rgb(149, 149, 149);
@@ -177,6 +183,7 @@ code {
   align-items: center;
   transition: var(--animation-timing);
   transform: translate3d(-100%, 0, 0);
+  transition-delay: .2s; 
   ul {
     /* margin-top: 6rem; */
     text-align: left;
@@ -199,19 +206,23 @@ code {
     color: var(--clr-ft-light);
     transition: var(--animation-timing);
     transform: translate3d(0, 100%, 0);
-    font-size: 2.5rem;
+    transition-delay: 0s; 
+    font-size: 4rem;
+    letter-spacing: 1px;
   }
   .contact-button-header {
     color: var(--clr-ft-light);
     transition: var(--animation-timing);
     transform: translate3d(0, 100%, 0);
-    font-size: 2.5rem;
+    transition-delay: 0s; 
+    font-size: 4rem;
   }
 }
 
 
 .hamburger:has(input:checked) + .sidebar {
   transform: translate3d(0, 0, 0);
+  transition-delay: 0s; 
 
   .contact-button-header,  
   ul li a:not(.AppDrawer ul li a)  {
@@ -358,23 +369,38 @@ h1 span {
   text-shadow: 1px 1px 2px #03505a;
 }
 .hero__body {
-  display: grid;
+  /* display: grid;
   grid-row: 1;
   grid-column: 2 / 4;
   margin-top: calc(12rem - clamp(1rem, 2vw, 15rem));
   padding-left: 1rem;
-  position: relative;
+  position: relative; */
+  display: grid;
+    grid-row: 1;
+    grid-column: 2 / 4;
+    /* margin-top: calc(12rem - clamp(1rem, 2vw, 15rem)); */
+    /* padding-left: 1rem; */
+    margin-top: 4rem;
+    position: relative;
+    align-items: center;
 }
 .hero__subtitle {
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.5;
-  transition: 200ms ease;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: 200ms ease;
+    color: #484848;
+    /* background-color: #dbdada5e; */
+    padding: 1.5rem;
+    border-radius: 3rem 0 3rem 0;
 }
 @media(max-width: 845px) {
   .hero__subtitle {
     line-height: 1.1;
-    padding-right: 1rem;
+    background: transparent;
   }
 }
 .btn-logout {
@@ -395,7 +421,7 @@ h1 span {
     border-style: dashed;
     border-color: rgb(172 63 63);
     border-width: 2px;
-    border-radius: .5rem;
+    border-radius: var(--radius);
     outline: 2px solid;
     outline-offset: 3px;
     height: fit-content;
