@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
 import { motion, useDragControls, PanInfo } from "framer-motion";
 import { BsFillTelephoneFill, BsArrow90DegRight } from 'react-icons/bs';
@@ -11,16 +12,23 @@ type Props = {
 }
 
 const Drawer = ({contactDetails}: Props) => {
-
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
+  const { state, toggleDrawer } = useContext(UserContext)
+  //const [drawerOpen, setDrawerOpen] = useState(false);
+  const handleDrawer = () => {
+    if (state.drawerOpen) {
+      toggleDrawer()
+    } else {
+      toggleDrawer()
+    }
+  }
   const dragControls = useDragControls();
 
   // Handler to close the drawer when it's dragged and released
   const handleDragEnd = (_: MouseEvent | TouchEvent, info: PanInfo) => {
     const pointerEvent = document.querySelector('.drawer-outer');
     if (info.offset.y > 50) {
-      setDrawerOpen(false);
+      //setDrawerOpen(false);
+      handleDrawer()
       if (pointerEvent) {
         pointerEvent.classList.remove('active');
       }
@@ -54,20 +62,18 @@ const Drawer = ({contactDetails}: Props) => {
   };
 }, []);
   // Toggle function for drawer open/close
-  const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
-  };
+
 
   return (
-    <li>
+    <>
       {/* Toggle button */}
-      <button className="contact-button-header" onClick={toggleDrawer}>
-        {drawerOpen ? "Contact" : "Contact"}
-      </button>
+      {/* <button className="contact-button-header" onClick={toggleDrawer}>
+        {state.drawerOpen ? "Contact" : "Contact"}
+      </button> */}
 
       {/* Drawer Motion Component */}
       <motion.div
-        className={`AppDrawer  ${drawerOpen ? 'navbar-open' : ''}`}
+        className={`AppDrawer  ${state.drawerOpen}`}
         drag="y"
         dragControls={dragControls}
         dragConstraints={{ top: 0, bottom: 0 }}
@@ -75,8 +81,8 @@ const Drawer = ({contactDetails}: Props) => {
         initial={{ scaleY: 0, y: "100%", zIndex: 0 }}
         animate={{
           zIndex: 1000,
-          scaleY: drawerOpen ? 1 : 0,
-          y: drawerOpen ? "0%" : "100%",
+          scaleY: state.drawerOpen ? 1 : 0,
+          y: state.drawerOpen ? "0%" : "100%",
         }}
         transition={{ type: "spring", bounce: 0.15, delay: 0.1, duration: 0.6 }}
       >
@@ -86,13 +92,13 @@ const Drawer = ({contactDetails}: Props) => {
           <div className="contact-grid ">
           <SiMinutemailer className="icon-email "/>
             <ul>          
-              <li><Link onClick={() => setDrawerOpen(false)} to="mailto:aaron@185restorations.co.nz">aaron@185restorations.co.nz</Link></li>
-              <li><Link onClick={() => setDrawerOpen(false)} to="mailto:phil@185restorations.co.nz">phil@185restorations.co.nz</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to="mailto:aaron@185restorations.co.nz">aaron@185restorations.co.nz</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to="mailto:phil@185restorations.co.nz">phil@185restorations.co.nz</Link></li>
             </ul>
             <BsFillTelephoneFill className="icon-phone" />
             <ul>
-              <li>Aaron: <Link onClick={() => setDrawerOpen(false)} to="tel:0225732530">0225732530</Link></li>
-              <li>Phil: <Link onClick={() => setDrawerOpen(false)} to="tel:0272056868">0272056868</Link></li>
+              <li>Aaron: <Link onClick={() => toggleDrawer()} to="tel:0225732530">0225732530</Link></li>
+              <li>Phil: <Link onClick={() => toggleDrawer()} to="tel:0272056868">0272056868</Link></li>
             </ul>
           </div>
         </div>
@@ -101,19 +107,19 @@ const Drawer = ({contactDetails}: Props) => {
           <div className="contact-grid">
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><Link onClick={() => setDrawerOpen(false)} to='/find-us'><FaMapPin className="inline mr-4" />Find us on a map</Link></li>
-              <li><Link onClick={() => setDrawerOpen(false)}  to='/contact-form'><MdContactMail className="inline mr-4" />Contact form</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to='/find-us'><FaMapPin className="inline mr-4" />Find us on a map</Link></li>
+              <li><Link onClick={() => toggleDrawer()}  to='/contact-form'><MdContactMail className="inline mr-4" />Contact form</Link></li>
             </ul>
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><Link onClick={() => setDrawerOpen(false)}  to='/for-sale'><FaSalesforce className="inline mr-4" />Stuff for sale</Link></li>
+              <li><Link onClick={() => toggleDrawer()}  to='/for-sale'><FaSalesforce className="inline mr-4" />Stuff for sale</Link></li>
             </ul>
           </div>
         </div>
 
         {contactDetails}
       </motion.div>
-    </li>
+    </>
   );
 };
 

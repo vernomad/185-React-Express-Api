@@ -1,8 +1,10 @@
-
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
 export default function HomeComponet() {
+  const { toggleDrawer } = useContext(UserContext)
   return (
-    <div className="main-grid">
+    <div className="main-grid" >
     <section className="hero">
       <img
         className="hero__img top"
@@ -19,12 +21,24 @@ export default function HomeComponet() {
         Christchurch where we are strictly passionate about realizing all
         those car dreams...
       </p>
-      <button className="contact-btn">Contact our team</button> 
+      <button
+  onClick={() => {
+    console.log("Button clicked!");
+    toggleDrawer();
+  }}
+  aria-label="call to action button"
+  type="button"
+  title="Contact us"
+  className="contact-btn"
+>
+  Contact our team
+</button>
+
       </div>          
      
     </section>
     <section className="small_screen">
-    <button title="Contact us" className="contact-btn">Contact our team</button> 
+    <button onClick={toggleDrawer} aria-label="call to action button" type="button" title="Contact us" className="contact-btn">Contact our team</button> 
     <div className="hero__body_2">           
       <p className="hero__subtitle">
         Specialists in classic & custom car restorations. Located in

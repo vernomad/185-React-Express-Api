@@ -1,17 +1,18 @@
 import ThemeButton from './ThemeButton.tsx';
 import { Link } from 'react-router-dom';
-import Drawer from './Drawer.tsx';
+// import Drawer from './Drawer.tsx';
 import SidebarController from './SidebarController.tsx';
 import LoggedIn from './LoggedIn.tsx';
+import DrawerButton from './DrawerButton.tsx';
 
 
 
 export default function Header() {
 
-  const contactDetails = <><div className="container-address">Address and extra content</div></>
+ //const contactDetails = <><div className="container-address">Address and extra content</div></>
   
   return (
-    <header>
+    <header id='header'>
       <div className="theme-selector" title='admin-link'>
       <Link to='/admin' ><ThemeButton /> </Link> 
       </div>
@@ -21,7 +22,8 @@ export default function Header() {
      <li> <Link to="/about" id='menu-home'>Info</Link></li>
      <li> <Link to="/projects" id='menu-home'>Pro's</Link></li>
      
-      <Drawer contactDetails={contactDetails} />
+      {/* <Drawer contactDetails={contactDetails} /> */}
+      <DrawerButton />
     </ul>
 <SidebarController />
   <label className="hamburger" htmlFor='menu-toggle'>
@@ -32,7 +34,8 @@ export default function Header() {
     <li><Link to="/" id="menu-home">Home</Link></li>
     <li><Link to="/about" id="menu-about">Info</Link></li>
     <li><Link to="/projects" id="menu-projects">Pro's</Link></li>
-    <Drawer contactDetails={contactDetails}  />
+    
+    <DrawerButton />
   </ul>
 </aside>
 

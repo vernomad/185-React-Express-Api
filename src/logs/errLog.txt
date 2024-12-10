@@ -1,2 +1,3 @@
 20241122	09:22:45	bff73afa-fe61-4e0e-b4fb-7029411f63b2	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /
 20241122	09:22:45	0ef1658b-8563-40c1-860c-7253d18a7a4f	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /favicon.ico
+20241128	11:19:51	94c9c3c6-2371-48ea-bdc0-9a3f45d4663a	SyntaxError: Expected ',' or '}' after property value in JSON at position 79 - PATCH /api/user/6736899fa7d159cef296e062

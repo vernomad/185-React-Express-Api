@@ -88,7 +88,8 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
       path: "",
       element: (
        
-        <div className="container">           
+        <div className="container">
+          <div className="wrapper-login">         
           <h1>Login</h1>
           
           <form id="form-login" onSubmit={handleSubmit(onSubmit)}>
@@ -118,6 +119,7 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
             </button>
           </form>
         </div>
+        </div>  
       ),
     },
   ]);

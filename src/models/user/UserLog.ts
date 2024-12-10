@@ -4,18 +4,23 @@ import { isValid as isValidDate } from "date-fns";
 const errors = {
   joinDateString: "Join Date must be a valid date.",
   joinDateTimestamp: "Join Date must be a valid timestamp.",
-  password: "contain at least 3ch or withing 21ch"
+  password: "Must contain at least 3 and withing 21ch characters",
 };
 
 
-export const UserRole = z.enum([ "Admin", "Editor"]);
+export const UserRole = z.enum([ "admin", "editor", "user"]);
 export type UserRoleType = z.infer<typeof UserRole>;
+
+export const UserRolesArray = z
+  .array(UserRole) // Ensure each role in the array is valid
+  .default(["user"]) // Provide a default array with a single "user" role
+  .optional(); // Make it optional if necessary
 
 export const UserRegistrationSchema = z.object({
   username: z.string(),
   email: z.string().email(),
   password: z.string().min(3, errors.password),
-  roles: UserRole.default("Editor").optional(),
+  roles:  UserRolesArray,
 });
 
 export const UserLoginSchema = z.object({
@@ -28,7 +33,7 @@ const baseValidation = z.object({
   email: z.string().email(),
   image: z.string().url().optional(),
   password: z.string().min(3, errors.password),
-  roles: UserRole.default("Editor").optional()
+  roles:  UserRolesArray,
 });
 
 export const UserLogEntry = baseValidation.extend({

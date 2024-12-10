@@ -2,32 +2,35 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { Request, Response, NextFunction } from 'express';
 import { UserLogs } from '../models/user/UserLogs';
+import { UserRole } from '../models/user/UserLog';
+
 import slugify from '../utils/slugify';
 import * as bcryptjs from "bcryptjs";
 const saltRounds = 10;
 
-// import { handleError } from './errors';
-// import { ErrorWithStatusCode } from './errors';
 import jwt from 'jsonwebtoken';
-import { UserRoleType } from '../models/user/UserLog';
 import { jwtVerify, JWTVerifyResult } from 'jose';
 
 export const registerUser = async (req: Request, res: Response) => {
-  const { username, email, image, password } = req.body;
+  const { username, email, image, password, roles } = req.body;
+
+  const validRoles = Array.isArray(roles) 
+    ? roles.filter((role) => UserRole.options.includes(role)) 
+    : ["admin"];
 
   const user: {
     username: string;
     email: string;
     image: string;
-    roles: UserRoleType; // Explicitly using UserRole type
+    roles: ("admin" | "editor" | "user")[]; // Explicitly using UserRole type
     password: string;
     slug: string;
     joinDate: number;
   } = {
     username,
     email,
-    image: '/user.svg',
-    roles: "Admin", // Must be "Admin" or "Editor"
+    image: '/assets/img/user.svg',
+    roles: validRoles,  // Must be "Admin" or "Editor"
     password,
     slug: "",
     joinDate: Date.now(),
