@@ -120,11 +120,11 @@
   }
 }
 
-@media(max-width: 650px) {
+/* @media(max-width: 650px) {
   .AppDrawer {
     background-color: #757474;
   }
-}
+} */
 @media(max-width: 750px) {
   .contact-grid {
     grid-template-columns: minmax(30px, 50px) 1fr!important;

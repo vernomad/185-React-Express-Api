@@ -10,10 +10,11 @@
   box-sizing: border-box; 
 }
 :root {
- --clr-ft-dark: hsl(0, 0%, 18%);
+ --clr-ft-dark: hsl(0, 0%, 70%);
  --clr-ft-light: rgb(211, 211, 211);
- --foreG: #303030;
- --backG: #000000;
+ --foreG: #171717;
+ --backG: #111111;
+ --theme: #03505ab5;
  --ft-title: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
  sans-serif;
@@ -426,28 +427,28 @@ translate: 0 calc(var(--bar-height) / 2);
   align-items: center;
   align-content: center;
   min-height: 85dvh;
-  background: radial-gradient(ellipse at top, var(--backG), transparent), radial-gradient(ellipse at bottom, #03505ab5, transparent);
-  background-image: linear-gradient(2deg, var(--backG), #03505ab5);
-  background-color: radial-gradient(var(--backG), #03505ab5);
+  background: radial-gradient(ellipse at top, var(--backG), transparent), radial-gradient(ellipse at bottom, var(--theme), transparent);
+  background-image: linear-gradient(2deg, var(--backG), var(--theme));
+  background-color: radial-gradient(var(--backG), var(--theme));
 }
 #about-section-2 {
-  /* background-color: conic-gradient(var(--backG), #03505ab5 75%); */
+  /* background-color: conic-gradient(var(--backG), var(--theme) 75%); */
   /* background: radial-gradient(ellipse at top, var(--backG), transparent),
-  radial-gradient(ellipse at bottom, #03505ab5, transparent); */
-  background-image: linear-gradient(180deg, var(--backG), #03505ab5);
+  radial-gradient(ellipse at bottom, var(--theme), transparent); */
+  background-image: linear-gradient(180deg, var(--backG), var(--theme));
 }
 #about-section-3 {
-  /* background-color: radial-gradient(var(--backG), #03505ab5); */
+  /* background-color: radial-gradient(var(--backG), var(--theme)); */
   /* background-color: #03505a5d; */
-  /* background: radial-gradient(ellipse at top, #03505ab5, transparent),
+  /* background: radial-gradient(ellipse at top, var(--theme), transparent),
   radial-gradient(ellipse at bottom, var(--backG), transparent); */
-  background-image: linear-gradient(180deg, #03505ab5, var(--backG));
+  background-image: linear-gradient(180deg, var(--theme), var(--backG));
 }
 #about-section-4 {
-  /* background-color: conic-gradient(var(--backG), #03505ab5 75%); */
+  /* background-color: conic-gradient(var(--backG), var(--theme) 75%); */
   /* background: radial-gradient(ellipse at top, var(--backG), transparent),
-  radial-gradient(ellipse at bottom, #03505ab5, transparent); */
-  background-image: linear-gradient(180deg,transparent, #03505ab5);
+  radial-gradient(ellipse at bottom, var(--theme), transparent); */
+  background-image: linear-gradient(180deg, var(--backG), var(--theme));
 }
 .details {
   grid-column: 3 / 6;
