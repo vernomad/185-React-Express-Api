@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
+import MySectObserve from "../InterSectionObserve";
 
 export default function Info() {
   const { toggleDrawer } = useContext(UserContext);
   return (
     <>
       <div className="background" id="background">
-        <img className="hero__about" src="./assets/img/background.png" alt="" />
+        {/* <img className="hero__about" src="./assets/img/background.png" alt="" /> */}
       </div>
-
+    <MySectObserve targetContainers={['insetImage']} >
       <div className="main-grid">
         <div className="about-section">
           <h1 className="about__title">
@@ -26,7 +27,8 @@ export default function Info() {
           </div>
 
           <div className="insetImage" id="insetImage-1">
-            <img src="./assets/img/car.jpg" alt="" />
+            <div className="filter"></div>
+            <img src="./assets/img/Chevnose.jpg" alt="" />
           </div>
         </div>
         <div className="about-section" id="about-section-2">
@@ -85,11 +87,12 @@ export default function Info() {
               aspirations.
             </p>
           </div>
-          <div className="insetImage" id="insetImage-2">
+          <div className="insetImage" id="insetImage-4">
             <img src="./assets/img/toyota5-full.jpg" alt="" />
           </div>
         </div>
       </div>
+      </MySectObserve>
     </>
   );
 }

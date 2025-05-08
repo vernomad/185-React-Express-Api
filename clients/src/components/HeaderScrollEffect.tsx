@@ -18,7 +18,7 @@ const HeaderScrollEffect = () => {
       const background = document.querySelector("#background") as HTMLBodyElement;
       const scrollPosition = window.scrollY;
 
-      console.log('Scroll Position:', scrollPosition);
+     // console.log('Scroll Position:', scrollPosition);
       // Check the scroll position and add/remove the 'active' class accordingly
       if (header) {
       if (scrollPosition >= 50) {

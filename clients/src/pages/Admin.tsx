@@ -15,6 +15,7 @@ export default function Admin() {
   } else {
     baseUrl = import.meta.env.VITE_BASE_URL;
   }
+console.log("User in admin", user)
 
   useEffect(() => {
     const fetchUserData = async () => {

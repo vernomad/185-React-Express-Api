@@ -48,6 +48,7 @@ function AppReducer(
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [state, dispatch] = useReducer(AppReducer, AppInitialState);
+  //const {stateUser } = useUser() 
 
   const [user, setUser] = useState<User | null>(null)
   const [userToken, setUserToken] = useState<UserToken | null>(null);
@@ -63,7 +64,20 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   }
 
   useEffect(() => {
+    // if (!user) {
+    //   setUserToken(null);
+    //       setIsAuthenticated(false);
+    //       setUser(null);
+    //       return
+    // }
     const verifyAuth = async () => {
+      // if (!state.user) {
+      //   setUserToken(null);
+      //   setIsAuthenticated(false);
+      //   setUser(null);
+      //   setLoading(false)
+      //     return
+      // } 
       setLoading(true)
       try {
         const response = await fetch(`${baseUrl}/api/auth/verify`, {

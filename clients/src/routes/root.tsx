@@ -5,6 +5,7 @@ const Home = lazy(() => import("../pages/Home.tsx"))
 const About = lazy(() => import("../pages/About.tsx"))
 const Admin = lazy(() => import("../pages/Admin.tsx"))
 const Login = lazy(() => import("../pages/Login.tsx"))
+const Projects = lazy(() => import("../pages/Projects.tsx"))
 
 
 export default function RootRoutes() {
@@ -13,6 +14,7 @@ export default function RootRoutes() {
     <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/about/*" element={<About />} />
+        <Route path="/projects/*" element={<Projects />} />
         <Route path="/admin/*" element={<PrivateRoute element={<Admin/>} />} />
         {/* <Route path="/admin/*" element={<Admin />} /> */}
         <Route path="/login/*" element={<Login />} />

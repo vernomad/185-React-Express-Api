@@ -12,8 +12,8 @@
 :root {
  --clr-ft-dark: hsl(0, 0%, 18%);
  --clr-ft-light: rgb(211, 211, 211);
- --foreG: #2e2e2e;
- --backG: #8c8a8a;
+ --foreG: #303030;
+ --backG: #000000;
  --ft-title: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
  sans-serif;
@@ -110,6 +110,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family:'Courier New', Courier, monospace;
   background-color: var(--backG);
+  /* background-color: rgb(1, 1, 19); */
   /* background-image: url("/assets/bckgroud.jpg");
   background-repeat: no-repeat, repeat;
   height: 100%;
@@ -181,7 +182,30 @@ text-underline-offset: 2px;
 }
 footer {
   height: 15dvh;
-  border-top: 1 px solid rgb(78, 78, 78)
+  border-top: 1 px solid rgb(78, 78, 78);
+  display: flex
+;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: .5rem;
+  background-color: var(--foreG);
+}
+footer a {
+  color: var(--clr-ft-light);
+  text-decoration: none;
+}
+.copyright-row {
+  display: inline;
+}
+.copyright-row svg {
+ padding: .1rem;
+ color: var(--clr-ft-light);
+}
+.social-row {
+  display: flex;
+  gap: .5rem;
+  padding-bottom: .5rem;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -309,6 +333,7 @@ translate: 0 calc(var(--bar-height) / 2);
     /* height: calc(min(100dvh) - 30dvh); */
     display: grid;
     justify-content: center;
+    min-height: 85dvh;
 }
 .wrapper-login {
   margin-block: 15rem;
@@ -325,7 +350,6 @@ translate: 0 calc(var(--bar-height) / 2);
   minmax(1rem, 1fr) 
   repeat(var(--column-count), 
   minmax(0, 12rem)) minmax(1rem, 1fr);
-  margin-top: 15dvh;
 }
 .main-grid>* {
   grid-column: 1 / -1;
@@ -336,6 +360,7 @@ translate: 0 calc(var(--bar-height) / 2);
 }
 .hero {
   min-height: 73vh;
+  margin-top: 7rem;
 }
 
 .hero__img, .filterImage {
@@ -372,6 +397,10 @@ translate: 0 calc(var(--bar-height) / 2);
   position: fixed;
   inset: 0;
   z-index: -1;
+  background-image: url('/assets/img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Optional for a parallax effect */
   transition: all 1000ms ease;
 }
 .background.active {
@@ -397,6 +426,9 @@ translate: 0 calc(var(--bar-height) / 2);
   align-items: center;
   align-content: center;
   min-height: 85dvh;
+  background: radial-gradient(ellipse at top, var(--backG), transparent), radial-gradient(ellipse at bottom, #03505ab5, transparent);
+  background-image: linear-gradient(2deg, var(--backG), #03505ab5);
+  background-color: radial-gradient(var(--backG), #03505ab5);
 }
 #about-section-2 {
   /* background-color: conic-gradient(var(--backG), #03505ab5 75%); */
@@ -483,23 +515,38 @@ translate: 0 calc(var(--bar-height) / 2);
   color: var(--clr-ft-light);
 }
 
+.insetImage {
+  position: relative;
+  opacity: 0;
+  /* transform: translateY(10px); */
+  transition: 750ms ease-in-out;
+}
+
 #insetImage-1 {
   grid-row: 2;
-  grid-column: 6 / 9;
 }
-#insetImage-3 {
+#insetImage-3, #insetImage-1 {
   grid-column: 6 / 9;
+ 
+
 }
-#insetImage-2 {
+#insetImage-2, #insetImage-4 {
   grid-column: 1 / 5;
+ 
 }
-#insetImage-1 img, #insetImage-3 img,  #insetImage-2 img {
+
+.insetImage.intersecting {
+  opacity: 1;
+  /* transform: translateY(0); */
+}
+
+#insetImage-1 img, #insetImage-2 img, #insetImage-3 img, #insetImage-4 img {
   max-height: 350px;
   width: auto;
 }
-.insetImage img {
+/* .insetImage img {
   border-radius: 5px;
-}
+} */
 .main__title, .about__title {
   font-family: "Orbitron", system-ui, sans-serif;
 
@@ -518,6 +565,7 @@ translate: 0 calc(var(--bar-height) / 2);
 }
 .about__title {
   grid-column: 2 / 9;
+  margin-top: 15dvh;
   padding-bottom: 4rem;
   padding-left: 2rem;
   font-size: 2rem;
@@ -610,7 +658,7 @@ h1 span {
   #insetImage-1 {
     grid-column: 3 / 9;
   }
-  #insetImage-2 {
+  #insetImage-2, #insetImage-4 {
     grid-row: 1;
     grid-column: 2 / 8;
   }
@@ -625,7 +673,7 @@ h1 span {
   .insetImage img {
     display: block;
     float:right;
-    padding-right: 3rem;
+    padding-right: 2rem;
   }
   header {
     align-items: start;

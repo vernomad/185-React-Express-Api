@@ -2,7 +2,7 @@ import ThemeButton from './ThemeButton.tsx';
 import { Link } from 'react-router-dom';
 // import Drawer from './Drawer.tsx';
 import SidebarController from './SidebarController.tsx';
-import LoggedIn from './LoggedIn.tsx';
+import UserLogo from './Userlogo.tsx';
 import DrawerButton from './DrawerButton.tsx';
 
 
@@ -39,7 +39,7 @@ export default function Header() {
   </ul>
 </aside>
 
-<LoggedIn />
+<UserLogo />
     </header>
   )
 }

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import Services from "./services";
 
-export default function HomeComponet() {
+export default function ProjectsComponet() {
   const { toggleDrawer } = useContext(UserContext)
   return (
     <div className="main-grid" >

@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import Logout from './LogoutButton';
 import { useUser } from '../useUser';
 
-export default function LoggedIn() {
+export default function UserLogo() {
     const {user} = useUser()
     const location = useLocation();
   return (

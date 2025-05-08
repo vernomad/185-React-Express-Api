@@ -6,7 +6,6 @@ export interface Preferences {
   }
 
 export interface AppState {
-    // userToken: string | null;
     drawerOpen: boolean;
     preferences: Preferences;
 }

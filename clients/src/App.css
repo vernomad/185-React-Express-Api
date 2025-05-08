@@ -41,7 +41,7 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: #757474;
+    background-color: var(--foreG);
     /* backdrop-filter: blur(25px); */
     border-top: 1px solid #5b5b5b;
     border-radius: 20px 20px 0 0;
@@ -120,6 +120,11 @@
   }
 }
 
+@media(max-width: 650px) {
+  .AppDrawer {
+    background-color: #757474;
+  }
+}
 @media(max-width: 750px) {
   .contact-grid {
     grid-template-columns: minmax(30px, 50px) 1fr!important;

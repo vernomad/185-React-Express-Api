@@ -8,7 +8,7 @@ interface UserToken {
   token: string | null;
   // Add other fields as necessary based on the API response
 }
-interface User {
+export type User = {
   id: string;
   username: string;
   image: string;

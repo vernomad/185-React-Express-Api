@@ -131,6 +131,7 @@ export const verifyUser = async (req: Request, res: Response ) => {
 
   if (!token) {
    res.status(401).json({ isAuthenticated: false });
+  //  res.json({ isAuthenticated: false, user: null, userToken: null })
    return
   }
 
