@@ -10,7 +10,7 @@ export default function UserLogo() {
     {location.pathname === '/' ? (
         <div className='App-logo-positioning'>
           <div className="App-logo">
-            <img src='./logo192.png' alt='' />
+            {/* <img src='./logo192.png' alt='' /> */}
           </div>
         </div>
       ): (

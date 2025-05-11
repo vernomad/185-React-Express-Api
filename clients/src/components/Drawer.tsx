@@ -97,8 +97,8 @@ const Drawer = ({contactDetails}: Props) => {
             </ul>
             <BsFillTelephoneFill className="icon-phone" />
             <ul>
-              <li>Aaron: <Link onClick={() => toggleDrawer()} to="tel:0225732530">0225732530</Link></li>
-              <li>Phil: <Link onClick={() => toggleDrawer()} to="tel:0272056868">0272056868</Link></li>
+              <li><span>Aaron:</span> <Link onClick={() => toggleDrawer()} to="tel:0225732530">0225732530</Link></li>
+              <li><span>Phil:</span> <Link onClick={() => toggleDrawer()} to="tel:0272056868">0272056868</Link></li>
             </ul>
           </div>
         </div>

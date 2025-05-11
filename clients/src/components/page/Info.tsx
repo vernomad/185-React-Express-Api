@@ -11,7 +11,7 @@ export default function Info() {
       </div>
     <MySectObserve targetContainers={['insetImage']} >
       <div className="main-grid">
-        <div className="about-section">
+        <div className="about-section" id="about-section-1">
           <h1 className="about__title">
             <span>Classic</span> & Custom Car Restorations
           </h1>
@@ -28,7 +28,7 @@ export default function Info() {
 
           <div className="insetImage" id="insetImage-1">
             <div className="filter"></div>
-            <img src="./assets/img/Chevnose.jpg" alt="" />
+            <img src="./assets/porche/porche (9).jpeg" alt="" />
           </div>
         </div>
         <div className="about-section" id="about-section-2">

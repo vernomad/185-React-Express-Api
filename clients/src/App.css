@@ -41,8 +41,8 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: var(--foreG);
-    /* backdrop-filter: blur(25px); */
+    /* background-color: var(--foreG); */
+    backdrop-filter: blur(25px);
     border-top: 1px solid #5b5b5b;
     border-radius: 20px 20px 0 0;
     z-index: 1000;
@@ -64,6 +64,8 @@
     }
     .drawer-title {
       padding: 1rem;
+      font-weight: 400;
+      font-size: 1.25rem;
     }
     .contact-container {
      
@@ -84,8 +86,8 @@
       margin-right: auto;
       width: 100%;
       max-width: 1100px;
-      background-color: #959393;
-      padding: 1rem;
+      background-color: #434343;
+      padding: 2rem 1rem;
       border-radius: 1rem;
       svg {
         font-size: 1.8rem;
@@ -98,6 +100,7 @@
         gap: 1rem;
         margin: 0;
         padding: 0;
+        font-size: 1.2rem;;
       }
       li a {
         color: rgb(246, 246, 246);
@@ -108,6 +111,9 @@
         padding-right: 1rem;
         font-size: 2.5rem;
         color: black;
+      }
+      li span {
+        font-weight: 600;
       }
       /* li a:hover::after {
         content: '';
