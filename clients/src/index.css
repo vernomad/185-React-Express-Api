@@ -649,7 +649,6 @@ h1 span {
   align-items: flex-end;
   height: 100%;
   padding-left: 1rem;
-  padding-bottom: .5rem;
 }
 .contact-btn {
     /* position: absolute;
@@ -690,6 +689,7 @@ h1 span {
 }
 .contact-btn {
 width: 100%;
+border-radius: 0;
 }
   #details-2, #details-3 {
     grid-column: 1 / -1;
@@ -747,7 +747,7 @@ width: 100%;
     border-radius: 0!important;
   }
   .hero__title {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     font-size: clamp(2.2rem, 10vw, 5rem);
     padding-left: 1rem;
   }
