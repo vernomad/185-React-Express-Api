@@ -14,13 +14,14 @@ export default function Header() {
   return (
     <header id='header'>
       <div className="theme-selector" title='admin-link'>
-      <Link to='/admin' ><ThemeButton /> </Link> 
+      <Link to='/admin'><ThemeButton /> </Link> 
       </div>
       
     <ul className='navUl'>
      <li><Link to="/" id='menu-home'>Home</Link></li>
      <li> <Link to="/about" id='menu-home'>Info</Link></li>
      <li> <Link to="/projects" id='menu-home'>Pro's</Link></li>
+     <li> <Link to="/events" id='menu-home'>Events</Link></li>
      
       {/* <Drawer contactDetails={contactDetails} /> */}
       <DrawerButton />
@@ -34,8 +35,10 @@ export default function Header() {
     <li><Link to="/" id="menu-home">Home</Link></li>
     <li><Link to="/about" id="menu-about">Info</Link></li>
     <li><Link to="/projects" id="menu-projects">Pro's</Link></li>
+    <li><Link to="/events" id="menu-projects">Events</Link></li>
+    <li><Link to="/contact" id="menu-projects">Contact</Link></li>
     
-    <DrawerButton />
+    {/* <DrawerButton /> */}
   </ul>
 </aside>
 

@@ -92,8 +92,8 @@ const Drawer = ({contactDetails}: Props) => {
           <div className="contact-grid ">
           <SiMinutemailer className="icon-email "/>
             <ul>          
-              <li><Link onClick={() => toggleDrawer()} to="mailto:aaron@185restorations.co.nz">aaron@185restorations.co.nz</Link></li>
-              <li><Link onClick={() => toggleDrawer()} to="mailto:phil@185restorations.co.nz">phil@185restorations.co.nz</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to="mailto:aaron@185restorations.co.nz"><span>aaron@</span>185restorations.co.nz</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to="mailto:phil@185restorations.co.nz"><span>phil@</span>185restorations.co.nz</Link></li>
             </ul>
             <BsFillTelephoneFill className="icon-phone" />
             <ul>

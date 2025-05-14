@@ -55,7 +55,7 @@
       height: 10px;
       margin-left: auto;
       margin-right: auto;
-      background-color: #f3f3f3;
+      background-color: var(--clr-ft-light);
       border-radius: 100vw;
       transition: 250ms ease;
     }
@@ -63,7 +63,7 @@
       background-color: #aa281f;
     }
     .drawer-title {
-      padding: 1rem;
+      padding: 1rem 0 .5rem 0;
       font-weight: 400;
       font-size: 1.25rem;
     }
@@ -71,7 +71,6 @@
      
       text-align: center;
       border-radius: 0.125rem;
-      margin-top: 1rem;
       margin-left: 1rem;
       margin-right: 1rem;
     }
@@ -79,7 +78,8 @@
     .contact-grid {
       display: grid;
       text-align: left;
-      gap: 2rem;
+      column-gap: 1rem;
+      row-gap: 2rem;
       grid-template-columns: minmax(30px, 50px) 1fr minmax(30px, 50px) 1fr;
       margin-top: 1rem;
       margin-left: auto;
@@ -90,7 +90,7 @@
       padding: 2rem 1rem;
       border-radius: 1rem;
       svg {
-        font-size: 1.8rem;
+        font-size: 2rem;
         vertical-align: middle;
       }
 
@@ -103,7 +103,7 @@
         font-size: 1.2rem;;
       }
       li a {
-        color: rgb(246, 246, 246);
+        color: var(--clr-ft-light);
         text-decoration: none;
         position: relative;
       }
@@ -114,6 +114,7 @@
       }
       li span {
         font-weight: 600;
+        color: black;
       }
       /* li a:hover::after {
         content: '';
@@ -134,7 +135,6 @@
 @media(max-width: 750px) {
   .contact-grid {
     grid-template-columns: minmax(30px, 50px) 1fr!important;
-    gap: 1rem!important;
   }
 }
 @keyframes App-logo-spin {

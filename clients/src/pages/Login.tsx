@@ -90,7 +90,7 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
        
         <div className="container">
           <div className="wrapper-login">         
-          <h1>Login</h1>
+          <h1 className="hidden">Admin login</h1>
           
           <form id="form-login" onSubmit={handleSubmit(onSubmit)}>
           {formError && ( 
@@ -112,10 +112,10 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
           
             <button 
             type="submit" 
-            className="btn-submit" 
+            className="btn-submit-login" 
             disabled={isPending}
             style={{ opacity: !isMutating ? 1 : 0.7 }}>
-              Send
+              Admin-login
             </button>
           </form>
         </div>

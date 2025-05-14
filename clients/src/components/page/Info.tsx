@@ -22,7 +22,7 @@ export default function Info() {
             </p>
             <p className="p-2">
               185 Restorations prides itself on delivering high-quality, custom
-              car dreams to our valued clients.
+              car dreams to our valued clients.{" "}
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Info() {
             </p>
           </div>
           <div className="insetImage" id="insetImage-3">
-            <img src="./assets/img/Cuda-8864.jpg" alt="" />
+            <img src="./assets/cuda/Cuda-underneath.jpg" alt="" />
           </div>
         </div>
         <div className="about-section" id="about-section-4">
