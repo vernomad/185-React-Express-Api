@@ -49,6 +49,18 @@ export default function HomeComponet() {
 >
   Contact our team
 </button>
+        {/* <button
+  onClick={() => {
+    console.log("Button clicked!");
+    toggleDrawer();
+  }}
+  aria-label="call to action button"
+  type="button"
+  title="Contact us"
+  className="contact-btn"
+>
+  Create🫵dream
+</button> */}
         </div>       
       
     </section>

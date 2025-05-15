@@ -6412,3 +6412,91 @@
 20250515	08:10:04	ba91deae-be0f-47b0-b0c6-363e8943b729	GET	http://localhost:5173	/api/auth/verify
 20250515	08:19:35	02bf3ee3-2196-4ba1-b172-e5f15fd1fcfe	GET	http://localhost:5173	/api/auth/verify
 20250515	08:19:35	8d2eb78d-c44b-424a-ac4e-7ef69525168b	GET	http://localhost:5173	/api/auth/verify
+20250515	09:42:38	eb03c2a7-fe88-4c46-805b-37f86751a4f4	OPTIONS	http://localhost:5173	/api/auth/login
+20250515	09:42:38	4f362d6b-bf11-4c86-9375-807b1bbbbcae	POST	http://localhost:5173	/api/auth/login
+20250515	09:42:39	83c92541-f499-4d12-8e77-7ece208f6fad	GET	http://localhost:5173	/api/auth/verify
+20250515	09:42:39	65b02891-aad2-4ba1-8424-c3086aa6a402	GET	http://localhost:5173	/api/auth/verify
+20250515	09:42:39	cc7b06a8-284b-4d62-8a4a-e3993b305be2	OPTIONS	http://localhost:5173	/api/user
+20250515	09:42:39	56d75d1d-f5f9-4764-838d-3187713aa2b8	OPTIONS	http://localhost:5173	/api/user
+20250515	09:42:39	cc2c7fa5-d8a1-43fb-87a5-7b342422cc5a	GET	http://localhost:5173	/api/user
+20250515	09:42:39	cf14c773-b8ef-4dcb-b8f0-f91e5f3b4dc7	GET	http://localhost:5173	/api/user
+20250515	09:43:40	ce37c0d8-4678-4988-a95b-5febb254c9a4	OPTIONS	http://localhost:5173	/api/user
+20250515	09:43:40	9a529ec6-13ec-45cb-9af1-6a26e0336f3c	GET	http://localhost:5173	/api/user
+20250515	09:45:12	522296f6-08c1-45e4-9b21-ddb1ba1db9ef	OPTIONS	http://localhost:5173	/api/user
+20250515	09:45:12	dc076a73-6d9b-4a4c-b28b-7f350c32c763	GET	http://localhost:5173	/api/user
+20250515	09:45:52	8fd637c9-1723-4547-8909-628ec82aa2f1	OPTIONS	http://localhost:5173	/api/user
+20250515	09:45:52	d2fc26a1-c85a-4de5-9710-873be0bae1b9	GET	http://localhost:5173	/api/user
+20250515	09:46:17	fcc3a54e-91dd-4090-891d-56d00699d74c	OPTIONS	http://localhost:5173	/api/user
+20250515	09:46:17	b89a79f5-aa86-402e-8113-0013ec15bd93	GET	http://localhost:5173	/api/user
+20250515	09:47:14	e94d2d6f-b0c4-43d9-bc3f-8e99a9ee840f	OPTIONS	http://localhost:5173	/api/user
+20250515	09:47:14	e4429067-9f1f-4c85-8680-f8b16aaee68a	GET	http://localhost:5173	/api/user
+20250515	09:50:08	b06d7667-7f28-4c7a-b889-b55d1756ceab	OPTIONS	http://localhost:5173	/api/user
+20250515	09:50:08	2b40404a-dace-4dd7-9889-822a10ad6c13	GET	http://localhost:5173	/api/user
+20250515	09:54:05	949697ef-2a47-4272-b41d-b5b765ce6982	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:05	be399704-bfb0-40c3-a025-90b66f2ca503	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:05	47926df7-0da4-4204-bbd4-91ac51aabc08	OPTIONS	http://localhost:5173	/api/user
+20250515	09:54:05	17b5aca3-82dd-44f6-b583-83c3ea86d34b	OPTIONS	http://localhost:5173	/api/user
+20250515	09:54:05	b71fcc25-de20-4be1-becb-400988785eac	GET	http://localhost:5173	/api/user
+20250515	09:54:05	4911c5dc-a795-4eb1-ac43-74f397ee08a1	GET	http://localhost:5173	/api/user
+20250515	09:54:09	9a7b5444-4f7a-4ee7-a034-2eebd9e8a809	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:09	e7e2156d-6dc0-4a8b-a9c1-92973b3f5fe3	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:16	60d45e99-a9db-4bf8-b6cd-d9b896bdcd03	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:16	68534253-5cc9-4594-a43f-2c4ff384f1f2	GET	http://localhost:5173	/api/auth/verify
+20250515	09:54:16	7c6ce1b2-5770-4d04-89da-2746056e019a	OPTIONS	http://localhost:5173	/api/user
+20250515	09:54:16	f5929cec-40f5-44f2-9f5d-80509ffac219	OPTIONS	http://localhost:5173	/api/user
+20250515	09:54:16	6c57ade3-2116-42fb-9803-62e656bffa79	GET	http://localhost:5173	/api/user
+20250515	09:54:16	75a862ac-5ffe-46ab-b44a-5032146f3c82	GET	http://localhost:5173	/api/user
+20250515	10:03:44	29ff7e7d-55fd-443e-af37-1f70e98d2233	POST	No origin	/api/user
+20250515	10:04:29	97362be3-90da-4f8b-905f-d4142fb3af5f	GET	No origin	/api/user
+20250515	10:07:23	3cbb9bdd-021e-484c-aa37-626748493ceb	GET	No origin	/api/user
+20250515	10:09:17	f2beceb4-40fd-47fb-99f3-c224ef57a0a5	POST	No origin	/api/user
+20250515	10:11:26	3d01aea6-2970-4a85-8305-173032432a2a	POST	No origin	/register
+20250515	10:13:09	35b35949-cf38-44f0-a019-c55dc87c8ac7	POST	No origin	/register
+20250515	10:13:29	2c60746b-c167-4305-a612-b63519e59e7b	POST	No origin	/api/user
+20250515	10:16:11	33698bf1-4740-45e9-a5d6-161b8029b4f9	POST	No origin	/register
+20250515	10:17:30	d23b7567-0e04-44a4-b87b-f7d8836aaef0	POST	No origin	/api/user
+20250515	10:26:06	73a6df2f-60d3-4ce3-bcbd-84e7a859bafd	POST	No origin	/api/auth/register
+20250515	10:29:10	f2ab5f82-b7bb-46c3-98cf-c08a2ac887a8	GET	No origin	/api/users
+20250515	10:30:06	6e841f9f-8cb7-4a00-8c3a-7ceb1afbac76	GET	No origin	/api/users
+20250515	10:30:06	1395d4a2-0fda-48dc-8d83-a515a447714e	GET	No origin	/api/assets/cockpit3.jpg
+20250515	10:30:11	2e93cbe1-9914-4436-b114-be89f2515697	GET	No origin	/api/user
+20250515	10:30:20	ea86d167-8ce3-4d45-826d-f0f91a5c7263	GET	http://localhost:5173	/api/auth/verify
+20250515	10:30:20	08b9fb2e-c488-4e89-84ce-d50f026fd403	GET	http://localhost:5173	/api/auth/verify
+20250515	10:30:20	88bc5421-179b-42b7-8405-96c30155a688	OPTIONS	http://localhost:5173	/api/user
+20250515	10:30:20	4f5ca771-313c-439d-8b9a-290180187881	OPTIONS	http://localhost:5173	/api/user
+20250515	10:30:20	1970dca8-273c-4205-b2d6-51926da3cddf	GET	http://localhost:5173	/api/user
+20250515	10:30:20	c57246cf-a9a1-4e3a-a382-ec8319b86afb	GET	http://localhost:5173	/api/user
+20250515	10:31:12	ca9b6920-fe7f-458a-8948-524aa4194ce6	GET	http://localhost:5173	/api/auth/verify
+20250515	10:31:12	474b61a7-bee8-4160-a9aa-eac3f014923e	GET	http://localhost:5173	/api/auth/verify
+20250515	10:31:12	597f3d3a-a9e2-4542-97e4-ec785228b092	OPTIONS	http://localhost:5173	/api/user
+20250515	10:31:12	c78e2c65-1f2c-476f-b5a2-081e9fa33818	OPTIONS	http://localhost:5173	/api/user
+20250515	10:31:12	1934be2c-a4bf-474f-8ac7-f5b024797042	GET	http://localhost:5173	/api/user
+20250515	10:31:12	4f550c68-8154-48ca-9fe7-152b2b36105e	GET	http://localhost:5173	/api/user
+20250515	10:40:59	d295a894-e9cd-4b1d-9ecb-44abb262c0ab	OPTIONS	http://localhost:5173	/api/user
+20250515	10:40:59	c6c3ac4b-d63a-4fad-8e27-5d99b7d032fc	GET	http://localhost:5173	/api/user
+20250515	10:42:41	81a11515-915b-4ad0-b7fd-13fc33ccc806	OPTIONS	http://localhost:5173	/api/user
+20250515	10:42:41	a40385c6-d822-4d99-ad16-f5462f3922fe	GET	http://localhost:5173	/api/user
+20250515	10:46:24	d4add5f5-8b6f-4228-ba6c-9ea2d3555d5e	GET	http://localhost:5173	/api/auth/verify
+20250515	10:46:24	e68f9034-a91d-4a09-bfa5-2e43f0110044	GET	http://localhost:5173	/api/auth/verify
+20250515	10:46:24	c2a22559-004e-4aa5-807f-1379e85ce485	OPTIONS	http://localhost:5173	/api/user
+20250515	10:46:24	4cedc02e-a59e-4782-9531-8b4219acd3ed	OPTIONS	http://localhost:5173	/api/user
+20250515	10:46:24	6a86149c-14f5-43a3-8230-98c3c140e0ae	GET	http://localhost:5173	/api/user
+20250515	10:46:24	23a3cd2a-b108-4cf2-9c41-6f86f242f695	GET	http://localhost:5173	/api/user
+20250515	10:54:34	5024d243-a872-491b-9844-ee0ee74d87b6	OPTIONS	http://localhost:5173	/api/auth/logout
+20250515	10:54:34	31da2bbd-f390-4feb-8f85-20b57d7096f1	DELETE	http://localhost:5173	/api/auth/logout
+20250515	10:54:34	442dc342-62be-47e2-8ed8-186706c4102a	GET	http://localhost:5173	/api/auth/verify
+20250515	10:54:34	ad66f0a2-fb97-4ea3-a456-a6052cc66db9	GET	http://localhost:5173	/api/auth/verify
+20250515	11:26:24	fd0f1222-5b4e-4fa1-b61b-a0a4f1a99521	GET	http://localhost:5173	/api/auth/verify
+20250515	11:26:24	e2e36599-948b-4cab-a9d5-b1d9ad96113d	GET	http://localhost:5173	/api/auth/verify
+20250515	11:26:41	068caa65-7aa1-4841-901f-ba28c4ed8a7c	GET	http://localhost:5173	/api/auth/verify
+20250515	11:26:41	454b928b-99d7-452a-a4a5-b4c53b5c9cc5	GET	http://localhost:5173	/api/auth/verify
+20250515	11:27:15	37320942-5ec4-4ab9-90c2-1d70f1ca27d9	GET	http://localhost:5173	/api/auth/verify
+20250515	11:27:15	86850ff2-560a-405f-80c6-27444aeaa452	GET	http://localhost:5173	/api/auth/verify
+20250515	11:36:28	f908b174-b680-404f-b714-53fe225fd1c9	GET	http://localhost:5173	/api/auth/verify
+20250515	11:36:28	5e7e2819-2819-4be1-8482-76d6b631634c	GET	http://localhost:5173	/api/auth/verify
+20250515	11:41:48	bb95d67a-f99f-469b-9e8a-f213541fcebb	GET	http://localhost:5173	/api/auth/verify
+20250515	11:41:48	b7e8f947-0037-44c7-8315-99c3bd45162a	GET	http://localhost:5173	/api/auth/verify
+20250515	11:46:45	f07ca6ed-62e9-4215-a404-2fe4cd908c2d	GET	http://localhost:5173	/api/auth/verify
+20250515	11:46:45	232e3795-5b16-4801-bc14-2239821e5274	GET	http://localhost:5173	/api/auth/verify
+20250515	12:01:45	4287edd0-39b3-404c-aa36-8c629701892a	GET	http://localhost:5173	/api/auth/verify
+20250515	12:01:45	8b8614ba-f4d2-46a9-bafe-9e1a523ce064	GET	http://localhost:5173	/api/auth/verify

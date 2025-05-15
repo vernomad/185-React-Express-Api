@@ -59,13 +59,13 @@ console.log("User in admin", user)
     content = (
       <div>
         {hasPermission(authUser, "create:projects") ? (
-          <>
-            <div>User is admin with create projects permissons</div>
-          </>
+          <div className="login-permission">
+            <p>User is admin with create projects permissons</p>
+          </div>
         ): (
-          <>
-            <div>User is not admin and without create projects permissons</div>
-          </>
+          <div className="login-permission">
+            <p>User is not admin and without create projects permissons</p>
+          </div>
         )}
       </div>
     );
@@ -76,7 +76,7 @@ console.log("User in admin", user)
       path: "",
       element: (
         <>
-          <div className="container">
+          <div className="admin-container">
             {error && <p>{error}</p>}{" "}
             {/* Render error message if there is an error */}
             {userData ? (
@@ -87,13 +87,15 @@ console.log("User in admin", user)
                 {/* {userData  && Array.forEach(data => {
                 
               })} */}
+              <p>
                 <pre>{JSON.stringify(userData, null, 1)}</pre>
+                </p>
               </div>
             ) : (
               <p>Loading user data...</p>
             )}
           </div>
-          <div className="container">
+          <div className="admin-container">
             <h2>Upload projects</h2>
           </div>
         </>

@@ -31,7 +31,7 @@ export const getUsers = async (req: Request, res: Response) => {
      const users = await usersCollection.aggregate<UserLogEntryWithId>([]).toArray();
 
      // Remove the password field from each user
-     const safeUsers = users.map(({ password, ...safeUser }) => safeUser);
+     const safeUsers = users.map(({  ...safeUser }) => safeUser);
  
      res.json({ users: safeUsers });
   } catch (err) {
