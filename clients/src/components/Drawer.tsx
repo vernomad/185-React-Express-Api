@@ -107,8 +107,8 @@ const Drawer = ({contactDetails}: Props) => {
           <div className="contact-grid">
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><Link onClick={() => toggleDrawer()} to='/find-us'><FaMapPin className="inline mr-4" />Find us on a map</Link></li>
-              <li><Link onClick={() => toggleDrawer()}  to='/contact-form'><MdContactMail className="inline mr-4" />Contact form</Link></li>
+              <li><Link onClick={() => toggleDrawer()} to='/contact#map'><FaMapPin className="inline mr-4" />Find us on a map</Link></li>
+              <li><Link onClick={() => toggleDrawer()}  to='/contact#form'><MdContactMail className="inline mr-4" />Contact form</Link></li>
             </ul>
             <BsArrow90DegRight className="icon-email"/>
             <ul>

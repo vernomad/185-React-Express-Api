@@ -9,7 +9,7 @@ interface MySectObserveProps {
 export default function MySectObserve({ children, targetContainers }: MySectObserveProps) {
   useEffect(() => {
     const options = {
-      rootMargin: '0px 0px -300px 0px',
+      rootMargin: '0px 0px -100px 0px',
       threshold: 0.1, // half of item height
     };
 

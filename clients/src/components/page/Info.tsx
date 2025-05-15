@@ -15,7 +15,7 @@ export default function Info() {
           <h1 className="about__title">
             <span>Classic</span> & Custom Car Restorations
           </h1>
-          <div className="details">
+          <div className="details" id="details-1">
             <span>About</span>
             <p className="p-1">
               With over 25 years of artisanship experience,{" "}
@@ -48,7 +48,7 @@ export default function Info() {
           </div>
         </div>
         <div className="about-section" id="about-section-3">
-          <div className="details" id="details-3">
+          <div className="details" id="details-1">
             <span>Projects</span>
             <p className="p-1">
               Through a highly focused and transparent communication process,{" "}

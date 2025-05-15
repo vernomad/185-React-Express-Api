@@ -7,27 +7,21 @@ export default function HomeComponet() {
   return (
     <div className="main-grid" >
     <section className="hero">
-      <div className="img-wrapper">
-      {/* <img
-        className="hero__img top"
-        src="./assets/porche/porche-mod.jpg"
-        alt=""
-      /> */}
-      </div>
+      <div className="img-wrapper"></div>
      
       {/* <div className="filterImage"></div> */}
       <h1 className="main__title hero__title">
         <span>185</span>Restorations
       </h1>
       <div className="hero__body">           
-      <p className="hero__subtitle">
+      <div className="hero__subtitle">
         <ul>
           <li><span>NAME:</span> 185 Restorations</li>
           <li><span>LOCATION:</span> Christchurch</li>
           <li><span>DESCRIPTION:</span> Specialists in classic & custom car restorations & the crafts shop for realizing all those car dreams...</li>
         </ul>
 
-      </p>
+      </div>
       {/* <p>
         Specialists in classic & custom car restorations. Located in
         Christchurch where we are strictly passionate about realizing all
@@ -37,18 +31,6 @@ export default function HomeComponet() {
 
       </div>   
       <div className="flex-button">
-        <button
-  onClick={() => {
-    console.log("Button clicked!");
-    toggleDrawer();
-  }}
-  aria-label="call to action button"
-  type="button"
-  title="Contact us"
-  className="contact-btn"
->
-  Contact our team
-</button>
         {/* <button
   onClick={() => {
     console.log("Button clicked!");
@@ -59,21 +41,23 @@ export default function HomeComponet() {
   title="Contact us"
   className="contact-btn"
 >
-  Create🫵dream
+  Contact our team
 </button> */}
+        <button
+  onClick={() => {
+    console.log("Button clicked!");
+    toggleDrawer();
+  }}
+  aria-label="call to action button"
+  type="button"
+  title="Contact us"
+  className="contact-btn"
+>
+  Inn🫵dream
+</button>
         </div>       
       
     </section>
-    {/* <section className="small_screen">
-    <button onClick={toggleDrawer} aria-label="call to action button" type="button" title="Contact us" className="contact-btn">Contact our team</button> 
-    <div className="hero__body_2">           
-      <p className="hero__subtitle">
-        Specialists in classic & custom car restorations. Located in
-        Christchurch where we are strictly passionate about realizing all
-        those car dreams...
-      </p>
-      </div>
-    </section> */}
     {/* <Services /> */}
   </div>
   )
