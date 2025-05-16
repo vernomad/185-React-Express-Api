@@ -77,12 +77,20 @@ export const loginUser = async (req: Request, res: Response) => {
 
   const foundUser = await usersCollection.findOne({ username: username });
 
+  
+
   if (!foundUser) {
    // throw new ErrorWithStatusCode("User not found", 401);
    res.status(401).json({message: "User does not exist"});
     return; 
   }
 
+  const user = {
+    "id": foundUser._id,
+    "username": foundUser.username,
+    "image": foundUser.image,
+    "roles": foundUser.roles
+  }
   const passwordMatch = await bcryptjs.compare(password, foundUser.password);
   if (!passwordMatch) {
    // throw new ErrorWithStatusCode("Incorrect match username and password", 401);
@@ -122,7 +130,7 @@ export const loginUser = async (req: Request, res: Response) => {
         maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
         //maxAge: 30 * 1000// 30s in milliseconds
       });
-     res.status(200).json({ message: 'User logged in successfully' });     
+     res.status(200).json({ message: 'User logged in successfully', user });     
 };
 
 

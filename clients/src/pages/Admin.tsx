@@ -3,22 +3,50 @@ import { useRoutes } from "react-router-dom";
 import { useUser } from "../useUser";
 import { hasPermission, Role } from "../lib/auth";
 
+interface UserToken {
+ token: string | null;
+  // Add other fields as necessary based on the API response
+}
+
 export default function Admin() {
-  const { userToken, user } = useUser();
+  const { user } = useUser();
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState<string | null>(null);
+  const [userToken, setUserToken] = useState<UserToken | null>(null);
+  const [verified, setIsVerified] = useState(false)
+  const [loading, setLoading] = useState<boolean>(true);
 
-  let baseUrl = "";
+   const baseUrl =
+    import.meta.env.MODE === 'development'
+      ? import.meta.env.VITE_DEV_URL
+      : import.meta.env.VITE_BASE_URL;
 
-  if (import.meta.env.MODE === "development") {
-    baseUrl = import.meta.env.VITE_DEV_URL;
-  } else {
-    baseUrl = import.meta.env.VITE_BASE_URL;
-  }
 console.log("User in admin", user)
+
+ useEffect(() => {
+  const fetchToken = async () => {
+     try {
+        const response = await fetch(`${baseUrl}/api/auth/verify`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        if (!response.ok) {
+       console.log('User is not authenticated.');
+        } else {
+           const result = await response.json();
+           setUserToken(result.userToken)
+           setIsVerified(true)
+        }
+  } catch (error) {
+     console.error('Error verifying authentication:', error);
+  }
+ }
+ fetchToken()
+ }, [baseUrl]);
 
   useEffect(() => {
     const fetchUserData = async () => {
+      if (verified) {
       try {
         const response = await fetch(`${baseUrl}/api/user`, {
           method: "GET",
@@ -28,7 +56,10 @@ console.log("User in admin", user)
 
         if (response.ok) {
           const data = await response.json();
-          setUserData(data); // Set the user data if the request is successful
+         // Set the user data if the request is successful
+         setLoading(false)
+        setUserData(data); 
+
         } else {
           // Handle errors like 403 Forbidden
           setError("You are not authorized to view this data.");
@@ -38,9 +69,11 @@ console.log("User in admin", user)
         console.error(err);
       }
     };
-
+  }
     fetchUserData();
-  }, [userToken, baseUrl]);
+  }, [userToken, baseUrl, verified]);
+
+
   let content;
   if (user) {
     const validRole = user.roles.find((role) =>
@@ -76,6 +109,11 @@ console.log("User in admin", user)
       path: "",
       element: (
         <>
+        {loading && (
+          <>
+           <div className="container"><h1>Loading...</h1></div>
+          </>
+        )}
           <div className="admin-container">
             {error && <p>{error}</p>}{" "}
             {/* Render error message if there is an error */}
@@ -87,9 +125,9 @@ console.log("User in admin", user)
                 {/* {userData  && Array.forEach(data => {
                 
               })} */}
-              <p>
+              <div>
                 <pre>{JSON.stringify(userData, null, 1)}</pre>
-                </p>
+                </div>
               </div>
             ) : (
               <p>Loading user data...</p>

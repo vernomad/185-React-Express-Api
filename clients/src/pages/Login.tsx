@@ -3,6 +3,8 @@ import { useRoutes } from "react-router-dom";
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useUser } from "../useUser";
+import { AppActionType } from "../types/AppActionTypes";
 
 // const userSchema = z.object({
 //     username: z.string(),
@@ -22,6 +24,8 @@ export default function Login() {
   const [isPending, startTransition] = useTransition();
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
+
+  const { dispatch } = useUser()
 
   let baseUrl = ''
 
@@ -62,13 +66,16 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
             body: JSON.stringify(data)
     
           }) 
+          const response = await res.json()
+          console.log("REspnse:" , response)
           if (!res.ok) {
-           const message = await res.json()
-           setFormError(message.message)
+     
+           setFormError(response.message)
           } else {
-           const loginMessage = await res.json()
-           setMessage(loginMessage.message)
-           console.log("Login Form:", import.meta.env.VITE_BASE_URL);
+           setMessage(response.message)
+           //console.log("Login Form:", import.meta.env.VITE_BASE_URL);
+           localStorage.setItem("user", JSON.stringify(response.user))
+            dispatch({ type: AppActionType.SET_USER, payload:  response.user})
           startTransition(() => {
             reset()
            window.location.href = '/admin'; 

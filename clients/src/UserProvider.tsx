@@ -1,19 +1,8 @@
 // UserProvider.tsx
-import { useState, useEffect, ReactNode, useReducer } from 'react';
-import { UserContext } from './UserContext'; // Import the context
+import { useState, ReactNode, useReducer } from 'react';
+import { UserContext } from './UserContext'; 
 import { AppState, AppActionType, AppActionTypes } from './types/AppActionTypes';
 import AppInitialState from './AppInitialState';
-// Define the structure of user data for typing
-interface UserToken {
- token: string | null;
-  // Add other fields as necessary based on the API response
-}
-interface User {
-  id: string;
-  username: string;
-  image: string;
-  roles: string[]; 
-}
 
 interface UserProviderProps {
   children: ReactNode;
@@ -40,76 +29,30 @@ function AppReducer(
        ...state,
        preferences: action.payload,
      };
-  }
+  };
+  case AppActionType.SET_USER:
+      return { ...state, user: action.payload };
+
   default:
     return state;
  }
 }
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [state, dispatch] = useReducer(AppReducer, AppInitialState);
-  //const {stateUser } = useUser() 
+  const [state, dispatch] = useReducer(AppReducer, AppInitialState, (initial) => {
+     const storedUser = localStorage.getItem("user");
+    return storedUser
+      ? { ...initial, user: JSON.parse(storedUser) }
+      : initial;
+  });
 
-  const [user, setUser] = useState<User | null>(null)
-  const [userToken, setUserToken] = useState<UserToken | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
+   const [loading, setLoading] = useState<boolean>(true);
 
-  let baseUrl = ''
+   setTimeout(() => {
+    setLoading(false)
+   }, 0)
 
-  if (import.meta.env.MODE === 'development') {
-    baseUrl = import.meta.env.VITE_DEV_URL
-  } else {
-    baseUrl = import.meta.env.VITE_BASE_URL
-  }
 
-  useEffect(() => {
-    // if (!user) {
-    //   setUserToken(null);
-    //       setIsAuthenticated(false);
-    //       setUser(null);
-    //       return
-    // }
-    const verifyAuth = async () => {
-      // if (!state.user) {
-      //   setUserToken(null);
-      //   setIsAuthenticated(false);
-      //   setUser(null);
-      //   setLoading(false)
-      //     return
-      // } 
-      setLoading(true)
-      try {
-        const response = await fetch(`${baseUrl}/api/auth/verify`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            // Handle unauthorized state
-            console.log('User is not authenticated.');
-          }
-          setUserToken(null);
-          setIsAuthenticated(false);
-          setUser(null);
-          
-        } else {
-          const result = await response.json();
-          setUserToken(result.userToken);
-          setIsAuthenticated(true);
-          setUser(result.user)
-        }
-      } catch (error) {
-        console.error('Error verifying authentication:', error);
-        setUserToken(null);
-        setIsAuthenticated(false);
-      }
-      setLoading(false);
-    };
-
-    verifyAuth();
-  }, [baseUrl]);
 
   const toggleDrawer = () => {
     dispatch({
@@ -118,13 +61,18 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     })
   }
 
+  //  const setUser = (user: AuthenticatedUser | null) => {
+  //   dispatch({ type: AppActionType.SET_USER, payload: user });
+  // };
+
+const contextValue = { state, dispatch, toggleDrawer, };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className='container'>Loading...</div>;
   }
 
   return (
-    <UserContext.Provider value={{ user, state, dispatch, toggleDrawer, userToken, isAuthenticated, setUserToken, setIsAuthenticated }}>
+    <UserContext.Provider value={contextValue}>
       {children}
     </UserContext.Provider>
   );

@@ -6,5 +6,16 @@ export const useUser = () => {
   if (!context) {
     throw new Error('useUser must be used within a UserProvider');
   }
-  return context;
+  const { state, dispatch, ...rest } = context;
+
+  const isAuthenticated = !!state.user;
+  const user = state.user
+
+  return {
+    state,
+    dispatch,
+    isAuthenticated,
+    user,
+    ...rest,
+  };
 };

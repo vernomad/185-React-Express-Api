@@ -32,6 +32,7 @@ export default function Logout() {
             if (!res.ok) {
                 setError("Unable to log out. Please try again.");
             } else {
+              localStorage.removeItem("user")
                 startTransition(() => {
                     window.location.href = '/login'; 
                   })

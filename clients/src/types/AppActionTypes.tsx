@@ -1,11 +1,23 @@
 import { Dispatch } from "react";
 
+export type User = {
+  id: string;
+  username: string;
+  image: string;
+  roles: string[]; 
+}
+
+export interface AuthenticatedUser extends User {
+  isLoggedIn: true;
+}
+
 export interface Preferences {
     theme: 'light' | 'dark';
     language: 'en' | 'es' | 'fr' | 'de';
   }
 
 export interface AppState {
+    user: AuthenticatedUser | null;
     drawerOpen: boolean;
     preferences: Preferences;
 }
@@ -13,6 +25,7 @@ export interface AppState {
 export enum AppActionType {
     SET_DRAWER_VISIBLE = "SET_DRAWER_VISIBLE",
     SET_PREFERENCES = "SET_PREFERENCES",
+    SET_USER = "SET_USER"
 }
 
 export interface AppAction {
@@ -29,9 +42,14 @@ export interface SetPreferences  {
     type: AppActionType.SET_PREFERENCES;
     payload: Preferences;
   }
+export interface SetUser {
+    type: AppActionType.SET_USER;
+    payload: AuthenticatedUser | null;
+  }
 
   export type AppActionTypes = 
   | SetDrawerVisible
   | SetPreferences
+  | SetUser
 
   export type AppDispatch = Dispatch<AppActionTypes>;
