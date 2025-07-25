@@ -1,24 +1,26 @@
 import { useRoutes } from "react-router-dom";
-import ProjectsComponet from "../components/page/Projects";
-// import { useUser } from '../useUser';
-// import Admin from "./Admin";
-
+import ProjectsComponent from "../components/page/Projects";
+import ProjectDetail from "./ProjectDetails.tsx"; // <== NEW
+import ViewTransitionLayout from "../components/ViewTransitionsWrapper.tsx";
 
 export default function Projects() {
-  //  const { user } = useUser();
-
-  //  const isAdmin = user?.roles.includes("Admin");
-
-
   const routes = useRoutes([
     {
       path: "",
-      element: <ProjectsComponet />,
+      element: (
+        <ViewTransitionLayout clsName="projects" id="from">
+          <ProjectsComponent />
+        </ViewTransitionLayout>
+      ),
     },
-    // {
-    //   path: "",
-    //   element: isAdmin && <Admin />,
-    // },
+    {
+      path: ":id", // <== This makes /projects/123 work
+      element: (
+        <ViewTransitionLayout clsName="projects" id="to">
+          <ProjectDetail />
+        </ViewTransitionLayout>
+      ),
+    },
   ]);
   return routes;
 }

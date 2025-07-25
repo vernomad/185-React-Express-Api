@@ -20,6 +20,7 @@
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
  sans-serif;
 
+ --header-height: 7rem;
  --radius: .3rem;
  --bar-width: 60px;
  --bar-height: 8px;
@@ -59,7 +60,7 @@ img, picture, svg, video, canvas{
   background-repeat: no-repeat; 
   background-size: cover;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
   color: var(--foreG);
 }
 
@@ -138,7 +139,7 @@ header.active {
 header {
     display: grid;
     grid-template-columns: 1fr;
-    height: 7rem;
+    height: var(--header-height);
     align-items: center;
     position: fixed;
     top: 0;
@@ -185,6 +186,10 @@ text-decoration: underline;
 text-underline-offset: 2px;
 }
 footer {
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
   border-top: 1 px solid rgb(78, 78, 78);
   display: flex;
   flex-direction: column;
@@ -383,14 +388,11 @@ translate: 0 calc(var(--bar-height) / 2);
   grid-auto-flow: row dense;
   margin-top: 7rem;
 }
-.img-wrapper-projects {
+/* .img-wrapper-projects {
   grid-row: 1;
    grid-column: 1 / -1;
-}
-.hero-projects {
-    grid-template-rows: 35dvh 1fr 1fr;
-    margin-top: 2rem;
-}
+} */
+
 
 .img-wrapper, .filterImage {
   grid-row: 1;

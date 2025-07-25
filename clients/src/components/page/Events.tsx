@@ -58,9 +58,9 @@ function CustomEvent({ event }: { event: CalendarEvent }) {
 
 export default function EventComponent() {
   return (
-    <div className="">
+    <div>
       <h1 style={{ marginTop: "7rem", padding: '1rem' }}>Calender Events</h1>
-      <div style={{ height: '90dvh', padding: '1rem' }}>
+      <div style={{ height: '70dvh', padding: '1rem' }}>
       <Calendar
         localizer={localizer}
         events={myEventsList}

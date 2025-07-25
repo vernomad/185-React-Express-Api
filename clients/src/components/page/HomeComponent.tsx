@@ -5,6 +5,25 @@ import { UserContext } from "../../UserContext";
 export default function HomeComponet() {
   const { toggleDrawer } = useContext(UserContext)
   return (
+    <>
+    {/* <Helmet>
+        <title>My Cool Page</title>
+        <meta name="description" content="A really cool page description." />
+
+        Open Graph
+        <meta property="og:title" content="My Cool Page" />
+        <meta property="og:description" content="A really cool page description." />
+        <meta property="og:image" content="https://example.com/images/preview.jpg" />
+        <meta property="og:url" content="https://example.com/page" />
+        <meta property="og:type" content="website" />
+
+        Twitter Card
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="My Cool Page" />
+        <meta name="twitter:description" content="A really cool page description." />
+        <meta name="twitter:image" content="https://example.com/images/preview.jpg" />
+    </Helmet>     */}
+    
     <div className="main-grid" >
     <section className="hero">
       <div className="img-wrapper"></div>
@@ -60,5 +79,6 @@ export default function HomeComponet() {
     </section>
     {/* <Services /> */}
   </div>
+  </>
   )
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import { Suspense } from 'react';
 import './App.css'
 import RootRoutes from './routes/root.tsx';
@@ -10,6 +10,7 @@ import HeaderScrollEffect from './components/HeaderScrollEffect.tsx';
 //import ViewTransitionWrapper from './ViewTransitionsWrapper.tsx';
 
 
+
 // interface ContactProp {
 //   contactDetails: React.ReactNode;
 // }
@@ -18,21 +19,18 @@ function App() {
 
   const contactDetails = <><div className="container-address">Address and extra content</div></>
   return (
-   
+ 
     <UserProvider>
-    <Router future={{ v7_relativeSplatPath: true }}>
-    {/* <ViewTransitionWrapper> */}
     <HeaderScrollEffect />
     <Header />
     <Suspense fallback={<h1>Loading...</h1>}>
     <RootRoutes />
-    </Suspense>
     <Footer />
+    </Suspense>
+    
     <Drawer contactDetails={contactDetails}  />
-    {/* </ViewTransitionWrapper> */}
-    </Router>
     </UserProvider>
-  
+
   )
 }
 

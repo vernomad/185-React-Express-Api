@@ -10,9 +10,9 @@ const Events = lazy(() => import("../pages/Events.tsx"))
 const Contact = lazy(() => import("../pages/Contact.tsx"))
 
 
+
 export default function RootRoutes() {
   return (
-
     <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/about/*" element={<About />} />
@@ -23,7 +23,6 @@ export default function RootRoutes() {
         {/* <Route path="/admin/*" element={<Admin />} /> */}
         <Route path="/login/*" element={<Login />} />
     </Routes>
-
   )
 }
 

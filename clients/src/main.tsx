@@ -1,14 +1,21 @@
-import { StrictMode } from 'react'
+//  import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+ import './index.css'
 import App from './App.tsx'
 
 
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  // <StrictMode>
 
-    <App />
+  //   <App />
 
-  </StrictMode>,
+  // </StrictMode>,
+   <React.StrictMode>
+    <BrowserRouter future={{ v7_relativeSplatPath: true }}>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 )
