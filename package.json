@@ -7,12 +7,12 @@
     "build": "tsc && npm run build:client",
     "build:client": "npm run build --prefix clients",
     "backend": "nodemon src/index.ts",
-    "serve": "npx kill-port 3500 && node dist/index.js",
+    "serve": "node dist/index.js",
     "client": "npm run dev --prefix clients",
     "dev": "concurrently \"npm run backend\" \"npm run client\"",
     "start": "npm run clean && npm run build && concurrently \"npm run serve\" \"npm run client:serve\"",
     "client:serve": "npm run preview --prefix clients",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist && rimraf clients/dist"
   },
   "author": "",
   "license": "ISC",
