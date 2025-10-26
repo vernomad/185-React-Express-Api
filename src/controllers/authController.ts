@@ -11,14 +11,21 @@ const saltRounds = 10;
 
 import jwt from "jsonwebtoken";
 import { jwtVerify, JWTVerifyResult } from "jose";
+// import rateLimit from "lambda-rate-limiter";
 
-async function getLimiter() {
-  const rateLimit = (await import('lambda-rate-limiter')).default;
-  return rateLimit({
-    interval: 15 * 60 * 1000,
-    uniqueTokenPerInterval: 4,
-  }).check;
-}
+const rateLimit = require("lambda-rate-limiter")
+const limiter = rateLimit({
+  interval: 15 * 60 * 1000, // 15 minutes
+  uniqueTokenPerInterval: 4,
+}).check;
+
+// async function getLimiter() {
+//   const rateLimit = (await import('lambda-rate-limiter')).default;
+//   return rateLimit({
+//     interval: 15 * 60 * 1000,
+//     uniqueTokenPerInterval: 4,
+//   }).check;
+// }
 
 export const registerUser = async (req: Request, res: Response) => {
   const { username, email, image, password, passExt, roles } = req.body;
@@ -103,8 +110,7 @@ export const loginUser = async (req: Request, res: Response) => {
 if (IP) {
     try {
       // Apply rate limiter per IP
-      const limiter = await getLimiter();
-       await limiter(4, IP);      
+      await limiter(4, IP); // max 5 attempts per 15 mins per IP
     } catch {
       return res
         .status(429)
