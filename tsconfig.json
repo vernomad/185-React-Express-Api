@@ -112,14 +112,20 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "esnext",
+    "module": "commonjs",
+    "rootDir": ".",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "@models/*": ["./models/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/config/db.ts"],
+  "include": ["src/**/*.ts", "src/config/db.ts", "models/**/*.ts",
+    "data/**/*"],
   "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-import {UserLogEntry, baseValidation, UserPropertiesCreate} from "../../../../models/user/UserLog"
+import { UserPropertiesCreate, UserLogEntry, baseValidation } from "@models/user/UserLog";
 import { useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

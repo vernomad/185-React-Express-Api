@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { UserLogs } from '../../models/user/UserLogs';
 import { UserLogEntryWithId } from '../../models/user/UserLog';
 import { ObjectId } from "mongodb";

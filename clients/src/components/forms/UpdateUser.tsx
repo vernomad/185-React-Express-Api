@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserUpdateSchema, UserLogEntryWithId, UserLogProperty, UserRole, UserRoleType } from "../../../../models/user/UserLog"; // adjust path
+import { UserUpdateSchema, UserLogEntryWithId, UserLogProperty, UserRole, UserRoleType } from "@models/user/UserLog";
 
 type FieldType = "email" | "text" | "file" | "password" | "checkboxes";
 

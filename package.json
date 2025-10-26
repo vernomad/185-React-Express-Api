@@ -7,7 +7,7 @@
     "build": "tsc && npm run build:client",
     "build:client": "npm run build --prefix clients",
     "backend": "nodemon src/index.ts",
-    "serve": "node dist/index.js",
+    "serve": "npx kill-port 3500 && node dist/src/index.js",
     "client": "npm run dev --prefix clients",
     "dev": "concurrently \"npm run backend\" \"npm run client\"",
     "start": "npm run clean && npm run build && concurrently \"npm run serve\" \"npm run client:serve\"",
