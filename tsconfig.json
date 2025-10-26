@@ -109,31 +109,17 @@
 //   }
 // }
 
-// {
-//   "compilerOptions": {
-//     "target": "es6",
-//     "module": "commonjs",
-//     "outDir": "./dist",
-//     "strict": true,
-//     "esModuleInterop": true,
-//     "skipLibCheck": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "typeRoots": ["./src/types", "./node_modules/@types"]
-//   },
-//   "include": ["src/**/*.ts", "src/config/db.ts"],
-//   "exclude": ["node_modules"]
-// }
-
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es6",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["src"]
+  "include": ["src/**/*.ts", "src/config/db.ts"],
+  "exclude": ["node_modules"]
 }
