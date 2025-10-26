@@ -1,48 +1,66 @@
-import ThemeButton from './ThemeButton.tsx';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 // import Drawer from './Drawer.tsx';
-import SidebarController from './SidebarController.tsx';
 import UserLogo from './Userlogo.tsx';
-import DrawerButton from './DrawerButton.tsx';
+// import DrawerButton from './DrawerButton.tsx';
+import ToolButton from './TooltipButton.tsx';
+import { PiHeadlightsBold } from "react-icons/pi";
+import SideBar from './Sidebar.tsx';
+import { navData } from './data/navData.ts';
+import { useLocation } from "react-router-dom";
 
 
 
 export default function Header() {
 
- //const contactDetails = <><div className="container-address">Address and extra content</div></>
+  const location = useLocation();
+
+  useEffect(() => {
+    const target = document.getElementById("navU1");
+
+    if (location.pathname === "/contact" || location.pathname === "/admin") {
+      target?.classList.add("border");
+    } else {
+      target?.classList.remove("border");
+    }
+    if (location.pathname === "/events") {
+      target?.classList.add("event-border");
+    } else {
+      target?.classList.remove("event-border");
+    }
+  }, [location.pathname]);
   
   return (
+    <>
     <header id='header'>
-      <div className="theme-selector" title='admin-link'>
-      <Link to='/admin'><ThemeButton /> </Link> 
+      <div className="theme-selector">
+      <Link to='/admin'>
+      <ToolButton
+          svg={<PiHeadlightsBold />}
+      ariaLabel="theme selector"
+      dataToolId="theme-tooltip"
+      dataToolContent="Night/Day"
+      dataToolPlace="right"
+      dataToolOffset={10}
+      id="theme-tooltip"
+      offset={10}
+      /> </Link> 
+      {/* <Link to='/admin'><ThemeButton /> </Link>  */}
       </div>
-      
-    <ul className='navUl'>
-     <li><Link to="/" id='menu-home'>Home</Link></li>
-     <li> <Link to="/about" id='menu-home'>Info</Link></li>
-     <li> <Link to="/projects" id='menu-home'>Pro's</Link></li>
-     <li> <Link to="/events" id='menu-home'>Events</Link></li>
+    <div className='head'>
+    <ul id='navU1' className='navUl'>
+      {navData.map((item) => (
+        <li key={item.id}><Link to={item.slug}>{item.name}</Link></li>
+      ))}
      
-      {/* <Drawer contactDetails={contactDetails} /> */}
-      <DrawerButton />
+      {/* <DrawerButton /> */}
     </ul>
-<SidebarController />
-  <label className="hamburger" htmlFor='menu-toggle'>
-  <input type="checkbox" name="checkbox" id="menu-toggle"></input>
-</label>
-<aside className="sidebar" id="sidebar">
-  <ul className="navUi">
-    <li><Link to="/" id="menu-home">Home</Link></li>
-    <li><Link to="/about" id="menu-about">Info</Link></li>
-    <li><Link to="/projects" id="menu-projects">Pro's</Link></li>
-    <li><Link to="/events" id="menu-projects">Events</Link></li>
-    <li><Link to="/contact" id="menu-projects">Contact</Link></li>
-    
-    {/* <DrawerButton /> */}
-  </ul>
-</aside>
-
-<UserLogo />
+    </div>
+    <SideBar />
+    <UserLogo />
     </header>
+    
+    </>
+
   )
 }

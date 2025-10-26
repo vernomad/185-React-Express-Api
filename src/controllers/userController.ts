@@ -1,19 +1,18 @@
-import { Request, Response } from 'express';
-import { UserLogs } from '../models/user/UserLogs';
-import { UserLogEntryWithId } from '../models/user/UserLog';
+import { Request, Response, NextFunction } from 'express';
+import { UserLogs } from '../../models/user/UserLogs';
+import { UserLogEntryWithId } from '../../models/user/UserLog';
 import { ObjectId } from "mongodb";
 
-
-
 export const getUser = async (req: Request, res: Response) => {
-  const ID = req.params.id
+const { id }= req.params
+  console.log("ID:", id)
 try {
   const usersCollection = await UserLogs; 
-  const user = await usersCollection.findOne({_id: new ObjectId(ID)})
+  const user = await usersCollection.findOne({_id: new ObjectId(id)})
 
   if (user) {
     const { password, ...safeUser } = user;
-    res.json(safeUser);
+    res.status(200).json(safeUser);
   } else {
     res.status(404).json({ message: "User not found" });
   }

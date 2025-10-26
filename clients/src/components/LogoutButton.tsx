@@ -9,20 +9,20 @@ export default function Logout() {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
   
-  let baseUrl = ''
+  // let baseUrl = ''
 
-  if (import.meta.env.MODE === 'development') {
-    baseUrl = import.meta.env.VITE_DEV_URL
-  } else {
-    baseUrl = import.meta.env.VITE_BASE_URL
-  }
+  // if (import.meta.env.MODE === 'development') {
+  //   baseUrl = import.meta.env.VITE_DEV_URL
+  // } else {
+  //   baseUrl = import.meta.env.VITE_BASE_URL
+  // }
 
     const handleLogout = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
             setIsFetching(true);
             setError("")
-            const res = await fetch(`${baseUrl}/api/auth/logout`, {
+            const res = await fetch("/api/auth/logout", {
                 method: "DELETE",
                 headers: {
                     'content-type': 'application/json',

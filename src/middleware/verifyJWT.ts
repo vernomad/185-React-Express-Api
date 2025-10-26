@@ -3,7 +3,7 @@ dotenv.config();
 
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload, VerifyErrors } from 'jsonwebtoken';
-import { UserRoleType } from '../models/user/UserLog';
+import { UserRoleType } from '../../models/user/UserLog';
 
 export interface CustomRequest extends Request {
   user?: string;

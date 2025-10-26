@@ -1,17 +1,19 @@
-import { useContext } from "react";
-import { UserContext } from "../../UserContext";
+
 import MySectObserve from "../InterSectionObserve";
+import { usePageView } from "../../hooks/usePageView";
+import TrackCTA from "../buttons/TrackCta";
 
 export default function Info() {
-  const { toggleDrawer } = useContext(UserContext);
+  // const { toggleDrawer } = useContext(UserContext);
+  usePageView('/about')
   return (
     <>
       <div className="background" id="background">
         {/* <img className="hero__about" src="./assets/img/background.png" alt="" /> */}
       </div>
     <MySectObserve targetContainers={['insetImage']} >
-      <div className="main-grid">
-        <div className="about-section" id="about-section-1">
+      <div className="main-grid" id="main-grid-info">
+        <div className="about-section bg" id="about-section-1">
           <h1 className="about__title">
             <span>Classic</span> & Custom Car Restorations
           </h1>
@@ -21,8 +23,8 @@ export default function Info() {
               With over 25 years of artisanship experience,{" "}
             </p>
             <p className="p-2">
-              185 Restorations prides itself on delivering high-quality, custom
-              car dreams to our valued clients.{" "}
+              185 Restorations prides itself on delivering high-quality, classic & custom
+              cars to our valued clients.{" "}
             </p>
           </div>
 
@@ -75,20 +77,29 @@ export default function Info() {
               We have an impressive portfolio of successful classic and custom
               car restorations that showcase our expertise and attention to
               detail. Ready to see your dream car come to life?{" "}
-              <button
+              {/* <button
                 onClick={toggleDrawer}
                 id="info-button-about"
                 type="button"
                 aria-label="call to action"
               >
                 Contact our team
-              </button>{" "}
-              to discuss your project and let our passion drive your automotive
+              </button>{" "} */}
+              <TrackCTA 
+               id="info-button-about"
+                ariaLabel="call to action button"
+                text="Contact our team"
+                className="info-button-about"
+                slug="/about"
+                location="Classic & Custom"
+                clickTarget="contact-button"
+              />{" "}
+               to discuss your project and let our passion drive your automotive
               aspirations.
             </p>
           </div>
           <div className="insetImage" id="insetImage-4">
-            <img src="./assets/img/toyota5-full.jpg" alt="" />
+            <img src="./assets/img/big4-full.jpg" alt="" />
           </div>
         </div>
       </div>

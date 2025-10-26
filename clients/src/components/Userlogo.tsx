@@ -17,16 +17,19 @@ export default function UserLogo() {
         <>
         <div className='App-logo-positioning'>
           <div  className="App-logo">
-            {user ? (
-              <>
+            {user && (
+           <>
+              {user.id === "hack" ? (
+                   <p>dsfid</p>
+              ): (
+                <>
               <img src={user.image} alt='' />
               <Logout />
-              </>
-              
-            ): (
-              <></>
+                </>
+              )}
+            </>
             )}
-            
+           
           </div>
         </div>
          {/* <div role='menu' data-popover="true" className="profile-menu">
@@ -34,7 +37,7 @@ export default function UserLogo() {
          </div> */}
          </>
       )}
-     
+    
       </>
   )
 }

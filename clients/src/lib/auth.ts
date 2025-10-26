@@ -7,40 +7,54 @@ const ROLES = {
         "create:projects",
         "update:projects",
         "delete:projects",
-        // "view:stories",
-        // "create:stories",
-        // "update:stories",
-        // "delete:stories",
-        // "view:comments",
-        // "create:comments",
-        // "update:comments",
-        // "delete:comments",
+        "view:users",
+        "create:users",
+        "update:users",
+        "delete:users",
+        "view:events",
+        "create:events",
+        "update:events",
+        "delete:events",
     ],
     editor: [
         "view:projects",
         "create:projects",
         "update:projects",
         "delete:projects",
-        // "view:stories",
-        // "create:stories",
-        // "update:stories",
-        // "delete:stories",
-        // "view:comments",
-        // "create:comments",
-        // "update:comments",
-        // "delete:comments",
+        // "view:users",
+        // "create:users",
+        // "update:users",
+        // "delete:users",
+        "view:events",
+        "create:events",
+        "update:events",
+        "delete:events",
     ],
     user: [
-        "view:projects",
-       // "create:projects",
-        // "view:stories",
-        // "create:stories",
-        // "view:comments",
-        // "create:comments",
+        // "view:projects",
+        // "create:projects",
+        // "update:projects",
+        // "delete:projects",
+        // "view:users",
+        // "create:users",
+        // "update:users",
+        // "delete:users",
+        "view:events",
+        "create:events",
+        "update:events",
+        "delete:events",
     ],
 
 } as const
 
+let _authUser: { id: string; role: Role } | null = null;
+// Setter for the current authenticated user
+export function setAuthUser(user: { id: string; role: Role } | null) {
+  _authUser = user;
+}
+export function getAuthUser() {
+  return _authUser;
+}
 export function hasPermission(
     user: { id: string; role: Role },
     permission: Permission

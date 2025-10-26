@@ -1,11 +1,17 @@
 import { Tooltip } from './page/Tooltip';
+import { useUser } from '../useUser';
+import LogoutHacker from './LogoutHacker';
 
 export default function Footer() {
-
+const {user} = useUser()
     return (
         <footer className="">
+           {user && user.id === "hack" && (
+           <LogoutHacker />
+          )}
           <div className="social-row">
-            {/* <a
+           
+            <a
               href="https://github.com/vernomad"
               target="_blank"
               rel="noopener noreferrer"
@@ -79,7 +85,7 @@ export default function Footer() {
                 <rect width="4" height="12" x="2" y="9"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
-            </a> */}
+            </a>
             <a
               href="https://facebook.com"
               target="_blank"
@@ -147,16 +153,15 @@ export default function Footer() {
               target="_blank"
               data-tooltip-id="footer-tooltip"
               data-tooltip-content="https://VA-Design"
-              data-tooltip-place="bottom"
               data-tooltip-offset={20}
             >
               <span className="">
-                Design_\V/A\
+                Design\V/A\
               </span>
             </a>
           </div>
          
-          <Tooltip id="footer-tooltip" className="footer-tooltip" offset={25} />
+          <Tooltip id="footer-tooltip" className="footer-tooltip" data-tooltip-place="top" offset={10} />
         </footer>
     );
 }

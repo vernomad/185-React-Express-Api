@@ -1,4 +1,6 @@
-export default function slugify(text: string): string  {
+import { format } from "date-fns";
+
+export function slugify(text: string): string  {
     return text
       .toString()
       .toLowerCase()
@@ -8,3 +10,13 @@ export default function slugify(text: string): string  {
       .replace(/^-+/, "") // Trim leading hyphens
       .replace(/-+$/, ""); // Trim trailing hyphens
   }
+
+  
+export function generateEventSlug(title: string, date?: Date) {
+  let slug = slugify(title);
+  if (date) {
+    const year = format(date, "yyyy");
+    slug = `${slug}-${year}`;
+  }
+  return slug;
+}

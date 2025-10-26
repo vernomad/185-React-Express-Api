@@ -8,6 +8,8 @@ const Login = lazy(() => import("../pages/Login.tsx"))
 const Projects = lazy(() => import("../pages/Projects.tsx"))
 const Events = lazy(() => import("../pages/Events.tsx"))
 const Contact = lazy(() => import("../pages/Contact.tsx"))
+const Sales = lazy(() => import("../pages/Sales.tsx"))
+const Unauthorized = lazy(() => import("../pages/Unauthorized.tsx"))
 
 
 
@@ -19,9 +21,10 @@ export default function RootRoutes() {
         <Route path="/projects/*" element={<Projects />} />
         <Route path="/events/*" element={<Events />} />
         <Route path="/contact/*" element={<Contact />} />
+        <Route path="/4sale/*" element={<Sales />} />
         <Route path="/admin/*" element={<PrivateRoute element={<Admin/>} />} />
-        {/* <Route path="/admin/*" element={<Admin />} /> */}
         <Route path="/login/*" element={<Login />} />
+        <Route path="/unauthorized-hack/*" element={<Unauthorized />} />
     </Routes>
   )
 }

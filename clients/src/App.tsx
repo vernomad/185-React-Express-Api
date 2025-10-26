@@ -7,13 +7,7 @@ import Footer from './components/Footer.tsx';
 import { UserProvider } from './UserProvider.tsx';
 import Drawer from './components/Drawer.tsx';
 import HeaderScrollEffect from './components/HeaderScrollEffect.tsx';
-//import ViewTransitionWrapper from './ViewTransitionsWrapper.tsx';
 
-
-
-// interface ContactProp {
-//   contactDetails: React.ReactNode;
-// }
 
 function App() {
 

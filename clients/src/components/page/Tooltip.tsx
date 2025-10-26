@@ -11,8 +11,7 @@ export function Tooltip(props: TooltipProps) {
         <ReactTooltip
             className={cn(
                 'hidden',
-                '',
-                '',
+                
                 props.className,
             )}
             {...props}

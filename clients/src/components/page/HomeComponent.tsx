@@ -1,9 +1,19 @@
-import { useContext } from "react";
-import { UserContext } from "../../UserContext";
-//import Services from "./services";
+import useSessionId from "../../hooks/useSessionId";
+import { usePageView } from "../../hooks/usePageView";
+import TrackCTA from "../buttons/TrackCta";
+
 
 export default function HomeComponet() {
-  const { toggleDrawer } = useContext(UserContext)
+   const { sessionId, loading, error } = useSessionId();
+
+
+  usePageView("/home");
+  
+
+  if (loading) return <p>Loading session...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  
+  console.log("SessionId", sessionId)
   return (
     <>
     {/* <Helmet>
@@ -24,56 +34,37 @@ export default function HomeComponet() {
         <meta name="twitter:image" content="https://example.com/images/preview.jpg" />
     </Helmet>     */}
     
-    <div className="main-grid" >
+    <div className="main-grid bg" id="main-grid-front">
     <section className="hero">
-      <div className="img-wrapper"></div>
-     
+      <div className="hero-image">
+      <div id="top" className="img-wrapper"></div>
+      {/* <div id="middle" className="img-wrapper"></div>
+      <div id="bottom" className="img-wrapper"></div> */}
+     </div>
       {/* <div className="filterImage"></div> */}
-      <h1 className="main__title hero__title">
-        <span>185</span>Restorations
-      </h1>
+      <div className="main__title hero__title">
+      <h1><span>185</span>Restorations</h1>  
+      </div>
       <div className="hero__body">           
       <div className="hero__subtitle">
         <ul>
-          <li><span>NAME:</span> 185 Restorations</li>
-          <li><span>LOCATION:</span> Christchurch</li>
-          <li><span>DESCRIPTION:</span> Specialists in classic & custom car restorations & the crafts shop for realizing all those car dreams...</li>
+          <li><span>NAME<span>:</span></span> 185 Restorations</li>
+          <li><span>LOCATION<span>:</span></span> Christchurch</li>
+          <li><span>DESC<span>:</span></span> We are your one stop true specialists for classic & custom car restorations...</li>
         </ul>
 
       </div>
-      {/* <p>
-        Specialists in classic & custom car restorations. Located in
-        Christchurch where we are strictly passionate about realizing all
-        those car dreams...
-      </p> */}
-     
-
       </div>   
       <div className="flex-button">
-        {/* <button
-  onClick={() => {
-    console.log("Button clicked!");
-    toggleDrawer();
-  }}
-  aria-label="call to action button"
-  type="button"
-  title="Contact us"
+        
+<TrackCTA 
+  ariaLabel="call to action butto"
+  text="Contact our crafts workshop & materialize all🫵car dreams"
   className="contact-btn"
->
-  Contact our team
-</button> */}
-        <button
-  onClick={() => {
-    console.log("Button clicked!");
-    toggleDrawer();
-  }}
-  aria-label="call to action button"
-  type="button"
-  title="Contact us"
-  className="contact-btn"
->
-  Inn🫵dream
-</button>
+  slug="/home"
+  location="hero-section"
+  clickTarget="contact-button"
+/>
         </div>       
       
     </section>

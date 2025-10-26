@@ -1,0 +1,29 @@
+import { useState, ReactNode } from "react";
+
+type ReadMoreProps = {
+  content: ReactNode;
+  showWhat: string;
+};
+
+export default function ShowButton({ content, showWhat }: ReadMoreProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpansion = () => setExpanded(!expanded);
+ 
+
+  return (
+    <div>
+      <div className={`hidden-html ${expanded ? "expanded" : ""}`}>
+        {content}
+        
+      </div>
+      <button
+        className={`readmore ${expanded ? "expanded" : ""}`}
+        onClick={toggleExpansion}
+        aria-label="Expand readmore"
+      >
+        {expanded ? "Show Less" : `${showWhat}`}
+      </button>
+    </div>
+  );
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "a257d4f8-108b-409d-a844-93d17bb2ca87",
+    "title": "Dry oil convention",
+    "description": "A gathering exploring the sad future of oil scarcity and pimping our futures c02 energized machines ",
+    "image": {
+      "full": "/assets/event/dry-oil-convention-2025/dry-oil-convention-2025.jpeg",
+      "thumb": "/assets/event/dry-oil-convention-2025/thumbnail-dry-oil-convention-2025.jpeg"
+    },
+    "date": "2025-10-08T08:18",
+    "start": "2025-10-10T19:00:00.000Z",
+    "end": "2025-10-14T02:00:00.000Z",
+    "location": "Me back yard",
+    "createdBy": "admin",
+    "published": true,
+    "slug": "dry-oil-convention-2025"
+  },
+  {
+    "id": "28f587fd-2e32-4145-b451-50414ff9ac4d",
+    "title": "Lost raiders machines",
+    "description": "A gathering of fast get away machines.",
+    "image": {
+      "full": "/assets/event/lost-raiders-machines-2025/lost-raiders-machines-2025.jpg",
+      "thumb": "/assets/event/lost-raiders-machines-2025/thumbnail-lost-raiders-machines-2025.jpg"
+    },
+    "date": "2025-10-08T09:02",
+    "start": "2025-10-28T20:02:00.000Z",
+    "end": "2025-11-01T08:00:00.000Z",
+    "location": "My neighbors back yard, which has a pool",
+    "createdBy": "admin",
+    "published": true,
+    "slug": "lost-raiders-machines-2025"
+  },
+  {
+    "id": "2573dc64-6c7c-4b6b-8a53-d32119a26ac5",
+    "title": "Rust buckets convention 🎉",
+    "description": "And all daisy day....",
+    "image": {
+      "full": "/assets/event/rust-buckets-convention-2025/rust-buckets-convention-2025.jpg",
+      "thumb": "/assets/event/rust-buckets-convention-2025/thumbnail-rust-buckets-convention-2025.jpg"
+    },
+    "date": "2025-10-11T18:42",
+    "start": "2025-11-01T19:50:00.000Z",
+    "end": "2025-11-04T21:47:00.000Z",
+    "location": "My neighbors neighbor front lawn of which is our local friendly neighborhoods rust haven",
+    "createdBy": "Aaron",
+    "published": true,
+    "slug": "rust-buckets-convention-2025"
+  }
+]

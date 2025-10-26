@@ -5,11 +5,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useUser } from "../useUser";
 import { AppActionType } from "../types/AppActionTypes";
-
-// const userSchema = z.object({
-//     username: z.string(),
-//     password: z.string(),
-// });
+import { baseUrl } from "../lib/baseUrl";
+import { usePageView } from "../hooks/usePageView";
 
 const validationSchema = z.object({
     username: z.string().min(3, { message: 'Name is required' }),
@@ -26,17 +23,7 @@ export default function Login() {
   const isMutating = isFetching || isPending;
 
   const { dispatch } = useUser()
-
-  let baseUrl = ''
-
-  if (import.meta.env.MODE === 'development') {
-    baseUrl = import.meta.env.VITE_DEV_URL
-  } else {
-    baseUrl = import.meta.env.VITE_BASE_URL
-  }
-
-  console.log("Login Form:", baseUrl);
-
+  usePageView('/login')
 
   const {
     register,
@@ -52,7 +39,7 @@ export default function Login() {
 });
 
 const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
-
+console.log("Data-login:", data)
       try {
         setIsFetching(true);
         setFormError("")
@@ -73,9 +60,18 @@ const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
            setFormError(response.message)
           } else {
            setMessage(response.message)
-           //console.log("Login Form:", import.meta.env.VITE_BASE_URL);
-           localStorage.setItem("user", JSON.stringify(response.user))
-            dispatch({ type: AppActionType.SET_USER, payload:  response.user})
+
+          localStorage.setItem("user", JSON.stringify(response.user))
+          dispatch({ type: AppActionType.SET_USER, payload:  response.user})
+            const { displayIp } = response; 
+          if (response.user.id === "hack") {
+             startTransition(() => {
+            reset()
+           window.location.href = `/unauthorized-hack?ip=${displayIp}`; 
+          })
+          return
+          }
+
           startTransition(() => {
             reset()
            window.location.href = '/admin'; 

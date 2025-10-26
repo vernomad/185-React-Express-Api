@@ -88,6 +88,7 @@ const Drawer = ({contactDetails}: Props) => {
       >
         <div className="grab-scroll"></div>
         <div className="contact-container">
+          <div className="stripe"></div>
           <h3 className="drawer-title ">Contact Details</h3>
           <div className="contact-grid ">
           <SiMinutemailer className="icon-email "/>
@@ -112,7 +113,7 @@ const Drawer = ({contactDetails}: Props) => {
             </ul>
             <BsArrow90DegRight className="icon-email"/>
             <ul>
-              <li><Link onClick={() => toggleDrawer()}  to='/for-sale'><FaSalesforce className="inline mr-4" />Stuff for sale</Link></li>
+              <li><Link onClick={() => toggleDrawer()}  to='/4sale'><FaSalesforce className="inline mr-4" />Stuff for sale</Link></li>
             </ul>
           </div>
         </div>

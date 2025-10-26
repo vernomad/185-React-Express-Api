@@ -5,10 +5,14 @@ export type User = {
   username: string;
   image: string;
   roles: string[]; 
+  ip?: string;
 }
 
 export interface AuthenticatedUser extends User {
   isLoggedIn: true;
+}
+export interface UnauthenticatedUser extends User {
+  isLoggedIn: false;
 }
 
 export interface Preferences {
@@ -17,7 +21,7 @@ export interface Preferences {
   }
 
 export interface AppState {
-    user: AuthenticatedUser | null;
+    user: AuthenticatedUser | UnauthenticatedUser | null;
     drawerOpen: boolean;
     preferences: Preferences;
 }

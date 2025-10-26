@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from "express";
-import { UserRoleType } from '../models/user/UserLog';
+import { UserRoleType } from '../../models/user/UserLog';
 
 
 

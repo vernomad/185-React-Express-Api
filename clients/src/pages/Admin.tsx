@@ -1,145 +1,85 @@
-import { useEffect, useState } from "react";
-import { useRoutes } from "react-router-dom";
+// pages/Admin.tsx
 import { useUser } from "../useUser";
 import { hasPermission, Role } from "../lib/auth";
-
-interface UserToken {
- token: string | null;
-  // Add other fields as necessary based on the API response
-}
+import { useAuthVerify } from "../hooks/useAuthVerify";
+import UserSection from "../components/admin/UserSection";
+import ProjectSection from "../components/admin/ProjectSection";
+import EventSection from "../components/admin/EventSection";
+import { baseUrl } from "../lib/baseUrl";
+import ShowButton from "../components/buttons/ShowButton";
+import { usePageView } from "../hooks/usePageView";
+import AnalyticsSection from "../components/admin/AnalyticSection";
 
 export default function Admin() {
+  usePageView('/admin')
   const { user } = useUser();
-  const [userData, setUserData] = useState(null);
-  const [error, setError] = useState<string | null>(null);
-  const [userToken, setUserToken] = useState<UserToken | null>(null);
-  const [verified, setIsVerified] = useState(false)
-  const [loading, setLoading] = useState<boolean>(true);
 
-   const baseUrl =
-    import.meta.env.MODE === 'development'
-      ? import.meta.env.VITE_DEV_URL
-      : import.meta.env.VITE_BASE_URL;
+  const {
+    userToken,
+    verified,
+    error: authError,
+    loading: authLoading,
+  } = useAuthVerify(baseUrl);
 
-console.log("User in admin", user)
+ if (!verified || authError) return <div className="container"><p>Not authenticated <span className="errors">{authError}</span></p></div>;
 
- useEffect(() => {
-  const fetchToken = async () => {
-     try {
-        const response = await fetch(`${baseUrl}/api/auth/verify`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-        if (!response.ok) {
-       console.log('User is not authenticated.');
-        } else {
-           const result = await response.json();
-           setUserToken(result.userToken)
-           setIsVerified(true)
-        }
-  } catch (error) {
-     console.error('Error verifying authentication:', error);
-  }
- }
- fetchToken()
- }, [baseUrl]);
+  if (authLoading) return (
+      <div className="container">
+        <h1>Loading...</h1>
+        
+      </div>
+    );
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (verified) {
-      try {
-        const response = await fetch(`${baseUrl}/api/user`, {
-          method: "GET",
-          headers: userToken ? { Authorization: `Bearer ${userToken}` } : {},
-          credentials: "include", // To send cookies with the request
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-         // Set the user data if the request is successful
-         setLoading(false)
-        setUserData(data); 
-
-        } else {
-          // Handle errors like 403 Forbidden
-          setError("You are not authorized to view this data.");
-        }
-      } catch (err) {
-        setError("Failed to fetch user data.");
-        console.error(err);
-      }
-    };
-  }
-    fetchUserData();
-  }, [userToken, baseUrl, verified]);
-
-
-  let content;
+  let content = null;
+  let authUser: { id: string; role: Role } | null = null;
   if (user) {
     const validRole = user.roles.find((role) =>
       ["admin", "editor", "user"].includes(role)
     ) as Role | undefined;
 
-    if (!validRole) {
-      throw new Error("No valid role found for user");
-    }
+    if (!validRole) throw new Error("No valid role found for user");
 
-    const authUser: { id: string; role: Role } = {
-      role: validRole,
-      id: user.id,
-    };
+      authUser = { role: validRole, id: user.id };
 
-    content = (
-      <div>
-        {hasPermission(authUser, "create:projects") ? (
-          <div className="login-permission">
-            <p>User is admin with create projects permissons</p>
-          </div>
-        ): (
-          <div className="login-permission">
-            <p>User is not admin and without create projects permissons</p>
-          </div>
-        )}
-      </div>
+    content =
+    authUser.role === "admin" ? (
+      <p>Welcome admin {user.username} who has full permissions</p>
+    ) : authUser.role === "editor" ? (
+         <p>Welcome editor {user.username} who has access to partial permissions</p>
+    ) : (
+      <p>Welcome {user.username} who does not havwe full and only partial permissions</p>
     );
   }
 
-  const routes = useRoutes([
-    {
-      path: "",
-      element: (
-        <>
-        {loading && (
-          <>
-           <div className="container"><h1>Loading...</h1></div>
-          </>
-        )}
-          <div className="admin-container">
-            {error && <p>{error}</p>}{" "}
-            {/* Render error message if there is an error */}
-            {userData ? (
-              <div className="wrapper-users">
-                <h1>Admin</h1>
-                {content && content}
-                <h2>User Data</h2>
-                {/* {userData  && Array.forEach(data => {
-                
-              })} */}
-              <div>
-                <pre>{JSON.stringify(userData, null, 1)}</pre>
-                </div>
-              </div>
-            ) : (
-              <p>Loading user data...</p>
-            )}
-          </div>
-          <div className="admin-container">
-            <h2>Upload projects</h2>
-          </div>
-        </>
-      ),
-    },
-  ]);
-
-  return routes;
+  return (
+    <div className="admin-wrapper">
+      <div className="admin-container">
+        <div className="admin-header">
+          <h1>Admin</h1>
+          {content}
+        </div>
+      </div>
+      
+        {/* {userError && <span className="errors">{userError}</span>} */}
+        {authUser && hasPermission(authUser, "create:users") && (
+        <UserSection verified={verified}  userToken={userToken ?? ""} />    
+        )} 
+        {authUser && hasPermission(authUser, "create:projects") && (
+        <ProjectSection />
+        )} 
+        {authUser && hasPermission(authUser, "create:events") && (
+        <EventSection />
+         )} 
+         <AnalyticsSection />
+      <div className="admin-secret">
+        <ShowButton 
+        showWhat="Show secret"
+        content={
+          <img src="/assets/img/600.jpg" />
+        }
+        />
+        
+      </div>
+    </div>
+  );
 }
