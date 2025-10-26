@@ -1,6 +1,5 @@
 import { MongoClient, Db } from 'mongodb';
-import serverConfig from './serverConfig';
-
+import serverConfig from './serverConfig'
 let db: Db | null = null; // Cache the database instance
 
 export const connectDB = async (): Promise<Db> => {

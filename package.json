@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "version of 185",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "tsc && npm run build:client",
     "build:client": "npm run build --prefix clients",

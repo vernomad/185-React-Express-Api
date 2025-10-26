@@ -3,8 +3,9 @@ import { Request, Response, NextFunction } from 'express';
 
 
 const limiter = LambdaRateLimiter({
-    interval: 60000,
-    uniqueTokenPerInterval: 3,
+
+    interval: 15 * 60 * 1000, // 15 minutes
+    uniqueTokenPerInterval: 4,
   });
   
   const rateLimiter = (req: Request, res: Response, next: NextFunction) => {
