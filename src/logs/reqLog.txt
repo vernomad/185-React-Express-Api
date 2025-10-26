@@ -1094,3 +1094,9 @@
 20251027	07:56:02	cfb1575c-ce28-42e5-9ee4-bfcd939fa81f	GET	No origin	/api/analytics?limit=50&offset=0&type=
 20251027	07:56:02	25aed28f-a2c8-411b-8d71-28cebaa527e6	GET	http://localhost:5173	/api/user
 20251027	07:56:02	b1dce042-87ba-48c4-813f-bd6912a0d744	GET	No origin	/api/analytics?limit=50&offset=0&type=
+20251027	08:34:49	bc5de6a7-36c0-417e-8e50-726da6400cd6	GET	http://localhost:5173	/api/auth/verify
+20251027	08:34:49	5efa5e3f-3316-4b0b-ba4e-31cf163cc269	POST	http://localhost:5173	/api/track
+20251027	08:34:49	9cbcec65-b096-4a30-9ea6-5308f10ccd94	GET	http://localhost:5173	/api/auth/verify
+20251027	08:34:52	f73e2c5d-1112-49aa-a44d-f6c7aee52fdd	GET	http://localhost:5173	/data/cars/cars.json
+20251027	08:34:52	1cd3fdea-d061-43c0-b268-f9453c1f1279	POST	http://localhost:5173	/api/track
+20251027	08:34:52	8d1b4ccf-f644-4e53-889b-c51baedb1c97	GET	http://localhost:5173	/data/cars/cars.json
