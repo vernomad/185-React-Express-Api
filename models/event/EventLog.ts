@@ -1,17 +1,17 @@
 // schemas/calendar.ts
 import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
-import slugify from '../utils/slugify';
+// import slugify from '../utils/slugify';
 
 const imagePairSchema = z.object({
   full: z.string(),
   thumb: z.string(),
 });
 
-const now = new Date();
-const localISO = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-  .toISOString()
-  .slice(0, 16);
+// const now = new Date();
+// const localISO = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+//   .toISOString()
+//   .slice(0, 16);
 
 export const CalendarEventSchema = z.object({
   id: z
