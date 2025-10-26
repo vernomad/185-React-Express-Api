@@ -13,11 +13,11 @@ import jwt from "jsonwebtoken";
 import { jwtVerify, JWTVerifyResult } from "jose";
 // import rateLimit from "lambda-rate-limiter";
 
-const rateLimit = require("lambda-rate-limiter")
-const limiter = rateLimit({
-  interval: 15 * 60 * 1000, // 15 minutes
-  uniqueTokenPerInterval: 4,
-}).check;
+// const rateLimit = require("lambda-rate-limiter")
+// const limiter = rateLimit({
+//   interval: 15 * 60 * 1000, // 15 minutes
+//   uniqueTokenPerInterval: 4,
+// }).check;
 
 // async function getLimiter() {
 //   const rateLimit = (await import('lambda-rate-limiter')).default;
@@ -105,18 +105,18 @@ export const loginUser = async (req: Request, res: Response) => {
  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
  const displayIp = ip === '::1' ? '127.0.0.1' : ip;
 
-  const IP = req.get("x-real-ip") || req.socket.remoteAddress;
+  // const IP = req.get("x-real-ip") || req.socket.remoteAddress;
  
-if (IP) {
-    try {
-      // Apply rate limiter per IP
-      await limiter(4, IP); // max 5 attempts per 15 mins per IP
-    } catch {
-      return res
-        .status(429)
-        .json({ message: "Too many login attempts. Try again later." });
-    }
-  }
+// if (IP) {
+//     try {
+//       // Apply rate limiter per IP
+//       await limiter(4, IP); // max 5 attempts per 15 mins per IP
+//     } catch {
+//       return res
+//         .status(429)
+//         .json({ message: "Too many login attempts. Try again later." });
+//     }
+//   }
   if (!username || !password || !username.trim() || !password.trim()) {
     // handleError(new ErrorWithStatusCode("Invalid username or password", 400), res);
     res.json({ message: "Invalid username or password" });
