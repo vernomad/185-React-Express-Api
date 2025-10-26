@@ -2,7 +2,7 @@ import express from 'express';
 import { validateData } from '../middleware/validationMiddleware';
 import { UserLoginSchema, baseValidation } from '../../models/user/UserLog';
 
-const rateLimit = require("express-rate-limit");
+import rateLimit from 'express-rate-limit';
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
