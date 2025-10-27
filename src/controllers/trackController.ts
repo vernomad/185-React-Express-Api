@@ -104,7 +104,17 @@ export const trackEvents = async (req: Request, res: Response) => {
       geo, // ✅ Add geo info here
     };
 
-    const logPath = path.join(__dirname, "..", "logs", "analytics.log");
+  const logsDir = path.join(__dirname, "..", "logs"); // folder path
+   const logPath = path.join(logsDir, "analytics.log"); // file path
+
+    // Ensure the folder exists
+    await fsPromises.mkdir(logsDir, { recursive: true });
+
+    // Ensure the file exists
+    await fsPromises.access(logPath).catch(async () => {
+      await fsPromises.writeFile(logPath, ""); // create empty file if missing
+    });
+
     await fsPromises.appendFile(logPath, JSON.stringify(event) + "\n");
 
     res.status(201).json({ success: true });

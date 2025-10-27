@@ -30,3 +30,14 @@
 20251026	16:49:27	cdcde7ca-5dc6-4527-9020-a1366e807912	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /
 20251026	16:49:27	726b09ad-60d3-4943-85f9-ad38bacf05f7	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /favicon.ico
 20251026	16:49:57	7b9162a5-2a55-475c-888d-b5a6b099ef3e	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /
+20251027	13:17:21	b5720c82-9679-4b89-aaaf-94c482c247ce	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:14	756a6c27-1d5a-441c-94c1-6765ee8c959a	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:14	ebae3744-29b2-47c0-bff7-e0285927f692	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:34	eae9b019-0eb0-4323-93df-a835597b773b	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:34	631f99a9-710c-4d64-8c09-aae5e39a15a6	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:53	5a0b8b64-f270-4357-bd99-b240f1a3d806	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:19:53	9d834f33-6ac2-42e2-a56b-0d4c87ba8d5e	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:22:17	c3714382-1a81-4871-8664-aaf8d22d044f	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:22:17	bab4aab7-0476-432d-9135-e225c75a51e3	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:22:34	38f0302f-18fb-483d-b70b-52d4515278d5	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json
+20251027	13:22:34	06d3c7ef-334c-4fde-b3ce-c7cd490db959	Error: ENOENT: no such file or directory, stat 'C:\Users\Admin\Desktop\Websites\185-react-express-api\clients\dist\index.html' - GET /data/cars/cars.json

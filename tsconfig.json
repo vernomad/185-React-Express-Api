@@ -120,13 +120,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./src/types", "./node_modules/@types"],
-    "baseUrl": ".",
-    "paths": {
-      "@models/*": ["./models/*"]
-    }
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["src/**/*.ts", "src/config/db.ts", "models/**/*.ts",
-    "data/**/*"],
+  "include": ["src/**/*.ts", "src/config/db.ts"],
   "exclude": ["node_modules"]
 }
