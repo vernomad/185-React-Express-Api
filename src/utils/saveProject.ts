@@ -3,7 +3,7 @@ import path from "path";
 import fsPromises from "fs/promises";
 import { ProjectEntry } from "../../models/project/ProjectLog";
 
-const jsonDir = path.join(process.cwd(), "data");
+const dirPath = path.join(process.cwd(), "data");
 
 /**
  * Save a ProjectEntry to a JSON file.
@@ -17,7 +17,9 @@ export async function saveProject(
   fileName: string
 ) {
   try {
-    const projectDir = path.join(jsonDir, projectName);
+    await ensureDirExists(dirPath)
+    const projectDir = path.join(dirPath, projectName);
+   
     await fsPromises.mkdir(projectDir, { recursive: true }); // only directory
 
     const filePath = path.join(projectDir, fileName); // JSON file path
@@ -40,3 +42,8 @@ export async function saveProject(
   }
 }
 
+export async function ensureDirExists(dirPath: string) {
+  if (!fs.existsSync(dirPath)) {
+    await fsPromises.mkdir(dirPath, { recursive: true });
+  }
+}

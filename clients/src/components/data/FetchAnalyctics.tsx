@@ -70,6 +70,7 @@ export default function FetchAnalytics() {
                   <th className="text-left p-2">Country</th>
                   <th className="text-left p-2">User</th>
                   <th className="text-left p-2">Time</th>
+                  <th className="text-left p-2">Btn</th>
                 </tr>
               </thead>
               <tbody>
@@ -79,10 +80,13 @@ export default function FetchAnalytics() {
                     <td className="p-2">{e.slug}</td>
                     <td className="p-2">{e.ip}</td>
                     <td className="p-2"> {e.geo
-    ? `${e.geo.city}, ${e.geo.region}, ${e.geo.country}`
-    : "—"}</td>
+                      ? `${e.geo.city}, ${e.geo.region}, ${e.geo.country}`
+                      : "—"}</td>
                     <td className="p-2">{e.userId || "—"}</td>
                     <td className="p-2">{new Date(e.createdAt).toLocaleString()}</td>
+                     <td className="p-2">{e.type === "click" && e.meta && "clickTarget" in e.meta
+                        ? e.meta.clickTarget
+                        : "—"}</td>
                   </tr>
                 ))}
               </tbody>

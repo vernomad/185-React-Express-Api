@@ -3,8 +3,18 @@ import fsPromises from "fs/promises";
 import fs from "fs";
 import path from "path";
 
-const baseDir = path.join(process.cwd(), "clients/public/assets");
-const eventDir = path.join(process.cwd(), "clients/public/assets/event")
+// const dirPath =
+//   process.env.NODE_ENV === "production"
+//     ? path.join(process.cwd(), "clients/dist/assets")
+//     : path.join(process.cwd(), "clients/public/assets");
+
+// const baseDir = dirPath;
+// const eventDir = path.join(baseDir, "event");
+// in your image util
+const baseDir = path.join(process.cwd(), "data/assets");
+const eventDir = path.join(baseDir, "event");
+const carsDir = path.join(baseDir, "car")
+
 
 export async function deleteImg(slug: string, dir: string) {
   const targetPath = path.join(baseDir, slug);
@@ -52,8 +62,8 @@ export async function deleteImg(slug: string, dir: string) {
 }
 
 export async function deleteImages(slug: string, dir: string) {
-  const baseDir = path.join(process.cwd(), dir);
-  const targetDirectory = path.join(baseDir, slug);
+  const targetDir = path.join(baseDir, dir);
+  const targetDirectory = path.join(targetDir, slug);
 
   // Ensure the path is inside the baseDir to prevent path traversal
   if (!targetDirectory.startsWith(baseDir)) {
@@ -112,7 +122,7 @@ export async function saveEventImage(file: Express.Multer.File, slug: string) {
 }
 
 export async function saveImage(file: Express.Multer.File, slug: string) {
-  const targetDirectory = path.join(baseDir, slug);
+  const targetDirectory = path.join(carsDir, slug);
 
   // Ensure directory exists
   await fsPromises.mkdir(targetDirectory, { recursive: true });
@@ -148,13 +158,13 @@ export async function saveImage(file: Express.Multer.File, slug: string) {
   await fsPromises.writeFile(thumbnailPath, thumbnailBuffer);
 
   return {
-    mainImage: `/assets/${slug}/${slug}${ext}`,
-    mainImageThumbnail: `/assets/${slug}/thumbnail-${slug}${ext}`
+    mainImage: `/assets/car/${slug}/${slug}${ext}`,
+    mainImageThumbnail: `/assets/car/${slug}/thumbnail-${slug}${ext}`
   };
 }
 
 export async function saveImages(files: Express.Multer.File[], slug: string) {
-  const targetDirectory = path.join(baseDir, slug);
+  const targetDirectory = path.join(carsDir, slug);
  await fsPromises.mkdir(targetDirectory, { recursive: true });
 
   // Read existing files
@@ -197,8 +207,8 @@ export async function saveImages(files: Express.Multer.File[], slug: string) {
       await fsPromises.writeFile(thumbnailPath, thumbnailBuffer);
 
       return {
-        image: `/assets/${slug}/${baseName}${ext}`,
-        thumbnail: `/assets/${slug}/thumbnail-${baseName}${ext}`
+        image: `/assets/car/${slug}/${baseName}${ext}`,
+        thumbnail: `/assets/car/${slug}/thumbnail-${baseName}${ext}`
       };
     })
   );

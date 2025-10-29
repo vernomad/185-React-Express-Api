@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import logEvents from "./logEvents";
 
+
 // Error handler middleware
 const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     const errorName = err.name || "UnknownError";

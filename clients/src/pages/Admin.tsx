@@ -6,9 +6,10 @@ import UserSection from "../components/admin/UserSection";
 import ProjectSection from "../components/admin/ProjectSection";
 import EventSection from "../components/admin/EventSection";
 import { baseUrl } from "../lib/baseUrl";
-import ShowButton from "../components/buttons/ShowButton";
+// import ShowButton from "../components/buttons/ShowButton";
 import { usePageView } from "../hooks/usePageView";
 import AnalyticsSection from "../components/admin/AnalyticSection";
+import ShowCtaButton from "../components/buttons/ShowCtaButton";
 
 export default function Admin() {
   usePageView('/admin')
@@ -72,13 +73,18 @@ export default function Admin() {
          )} 
          <AnalyticsSection />
       <div className="admin-secret">
-        <ShowButton 
+        {/* <ShowButton 
         showWhat="Show secret"
         content={
           <img src="/assets/img/600.jpg" />
         }
-        />
-        
+        /> */}
+        <ShowCtaButton
+        showWhat="ShowSecret"
+         content={
+          <img src="/assets/img/600.jpg" />
+        }
+         />
       </div>
     </div>
   );

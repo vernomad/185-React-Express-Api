@@ -6,6 +6,8 @@ import fsPromises from "fs/promises";
 import path from "path";
 import { TrackingEvent } from "../types/trackTypes";
 
+const baseDir = path.join(process.cwd(), "data")
+
 // At top of file or outside the controller
 const recentViews = new Map<string, number>(); // key: sessionId+slug, value: timestamp
 
@@ -104,7 +106,7 @@ export const trackEvents = async (req: Request, res: Response) => {
       geo, // ✅ Add geo info here
     };
 
-  const logsDir = path.join(__dirname, "..", "logs"); // folder path
+  const logsDir = path.join(baseDir, "logs"); // folder path
    const logPath = path.join(logsDir, "analytics.log"); // file path
 
     // Ensure the folder exists
@@ -126,7 +128,7 @@ export const trackEvents = async (req: Request, res: Response) => {
 
 export const getEvents = async (req: Request, res: Response) => {
   try {
-    const logPath = path.join(__dirname, "..", "logs", "analytics.log");
+    const logPath = path.join(baseDir, "logs", "analytics.log");
 
     // Read the entire log file
     const content = await fsPromises.readFile(logPath, "utf8");

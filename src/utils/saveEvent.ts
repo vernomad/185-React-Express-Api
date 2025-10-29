@@ -3,8 +3,13 @@ import path from "path";
 import fsPromises from "fs/promises";
 
 import {CalendarEventEntry} from "../../models/event/EventLog";
+import { ensureDirExists } from "./saveProject";
 
 const jsonDir = path.join(process.cwd(), "data");
+// const dirPath =
+//   process.env.NODE_ENV === "production"
+//     ? path.join(__dirname, "..", "..", "data")   // project-root/data
+//     : path.join(__dirname, "..", "data"); // dev: src/data
 
 /**
  * Save a ProjectEntry to a JSON file.
@@ -20,6 +25,7 @@ export async function saveEvent(
 ) {
 
     try {
+        await ensureDirExists(jsonDir)
         const eventDir = path.join(jsonDir, eventName)
         await fsPromises.mkdir(eventDir, { recursive: true });
 

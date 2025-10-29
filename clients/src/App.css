@@ -105,6 +105,10 @@
     .project-details {
     margin: auto;
     padding: 0 1rem 1rem;
+
+    .project-details h1 {
+      color: beige;
+    }
 }
 }
 .projects-wrapper-full {

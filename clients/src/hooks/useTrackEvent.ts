@@ -17,7 +17,6 @@ export function useTrackEvent() {
         ...event,
         sessionId: getSessionIdFromCookie(),
         // Only add userId if it exists
-        // ...(user ? { userId: user.username } : {}),
         userId: user ? user.username : "anonymous",
         createdAt: new Date().toISOString(),
       };

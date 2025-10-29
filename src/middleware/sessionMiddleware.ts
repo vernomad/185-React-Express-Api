@@ -3,11 +3,11 @@ import { v4 as uuid } from "uuid";
 import fsPromises from 'fs/promises';
 import path from "path";
 
-
+const baseDir = path.join(process.cwd(), "data")
 
 async function logVisitor(sessionId: string, ip: string) {
 
-    const logDir = path.join(__dirname, "..", "logs");
+    const logDir = path.join(baseDir, "logs");
     const logFile = path.join(logDir, "visitors.log");
   try {
     // Ensure the logs directory exists

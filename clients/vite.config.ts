@@ -12,11 +12,13 @@ export default defineConfig({
    resolve: {
     alias: {
       "@models": path.resolve(__dirname, "../models"),
+      "@data": path.resolve(__dirname, "../data"),
     },
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:3500', // Proxy API requests to the backend
+      '/api': 'http://localhost:3500',
+      '/assets': 'http://localhost:3500', // Proxy API requests to the backend
     },
      fs: {
       allow: [".."], // allow parent folder

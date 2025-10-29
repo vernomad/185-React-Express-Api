@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from "express";
 //import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
+const baseDir = path.join(process.cwd(), "data")
 
 const logEvents = async (message: string, logName: string) => {
     if (!message || !logName) {
@@ -13,7 +14,7 @@ const logEvents = async (message: string, logName: string) => {
 
     const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
     const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
-    const logPath = path.join(__dirname, '..', 'logs');
+    const logPath = path.join(baseDir, 'logs');
     
     try {
         await fsPromises.access(logPath).catch(() => fsPromises.mkdir(logPath));

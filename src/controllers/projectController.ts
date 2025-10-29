@@ -3,14 +3,41 @@ import {slugify} from '../utils/slugify';
 // import fsPromises from "fs/promises";
 // import { v4 as uuidv4 } from 'uuid';
 import path from "path";
+import fs from "fs";
 import fsPromises from "fs/promises";
 import { ProjectEntry } from '../../models/project/ProjectLog';
 import { deleteImg, deleteImages, saveImage, saveImages } from '../utils/imagesUtil';
 import { saveProject } from '../utils/saveProject';
 
+  // const dirPath =
+  //   process.env.NODE_ENV === "production"
+  //     ? path.join(__dirname, "..", "..", "data")   
+  //     : path.join(__dirname, "..", "data");
 
-const baseDir = path.join(process.cwd(), "clients/public/assets");
-const jsonDir = path.join(process.cwd(), "../data")
+  const dirPath = path.join(process.cwd(), "data");
+    
+
+  export async function getProjectJson() {
+  const filePath = path.join(dirPath, "cars", "cars.json");
+
+  try {
+    // Ensure directory exists
+    await fsPromises.mkdir(path.dirname(filePath), { recursive: true });
+
+    // Use fs.existsSync from 'fs', NOT fs/promises
+    if (!fs.existsSync(filePath)) {
+      await fsPromises.writeFile(filePath, "[]", "utf8");
+      return [];
+    }
+
+    const file = await fsPromises.readFile(filePath, "utf8");
+    return JSON.parse(file);
+  } catch (err) {
+    console.error("Error reading cars.json:", err);
+    return [];
+  }
+}    
+
 
 export const createProject = async (req: Request, res: Response) => {
   try {
@@ -103,16 +130,16 @@ export const getProject = async (req: Request, res: Response) => {
 };
 
 export const getProjects = async (req: Request, res: Response) => {
-     const allProjects = {}
-    try {
-        if (allProjects) {
-            res.status(200).json(allProjects)
-        }
-    } catch (err) {
-        console.error("Error retrieving projects:", err);
-        res.status(500).send("Error retrieving projects");
-    }
-}
+  try {
+    const allProjects = await getProjectJson(); // fetch JSON from file or data source
+
+    // Always return an array, even if empty
+    res.status(200).json(allProjects || []);
+  } catch (err) {
+    console.error("Error retrieving projects:", err);
+    res.status(500).json({ message: "Error retrieving projects" });
+  }
+};
 
 
 export const updateProject = async (req: Request, res: Response) => {
@@ -248,7 +275,7 @@ export const deleteProject = async (req: Request, res: Response) => {
 
         if (deletedProject?.slug) {
       const slug = deletedProject.slug;
-      const dir = "clients/public/assets";
+      const dir = "car";
       try {
         await deleteImages(slug, dir);
       } catch (err) {
@@ -257,7 +284,7 @@ export const deleteProject = async (req: Request, res: Response) => {
     }
 
     // Write updated data back to file
-    const filePath = path.join("data/cars", "cars.json");
+    const filePath = path.join(dirPath, "cars", "cars.json");
     await fsPromises.writeFile(filePath, JSON.stringify(sortedCars, null, 2));
 
     res.status(200).json({
@@ -269,11 +296,3 @@ export const deleteProject = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error deleting project" });
   }
 };
-
-async function getProjectJson() {
-   const filePath = path.join("data/cars", "cars.json");
-    const file = await fsPromises.readFile(filePath, "utf8");
-    const cars = JSON.parse(file);
-
-    return cars
-}

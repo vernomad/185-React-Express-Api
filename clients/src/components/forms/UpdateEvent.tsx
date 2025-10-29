@@ -1,11 +1,10 @@
 import { useState, useTransition, useId, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import MyFilePond from "../../lib/filePond";
 
 import {EventUpdateProperties, UpdateCalendarEventSchema, EventUpdateType} from '@models/event/EventLog'
 
- type FieldType = "textarea" | "text" | "file" | "date" | "datetime" | "checkbox" | "hidden";
+ type FieldType = "textarea" | "text" | "date" | "datetime" | "checkbox" | "hidden";
 
 function toLocalDateTimeString(value: string | Date | undefined): string {
   if (!value) return "";
@@ -24,9 +23,6 @@ function toLocalDateTimeString(value: string | Date | undefined): string {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-
-
-
 const eventInputs: Record<
   EventUpdateProperties,
   {
@@ -36,11 +32,11 @@ const eventInputs: Record<
     hidden?: boolean;
   }
 > = {
-    id: {
-        type: "hidden",
-        label: "id",
-        readOnly: true,
-        //hidden: true,
+  id: {
+    type: "text",
+    label: "id",
+    readOnly: true,
+    hidden: true,
     },
   title: {
     type: "text",
@@ -50,10 +46,6 @@ const eventInputs: Record<
   description: {
     type: "textarea",
     label: "description",
-  },
-  image: {
-    type: "file",
-    label: "Image (optional)",
   },
   date: {
     type: "date",
@@ -104,8 +96,6 @@ export default function UpdateEventForm({event}: {event: EventUpdateType}) {
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
 
-  const [file, setFile] = useState<File | undefined>();
-  const [filePondKey, setFilePondKey] = useState(0);
 
   const idPrefix = useId();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -134,13 +124,6 @@ export default function UpdateEventForm({event}: {event: EventUpdateType}) {
         setFormError('')
         setMessage('')
 
-         if (
-        file?.type && 
-        !["image/png", "image/jpeg", "image/svg+xml", "image/webp"].includes(file.type)
-      ) {
-        throw new Error("Invalid file type. Please upload a PNG, SVG, JPG, or WebP file.");
-      }
-
       const formData = new FormData();
       formData.append("description", data.description || '')
     if (data.start) {
@@ -161,11 +144,6 @@ if (data.end) {
        
       formData.append("location", data.location || '');
 
-
-      if (file) {
-      formData.append("image", file);
-      }
-      //  formData.append("published", data.published ? "true" : "false" );
 
          for (const [key, value] of formData.entries()) {
   console.log(key, value);
@@ -199,8 +177,6 @@ if (data.end) {
       : "",
     image: undefined,
   });
-          setFilePondKey(prev => prev + 1); 
-          //    window.location.href = '/admin';
         });
        setTimeout(() => setIsFetching(false), 150);
       }
@@ -228,23 +204,24 @@ if (data.end) {
            {formError && <span className="errors">{formError}</span>}
           {message && <span>{message}</span>}
 
+     {existingImage ? (
+                    <div
+            // key={index}
+            style={{
+              position: "relative",
+              width: "fit-content"
+            }}
+          >
+          <img src={existingImage.full} alt="" style={{width: "80px", marginBottom: ".5rem", border: "2px solid #aeaeaeff"}} ></img>
+                    </div>
+        ): (<></>)}
+
        {Object.entries(eventInputs).map(([key, field], index) => {
         const property = key as EventUpdateProperties;
         const fieldId = `${idPrefix}-${key}-${index}`;
 
         return (
           <div key={key} className="form-control">
-            {/* <label
-                  htmlFor={fieldId}
-                  className="form-label"
-                  style={{ textTransform: "capitalize" }}
-                  >
-                    {field.label === "date" || field.label === "Created By" || field.label === "slug" || field.label === "id" ? (
-                      <></>
-                    ): (
-                       <span>{field.label || key}</span>
-                    )}                    
-                </label> */}
                 {!field.hidden && (
                   <label
                     htmlFor={fieldId}
@@ -286,33 +263,6 @@ if (data.end) {
                   hidden={field.hidden}
                   {...register(property)}
                 />
-             ): field.type === "file" ? (
-            <>
-            {existingImage && (
-                    <div
-            key={index}
-            style={{
-              position: "relative",
-              width: "fit-content"
-            }}
-          >
-          <img src={existingImage.full} alt="" style={{width: "80px", marginBottom: ".5rem", border: "2px solid #aeaeaeff"}} ></img>
-          <button
-              type="button"
-              //onClick={() => handleDeleteImage(index, image.full)}
-              className="action-button"
-            >
-              ×
-            </button>
-                    </div>
-                  )}
-              <MyFilePond
-                    aria-label="Upload image"
-                    key={filePondKey}
-                    onFilesChange={(files) => setFile(files[0])}
-                    maxFiles={1}
-                  />
-                  </>
              ): field.type === "checkbox" && (
               <div className="form-checkbox">
                 <input

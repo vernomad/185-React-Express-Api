@@ -20,7 +20,7 @@ export default function useEventById(id: string) {
            .finally(() => setLoading(false));
      
              return () => controller.abort();
-       }, []);
+       }, [id]);
 
   return { events, loading, error };
 }

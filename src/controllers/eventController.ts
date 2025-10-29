@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { deleteImages, saveEventImage } from '../utils/imagesUtil';
 import {generateEventSlug} from '../utils/slugify';
 import path from "path";
+import fs from "fs"
 import fsPromises from "fs/promises";
 import { ZodError } from 'zod';
 
@@ -9,6 +10,11 @@ import {CalendarEventEntry, UpdateCalendarEventSchema} from '../../models/event/
 import { saveEvent } from '../utils/saveEvent';
 
 
+ const dirPath = path.join(process.cwd(),"data");
+// const dirPath =
+//   process.env.NODE_ENV === "production"
+//     ? path.join(__dirname, "..", "..", "..", "data")   // project-root/data
+//     : path.join(__dirname, "..", "..", "data"); // dev: src/data
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
@@ -111,8 +117,6 @@ export const updateEvent = async (req: Request, res: Response) => {
 
     const validatedEvent = UpdateCalendarEventSchema.parse(updatedEvent);
 
-   
-
     events[eventIndex] = validatedEvent
     const filePath = path.join("data/events", "events.json")
     await fsPromises.writeFile(filePath, JSON.stringify(events, null, 2))
@@ -157,10 +161,8 @@ export const getEvent = async (req: Request, res: Response) => {
 export const getEvents = async (req: Request, res: Response) => {
     try {
     const events = await getJsonEvents()
-     if (!events) {
-      return res.status(404).json({ message: "Events not found" });
-    }
-    res.status(200).json(events)
+
+    res.status(200).json(events || [])
     } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error creating event" });
@@ -186,14 +188,14 @@ export const deleteEvent = async (req: Request, res: Response) => {
 
     if (deletedEvent?.slug) {
       const slug = deletedEvent.slug
-      const dir = "clients/public/assets/event"
+      const dir = "event"
       try {
         await deleteImages(slug, dir)
       } catch (err) {
         console.error(`Error deleting images for ${slug}:`, err)
       }
     }
-    const filePath = path.join("data/events", "events.json")
+    const filePath = path.join(dirPath, "events", "events.json")
     await fsPromises.writeFile(filePath, JSON.stringify(sortedEvents, null, 2))
 
     res.status(200).json({
@@ -208,9 +210,25 @@ export const deleteEvent = async (req: Request, res: Response) => {
 }
 
 async function getJsonEvents() {
-  const filePath = path.join("data/events", "events.json")
-  const file = await fsPromises.readFile(filePath, "utf8");
-  const events = JSON.parse(file)
+  const filePath = path.join(dirPath, "events", "events.json")
+//   const file = await fsPromises.readFile(filePath, "utf8");
+//   const events = JSON.parse(file)
 
-return events
+// return events
+try {
+    // Ensure directory exists
+    await fsPromises.mkdir(path.dirname(filePath), { recursive: true });
+
+    // Use fs.existsSync from 'fs', NOT fs/promises
+    if (!fs.existsSync(filePath)) {
+      await fsPromises.writeFile(filePath, "[]", "utf8");
+      return [];
+    }
+
+    const file = await fsPromises.readFile(filePath, "utf8");
+    return JSON.parse(file);
+  } catch (err) {
+    console.error("Error reading events.json:", err);
+    return [];
+  }
 }

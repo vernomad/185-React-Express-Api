@@ -8,19 +8,22 @@ export default function useProjectData() {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
- const controller = new AbortController();
+    const controller = new AbortController();
 
-    fetch(`${baseUrl}/data/cars/cars.json`, { signal: controller.signal, credentials: "include" })
-      .then((res) => res.json())
+    fetch(`${baseUrl}/api/project`, { signal: controller.signal, credentials: "include" })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then((data: ProjectEntry[]) => setProjects(data))
       .catch((err) => {
-      if (err.name !== "AbortError") {
-        setError(err);
-      }
-    })
+        if (err.name !== "AbortError") {
+          setError(err);
+        }
+      })
       .finally(() => setLoading(false));
 
-        return () => controller.abort();
+    return () => controller.abort();
   }, []);
 
   return { projects, loading, error };

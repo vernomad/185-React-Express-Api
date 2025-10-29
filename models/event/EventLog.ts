@@ -71,6 +71,9 @@ export type EventCreateProperties = Exclude<
 EventProperties,
 "id" | "slug"
 >
-export type EventUpdateProperties = EventProperties;
+export type EventUpdateProperties = Exclude< 
+EventProperties,
+"image"
+>
 
 

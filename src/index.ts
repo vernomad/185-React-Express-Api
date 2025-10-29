@@ -46,11 +46,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // Serve static assets
-app.use(express.static(path.join(__dirname, '../../clients/dist')));
-app.use("/assets", express.static(path.join(__dirname, "../../clients/public/assets")));
-app.use("/data", express.static(path.join(__dirname, "../../data")));
+app.use(express.static(path.join(process.cwd(), 'clients/dist')));
+app.use("/assets", express.static(path.join(process.cwd(), 'data/assets')));
 
 
 // API routes
@@ -70,7 +68,7 @@ app.options('*', (req, res) => {
 
 // Serve fallback page for other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../clients/dist', 'index.html'));
+  res.sendFile(path.join(process.cwd(), 'clients/dist', 'index.html'));
 });
 
 connectDB();

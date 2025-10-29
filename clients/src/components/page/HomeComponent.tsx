@@ -58,7 +58,7 @@ export default function HomeComponet() {
       <div className="flex-button">
         
 <TrackCTA 
-  ariaLabel="call to action butto"
+  ariaLabel="call to action button"
   text="Contact our crafts workshop & materialize all🫵car dreams"
   className="contact-btn"
   slug="/home"

@@ -10,8 +10,11 @@ export default function useEventData() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(`${baseUrl}/data/events/events.json`, { signal: controller.signal, credentials: "include" })
-      .then((res) => res.json())
+    fetch(`${baseUrl}/api/event`, { signal: controller.signal, credentials: "include" })
+       .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then((data: CalendarEventEntry[]) => {
         const parsed = data.map((event) => ({
           ...event,
