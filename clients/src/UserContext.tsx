@@ -10,10 +10,16 @@ import { AppState, AppDispatch } from './types/AppActionTypes';
 //   // Add other fields as necessary based on the API response
 // }
 
+export const missingProvider = (method: string) => {
+  console.error(`Missing UserProvider: ${method}`);
+  throw new Error(`Missing UserProvider: ${method}`);
+};
 
-interface UserContext {
+export type UserContextProps = {
   state: AppState;
   dispatch: AppDispatch;
+  setTheme: (theme: "dark" | "light") => void;
+  toggleTheme: () => void;
   //userToken: UserToken | null;
   // isAuthenticated: boolean;
   // user: User | null; 
@@ -23,7 +29,7 @@ interface UserContext {
 }
 
 // Create and export the context
-export const UserContext = createContext<UserContext>({
+export const UserContext = createContext<UserContextProps>({
   state: AppInitialState,
   dispatch: () => {
     console.log("Missing AppProvider");
@@ -34,5 +40,7 @@ export const UserContext = createContext<UserContext>({
   // user: null,
   //setUserToken: () => {},
   // setIsAuthenticated: () => {},
-  toggleDrawer: () => {},
+  setTheme: () => missingProvider('setTheme'),
+  toggleTheme: () => missingProvider('toggleTheme'),
+  toggleDrawer: () => missingProvider('toggleDrawer'),
 });

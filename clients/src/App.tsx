@@ -15,14 +15,15 @@ function App() {
   return (
  
     <UserProvider>
+    <div className="main-grid-bs"  id="main-grid-front">
     <HeaderScrollEffect />
     <Header />
     <Suspense fallback={<h1>Loading...</h1>}>
     <RootRoutes />
     <Footer />
     </Suspense>
-    
     <Drawer contactDetails={contactDetails}  />
+    </div>
     </UserProvider>
 
   )

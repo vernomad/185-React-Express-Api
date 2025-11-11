@@ -1,5 +1,4 @@
-import { AppState } from "./types/AppActionTypes";
-
+import { AppState, Preferences } from "./types/AppActionTypes";
 
 export default {
     user: null,
@@ -7,5 +6,5 @@ export default {
     preferences: {
         theme: 'dark',
         language: 'en'
-      }
+      } as Preferences,
 } satisfies AppState;

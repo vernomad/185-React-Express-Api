@@ -9,9 +9,10 @@ type ImageProps = {
   slug: string;
   thumbUrl: string;
   height?: number;
+  projectName: string;
 };
 
-const ImageLoader = ({ imagUrl, thumbUrl, className, id, slug }: ImageProps) => {
+const ImageLoader = ({ imagUrl, thumbUrl, className, id, slug, projectName }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const divRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -59,6 +60,9 @@ const ImageLoader = ({ imagUrl, thumbUrl, className, id, slug }: ImageProps) => 
         onLoad={handleImageLoad}
         onClick={() => handleClick(id)}
       />
+      <figcaption>
+        <p className="name">{projectName}</p>
+      </figcaption>
     </div>
   );
 };

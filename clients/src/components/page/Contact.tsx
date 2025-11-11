@@ -97,7 +97,11 @@ export default function ContactComponent() {
     <div className="main-grid" id="main-grid-contact">
       <div id="3d-contact" className="container-3d">
         <div id="grid-lines-contact" className="grid-lines ceiling"></div>
-        <div id="grid-lines-contact" className="grid-lines floor"></div>
+        <div id="grid-lines-contact" className="grid-lines floor">
+          <div className="car">
+          <CarIcon />
+        </div>
+        </div>
         <div className="notes">
           {["form", "details", "map"].map((section, index) => (
             <div id={`box-${index + 1}`} key={section} className="wall-box">
@@ -111,7 +115,7 @@ export default function ContactComponent() {
           ))}
         </div>
 
-        <div className="car">
+        <div className="car-wall">
           <CarIcon />
         </div>
         <div className="plate-container-contact">

@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import useProjectBySlug from "../hooks/useProjectBySlug";
 import { useIsMobile } from "../lib/deviceDetect";
 import { usePageView } from "../hooks/usePageView";
+import ErrorBoundary from "../components/ui/ErrorBoundary";
 // import ImageLoader from "../components/image-comp/DetailsImageLoader";
 
 export default function ProjectDetail() {
@@ -12,7 +13,7 @@ export default function ProjectDetail() {
 
   usePageView(`/projects/${slug}`)
 
-  const { projectById } = useProjectBySlug(slug);
+  const { projectById, loading, error } = useProjectBySlug(slug);
   const isMobile = useIsMobile()
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const allImages: string[] = useMemo(() => {
   // State for main image — default to `id` from URL if present
   const [activeImage, setActiveImage] = useState("");
 
-  console.log("Active image", activeImage)
+  //console.log("Active image", activeImage)
 
   useEffect(() => {
     if (!projectById) return;
@@ -61,9 +62,22 @@ const allImages: string[] = useMemo(() => {
     }
   }, [id, projectById, allImages]);
 
-  if (!projectById) return <p>Loading...</p>;
+  if (loading || error || !projectById) {
+    if (loading) {
+      return <div className="error-loading-project-details"><p className="loading-error">Loading...</p></div>
+    }
+    if (error) {
+      return <div className="error-loading-project-details" style={{ height: "100dvh"}}><p className="loading-error">Error: <span className="errors">{error.message}</span></p></div>
+    }
+    if (!projectById) {
+      return null
+    }
+    
+  }
+   
 
   return (
+    <ErrorBoundary>
     <div className="projects-grid">
       <div className="img-wrapper-projects">
         <div className="projects-header-full">
@@ -139,5 +153,6 @@ const allImages: string[] = useMemo(() => {
          
       </div>
     </div>
+    </ErrorBoundary>
   );
 }

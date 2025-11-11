@@ -20,7 +20,7 @@ export default function UserLogo() {
             {user && (
            <>
               {user.id === "hack" ? (
-                   <p>dsfid</p>
+                   <></>
               ): (
                 <>
               <img src={user.image} alt='' />

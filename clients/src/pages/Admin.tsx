@@ -22,11 +22,11 @@ export default function Admin() {
     loading: authLoading,
   } = useAuthVerify(baseUrl);
 
- if (!verified || authError) return <div className="container"><p>Not authenticated <span className="errors">{authError}</span></p></div>;
+ if (!verified || authError) return <div className="admin-errors"><p className="loading-error">Not authenticated <span className="errors">{authError}</span></p></div>;
 
   if (authLoading) return (
-      <div className="container">
-        <h1>Loading...</h1>
+      <div className="admin-errors">
+        <h1 className="loading-error">Loading...</h1>
         
       </div>
     );

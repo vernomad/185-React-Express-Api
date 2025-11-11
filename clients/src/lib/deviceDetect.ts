@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-function detectMobile(): boolean {
+export function detectMobile(): boolean {
   // 1. Chromium client hints
   if (navigator.userAgentData?.mobile) return true;
 
@@ -31,7 +31,7 @@ function detectMobile(): boolean {
   return false;
 }
 
-function getOrientation() {
+export function getOrientation() {
   if (window.matchMedia("(orientation: portrait)").matches) {
     return "portrait";
   } else if (window.matchMedia("(orientation: landscape)").matches) {
@@ -49,7 +49,7 @@ export function useIsMobile() {
   const updateOrientation = () => {
     const full = document.querySelector('.mobile-dialog-img')
     const orientation = getOrientation();
-    console.log("Orientation:", getOrientation());
+   // console.log("Orientation:", getOrientation());
      if (full && isMobile) {
       if (orientation === "landscape") {
         full.classList.add("active");

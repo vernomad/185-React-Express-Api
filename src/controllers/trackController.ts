@@ -126,18 +126,63 @@ export const trackEvents = async (req: Request, res: Response) => {
   }
 };
 
+// export const getEvents = async (req: Request, res: Response) => {
+//   try {
+//     const logPath = path.join(baseDir, "logs", "analytics.log");
+
+//     // Read the entire log file
+//     const content = await fsPromises.readFile(logPath, "utf8");
+//     // const allEvents: TrackingEvent[] =  JSON.parse(content);
+
+//      // Split into lines and filter out empty ones
+//     const lines = content.split("\n").filter(line => line.trim() !== "");
+
+//     // Parse safely
+//     const allEvents: TrackingEvent[] = [];
+//     for (const line of lines) {
+//       try {
+//         allEvents.push(JSON.parse(line));
+//       } catch {
+//         console.warn("Skipping malformed line in analytics.log");
+//       }
+//     }
+
+//     const limit = parseInt(req.query.limit as string) || 50;
+//     const offset = parseInt(req.query.offset as string) || 0;
+//     const type = req.query.type as string | undefined;
+
+//     // Filter by event type if requested
+//     let filtered = allEvents;
+//     if (type && ["view", "click", "hover", "custom"].includes(type)) {
+//       filtered = filtered.filter(e => e.type === type);
+//     }
+
+//     // Paginate
+//     const paginated = filtered.slice(offset, offset + limit);
+
+//     res.status(200).json({
+//       success: true,
+//       total: filtered.length,
+//       events: paginated,
+//     });
+
+//   } catch (error) {
+//     console.error("Analytics log error:", error);
+//     res.status(500).json({ success: false, error: "Failed to read log file" });
+//   }
+// };
+
 export const getEvents = async (req: Request, res: Response) => {
   try {
     const logPath = path.join(baseDir, "logs", "analytics.log");
 
     // Read the entire log file
     const content = await fsPromises.readFile(logPath, "utf8");
-    // const allEvents: TrackingEvent[] =  JSON.parse(content);
 
-     // Split into lines and filter out empty ones
+    // Split into lines and filter out empty ones
     const lines = content.split("\n").filter(line => line.trim() !== "");
 
-    // Parse safely
+    // Parse each line safely
     const allEvents: TrackingEvent[] = [];
     for (const line of lines) {
       try {
@@ -150,14 +195,50 @@ export const getEvents = async (req: Request, res: Response) => {
     const limit = parseInt(req.query.limit as string) || 50;
     const offset = parseInt(req.query.offset as string) || 0;
     const type = req.query.type as string | undefined;
+    const range = req.query.range as string | undefined; // 👈 add support for ?range=
 
-    // Filter by event type if requested
+    // 🔹 Filter by event type
     let filtered = allEvents;
     if (type && ["view", "click", "hover", "custom"].includes(type)) {
       filtered = filtered.filter(e => e.type === type);
     }
 
-    // Paginate
+    // 🔹 Filter by date range
+    if (range && range !== "all") {
+      const now = new Date();
+      let startDate: Date | null = null;
+
+      switch (range) {
+        case "1w":
+          startDate = new Date(now);
+          startDate.setDate(now.getDate() - 7);
+          break;
+        case "2w":
+          startDate = new Date(now);
+          startDate.setDate(now.getDate() - 14);
+          break;
+        case "1m":
+          startDate = new Date(now);
+          startDate.setMonth(now.getMonth() - 1);
+          break;
+        case "6m":
+          startDate = new Date(now);
+          startDate.setMonth(now.getMonth() - 6);
+          break;
+      }
+
+      if (startDate) {
+        filtered = filtered.filter(e => {
+          const eventDate = new Date(e.createdAt);
+          return eventDate >= startDate;
+        });
+      }
+    }
+
+    // 🔹 Sort newest first (optional)
+    filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+    // 🔹 Paginate
     const paginated = filtered.slice(offset, offset + limit);
 
     res.status(200).json({
@@ -171,6 +252,7 @@ export const getEvents = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, error: "Failed to read log file" });
   }
 };
+
 
 
 

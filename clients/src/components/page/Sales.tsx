@@ -12,17 +12,17 @@ export default function SalesComponent() {
     }
   }, []);
   return (
-    <div className="contact-container bg">
-    <div className="container">
-      <h1>Sales Details</h1>
+    <div className="sales-container bg">
+    <div className="sales">
+      <h1>Stuff for Sale</h1>
        
     </div>
-    <div className="container" id="form">
-      <h1>Sales Details</h1>
+    <div className="sales">
+      <h2>Sale Details</h2>
        
     </div>
-    <div className="container">
-      <h1>Sales Details</h1>
+    <div className="sales">
+      <h3>Sales Contact</h3>
        
     </div>
   

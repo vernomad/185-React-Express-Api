@@ -105,7 +105,7 @@ setTimeout(() => {
 
       <button
         type="submit"
-        className="btn-submit-login"
+        className="btn-submit"
         disabled={isPending}
         style={{ opacity: !isMutating ? 1 : 0.7 }}
       >

@@ -51,7 +51,9 @@ export default function Logout() {
         onClick={handleLogout} 
         disabled={isPending}
         style={{ opacity: !isMutating ? 1 : 0.7 }} 
-        className="btn-logout">Logout <SlLogout />
+        className="btn-logout">
+            <span>Logout </span>
+            <SlLogout />
         </button>
         </>
           )

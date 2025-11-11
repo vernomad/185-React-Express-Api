@@ -1,4 +1,5 @@
 
+import RefreshButton from '../buttons/RefreshButton';
 import ImageLoader from './CustomImageLoader'
 import type { ProjectEntry } from "@models/project/ProjectLog";
 
@@ -45,7 +46,7 @@ export default function DiamondGridLoading({projects, error, loading}: Props) {
   // ];
 
    if (loading) return <p className='errors-message'>Loading projects...</p>;
-  if (error) return <p className='errors-message'>Error: {error.message}</p>;
+  if (error) return <p className='errors-message'>Error: {error.message} <RefreshButton /></p>;
 
   return (
     <article className='gallery-diamond'>
@@ -58,6 +59,7 @@ export default function DiamondGridLoading({projects, error, loading}: Props) {
           thumbUrl={data.thumbUrl}
           slug={data.slug}
           id={data.fileName}
+          projectName={data.name}
         />
       ))}
       {diamonData && diamonData.map((data) => (
@@ -69,6 +71,7 @@ export default function DiamondGridLoading({projects, error, loading}: Props) {
           thumbUrl={data.thumbUrl}
           slug={data.slug}
           id={data.fileName}
+          projectName={data.name}
         />
       ))}
        {/* {images.map((image, index) => (
@@ -79,6 +82,7 @@ export default function DiamondGridLoading({projects, error, loading}: Props) {
           thumbUrl={image.thumbUrl}
           slug={image.slug}
           id={image.id}
+          projectName='skdfsldkjf'
         />
       ))} */}
       

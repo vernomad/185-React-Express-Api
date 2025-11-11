@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useTrackEvent } from "./useTrackEvent";
+import { detectMobile } from "../lib/deviceDetect";
 /**
  * Tracks a page view when the component mounts or slug changes.
  * @param slug - the page or route identifier (e.g. "/home" or "/projects/:id")
@@ -47,9 +48,15 @@ export function usePageView(slug: string) {
 /* ---------- Utility functions ---------- */
 
 export function getDeviceMeta() {
-  const width = window.innerWidth;
-  const device =
-    width < 768 ? "mobile" : width < 1024 ? "tablet" : "desktop";
+  const isMobile = detectMobile()
+  
+  let device: "mobile" | "tablet" | "desktop";
+  if (isMobile) {
+    device = "mobile";
+  } else {
+    const width = window.innerWidth;
+    device = width < 1024 ? "tablet" : "desktop";
+  }
 
   // Try to use modern User-Agent Client Hints (available in most browsers)
   const browser =

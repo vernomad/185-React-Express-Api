@@ -1,16 +1,49 @@
 import { Tooltip } from './page/Tooltip';
 import { useUser } from '../useUser';
 import LogoutHacker from './LogoutHacker';
+import { RiAdminLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
 const {user} = useUser()
     return (
-        <footer className="">
+        <footer>
            {user && user.id === "hack" && (
            <LogoutHacker />
           )}
           <div className="social-row">
-           
+                        <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+            <svg 
+                  version="1.0" 
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  // xmlnsXa="http://www.w3.org/1999/xa" 
+                  viewBox="0 0 100 100" 
+                  xmlSpace="preserve"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="6"
+                  strokeMiterlimit="10"
+                  className="icon-base"
+                  data-tooltip-offset={20}
+                  data-tooltip-content="Visit us on Facebook"
+                  data-tooltip-id="footer-tooltip"
+                  aria-label="Our Facebook profile"
+                  >
+                  <g>
+                    <path fill="none" stroke="currentColor" strokeWidth="6" strokeMiterlimit="10" d="M38,95V43.2H27.1v-8.3H38V32c0-8.4,2.4-16.1,9-21
+                    c5.3-4,12.4-5.6,19-5.6c5,0,9.3,0.9,12,1.7l-1.9,8.4c-2.1-0.7-5-1.4-9-1.4C55,14.2,52,22.4,52,31.6v3.2h18.8v8.3H52V95H38z"/>
+                  </g>
+                </svg>
+
+            </a>
             <a
               href="https://github.com/vernomad"
               target="_blank"
@@ -86,38 +119,10 @@ const {user} = useUser()
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
 
- <svg 
-      version="1.0" 
-      id="Layer_1"
-      xmlns="http://www.w3.org/2000/svg" 
-      // xmlnsXa="http://www.w3.org/1999/xa" 
-      viewBox="0 0 100 100" 
-      xmlSpace="preserve"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="6"
-      strokeMiterlimit="10"
-      className="icon-base"
-      data-tooltip-offset={20}
-      data-tooltip-content="Visit us on Facebook"
-      data-tooltip-id="footer-tooltip"
-      aria-label="Our Facebook profile"
-      >
-      <g>
-        <path fill="none" stroke="currentColor" strokeWidth="6" strokeMiterlimit="10" d="M38,95V43.2H27.1v-8.3H38V32c0-8.4,2.4-16.1,9-21
-        c5.3-4,12.4-5.6,19-5.6c5,0,9.3,0.9,12,1.7l-1.9,8.4c-2.1-0.7-5-1.4-9-1.4C55,14.2,52,22.4,52,31.6v3.2h18.8v8.3H52V95H38z"/>
-      </g>
-    </svg>
-
-            </a>
+              <Link to='/admin'>
+            <RiAdminLine className='icon-base alias' />
+           </Link>
           </div>
           <div className="copyright-row">
             <svg

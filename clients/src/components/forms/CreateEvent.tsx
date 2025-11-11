@@ -263,7 +263,7 @@ export default function EventSave() {
        {message && <span>{message}</span>}
        <button
             type="submit"
-            className="btn-submit-login"
+            className="btn-submit"
             disabled={isPending}
             style={{ opacity: !isMutating ? 1 : 0.7 }}
           >

@@ -82,7 +82,9 @@ export default function FetchProjects({ projectData, onProjectFetched }: Project
             imagUrl={selectedProject.mainImage.full || ''}
             thumbUrl={selectedProject.mainImage.thumb || ''}
             slug={selectedProject.slug}
-            id={selectedProject.id} />
+            id={selectedProject.id}
+            projectName={selectedProject.name}
+            />
             {/* <img
               src={selectedProject.mainImage?.full}
               alt={selectedProject.name}

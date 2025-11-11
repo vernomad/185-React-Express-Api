@@ -20,6 +20,7 @@ export default function useSessionId() {
       })
       .then((data) => {
         // Expect the server to respond with something like: { sessionId: "abc123" }
+       
         setSessionId(data.sessionId || null);
       })
       .catch((err) => {

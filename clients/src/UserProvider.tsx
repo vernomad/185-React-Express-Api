@@ -1,8 +1,9 @@
 // UserProvider.tsx
-import { useState, ReactNode, useReducer } from 'react';
+import { useState, useEffect, ReactNode, useReducer, useCallback, useMemo } from 'react';
 import { UserContext } from './UserContext'; 
 import { AppState, AppActionType, AppActionTypes } from './types/AppActionTypes';
 import AppInitialState from './AppInitialState';
+import { initializeState } from './initializeState';
 
 interface UserProviderProps {
   children: ReactNode;
@@ -19,7 +20,7 @@ function AppReducer(
       drawerOpen: action.payload as boolean,
     };
     case AppActionType.SET_PREFERENCES: {
-    const {theme } = action.payload;
+    const { theme } = action.payload;
     localStorage.setItem("185Theme", theme);
 
       // Update classes based on preferences
@@ -54,18 +55,38 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
 
 
-  const toggleDrawer = () => {
+  const toggleDrawer = useCallback(() => {
     dispatch({
       type: AppActionType.SET_DRAWER_VISIBLE,
       payload: !state.drawerOpen
-    })
-  }
+    });
+  }, [state.drawerOpen])
+
+  const setTheme = useCallback((theme: 'dark' | 'light') => {
+    dispatch({ type: AppActionType.SET_PREFERENCES, payload: { ...state.preferences, theme } });
+  }, [state.preferences]);
+
+   const toggleTheme = useCallback(() => {
+    const newTheme = state.preferences.theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  }, [state.preferences.theme, setTheme]);
 
   //  const setUser = (user: AuthenticatedUser | null) => {
   //   dispatch({ type: AppActionType.SET_USER, payload: user });
   // };
 
-const contextValue = { state, dispatch, toggleDrawer, };
+const contextValue = useMemo(() => ({ 
+  state, 
+  dispatch, 
+  toggleDrawer,
+  setTheme,
+  toggleTheme,
+   }), [state, dispatch, toggleDrawer, setTheme, toggleTheme]);
+
+   useEffect(() => {
+     console.log("Initializing state");
+     initializeState(dispatch)
+   }, [])
 
   if (loading) {
     return <div className='container'>Loading...</div>;

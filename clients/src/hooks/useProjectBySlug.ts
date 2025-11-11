@@ -13,7 +13,10 @@ export default function useProjectBySlug(slug: string) {
     const controller = new AbortController();
 
     fetch(`${baseUrl}/api/project/${slug}`, { signal: controller.signal, credentials: "include" })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then((data: ProjectEntry) => setProject(data))
       .catch((err) => {
         if (err.name !== "AbortError") setError(err);

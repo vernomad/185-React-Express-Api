@@ -36,20 +36,23 @@ const Drawer = ({contactDetails}: Props) => {
   };
  // Adding global passive touch event listeners
  useEffect(() => {
-  const handleTouchStart = (event: TouchEvent) => {
+  const handleTouchStart = () => {
     // Your touch start handling logic here
-    console.log('Touch Start:', event);
+   // console.log('Touch Start:', event);
   };
 
   const handleTouchMove = (event: TouchEvent) => {
 
-      console.log('Touch moved:', event);
+      //console.log('Touch moved:', event);
       // Logic for touch move event
       // For example, tracking the position of the touch point
       const touch = event.touches[0];
-      const touchX = touch.clientX;
-      const touchY = touch.clientY;
-      console.log(`Touch position: (${touchX}, ${touchY})`);
+       const { clientX, clientY } = touch;
+       void clientX;
+      void clientY;
+      // const touchX = touch.clientX;
+      // const touchY = touch.clientY;
+      // console.log(`Touch position: (${touchX}, ${touchY})`);
     };
   
 

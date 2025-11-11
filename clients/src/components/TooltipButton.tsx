@@ -33,7 +33,7 @@ export default function ToolButton({
 
   return (
     <button type="button"
-    className="btn-multi"
+    className="btn-tooltip"
     >
       {iconWithProps}
       <Tooltip id={id} className="theme-tooltip" offset={offset} />

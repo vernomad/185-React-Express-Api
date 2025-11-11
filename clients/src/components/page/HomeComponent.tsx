@@ -1,17 +1,24 @@
 import useSessionId from "../../hooks/useSessionId";
 import { usePageView } from "../../hooks/usePageView";
 import TrackCTA from "../buttons/TrackCta";
+import { useState } from "react";
+import RefreshButton from "../buttons/RefreshButton";
 
 
 export default function HomeComponet() {
    const { sessionId, loading, error } = useSessionId();
 
+ const [crash, setCrash] = useState(false);
 
+  if (crash) {
+    throw new Error("Manually triggered crash!");
+  }
   usePageView("/home");
   
 
-  if (loading) return <p>Loading session...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  // if (loading) return <p className="loading-error">Loading session...</p>;
+  //  if (error) return <p className="loading-error">Error: {error.message}</p>;
+  //  if (!error) throw new Error("error in component");
   
   console.log("SessionId", sessionId)
   return (
@@ -33,15 +40,21 @@ export default function HomeComponet() {
         <meta name="twitter:description" content="A really cool page description." />
         <meta name="twitter:image" content="https://example.com/images/preview.jpg" />
     </Helmet>     */}
-    
-    <div className="main-grid bg" id="main-grid-front">
+    {/* <div id="3d-contact" className="container-3d">
+            <div id="grid-lines-contact" className="grid-lines ceiling"></div>
+            <div id="grid-lines-contact" className="grid-lines floor">
+              <div className="main__title hero__title">
+      <h1><span>185</span>Restorations</h1>  
+      </div>
+            </div>
+   </div> */}
     <section className="hero">
+       {loading ? (<p>Loading session...</p>
+      ): (
+        <>
       <div className="hero-image">
       <div id="top" className="img-wrapper"></div>
-      {/* <div id="middle" className="img-wrapper"></div>
-      <div id="bottom" className="img-wrapper"></div> */}
      </div>
-      {/* <div className="filterImage"></div> */}
       <div className="main__title hero__title">
       <h1><span>185</span>Restorations</h1>  
       </div>
@@ -51,11 +64,12 @@ export default function HomeComponet() {
           <li><span>NAME<span>:</span></span> 185 Restorations</li>
           <li><span>LOCATION<span>:</span></span> Christchurch</li>
           <li><span>DESC<span>:</span></span> We are your one stop true specialists for classic & custom car restorations...</li>
+           <button onClick={() => setCrash(true)}>💥 Crash Component</button>
         </ul>
 
       </div>
       </div>   
-      <div className="flex-button">
+      <div className="call-to-action-wrapper">
         
 <TrackCTA 
   ariaLabel="call to action button"
@@ -66,10 +80,15 @@ export default function HomeComponet() {
   clickTarget="contact-button"
 />
         </div>       
-      
+      {error && (<p id="home-error" className="loading-error errors">Error:{error.message}
+        <RefreshButton />
+      </p>)}
+      </>
+      )}
     </section>
+     
     {/* <Services /> */}
-  </div>
+  
   </>
   )
 }

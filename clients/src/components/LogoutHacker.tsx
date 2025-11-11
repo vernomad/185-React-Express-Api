@@ -20,7 +20,7 @@ export default function LogoutHacker() {
         try {
             setIsFetching(true);
             setError("")
-            const res = await fetch("/api/auth/logout", {
+            const res = await fetch("/api/auth/logoutHacker", {
                 method: "DELETE",
                 headers: {
                     'content-type': 'application/json',
@@ -49,7 +49,7 @@ export default function LogoutHacker() {
         onClick={handleLogout} 
         disabled={isPending}
         style={{ opacity: !isMutating ? 1 : 0.7 }} 
-        className=""><span>dsfid</span>
+        className="dsfid"><span>dsfid</span>
         </button>
         </>
           )

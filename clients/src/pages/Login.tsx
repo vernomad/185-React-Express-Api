@@ -7,6 +7,7 @@ import { useUser } from "../useUser";
 import { AppActionType } from "../types/AppActionTypes";
 import { baseUrl } from "../lib/baseUrl";
 import { usePageView } from "../hooks/usePageView";
+import ErrorBoundary from "../components/ui/ErrorBoundary";
 
 const validationSchema = z.object({
     username: z.string().min(3, { message: 'Name is required' }),
@@ -90,9 +91,9 @@ console.log("Data-login:", data)
     {
       path: "",
       element: (
-       
-        <div className="container">
-          <div className="wrapper-login">         
+       <ErrorBoundary>
+        <div className="container-login">
+          <div className="login-wrapper">         
           <h1 className="hidden">Admin login</h1>
           
           <form id="form-login" onSubmit={handleSubmit(onSubmit)}>
@@ -105,17 +106,17 @@ console.log("Data-login:", data)
           <div className="form-control">
                     <input type="text"  placeholder="Your username" autoComplete='off' className={`input input-bordered w-full ${errors.username ? 'input-error' : ''
                         }`}  {...register("username")} />
-                    {errors.username && <span>{errors.username?.message}</span>}
+                    {errors.username && <span className="errors">{errors.username?.message}</span>}
                     </div>
                     <div className="form-control">
                     <input type="password" placeholder="Secret word" autoComplete='off' className={`input input-bordered w-full ${errors.password ? 'input-error' : ''
                         }`} {...register('password')} />
-                    {errors.password && <span>{errors.password?.message}</span>}
+                    {errors.password && <span className="errors">{errors.password?.message}</span>}
                     </div>
           
             <button 
             type="submit" 
-            className="btn-submit-login" 
+            className="btn-submit" 
             disabled={isPending}
             style={{ opacity: !isMutating ? 1 : 0.7 }}>
               Admin-login
@@ -123,6 +124,7 @@ console.log("Data-login:", data)
           </form>
         </div>
         </div>  
+        </ErrorBoundary>
       ),
     },
   ]);

@@ -1,5 +1,10 @@
 import { Dispatch } from "react";
 
+export interface Preferences {
+    theme: 'light' | 'dark';
+    language: 'en' | 'es' | 'fr' | 'de';
+  }
+
 export type User = {
   id: string;
   username: string;
@@ -14,11 +19,6 @@ export interface AuthenticatedUser extends User {
 export interface UnauthenticatedUser extends User {
   isLoggedIn: false;
 }
-
-export interface Preferences {
-    theme: 'light' | 'dark';
-    language: 'en' | 'es' | 'fr' | 'de';
-  }
 
 export interface AppState {
     user: AuthenticatedUser | UnauthenticatedUser | null;

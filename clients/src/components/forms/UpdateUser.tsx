@@ -295,7 +295,7 @@ export default function UpdateUserForm({ user, token}: Props) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="btn-submit-login"
+        className="btn-submit"
       >
         Update User
       </button>

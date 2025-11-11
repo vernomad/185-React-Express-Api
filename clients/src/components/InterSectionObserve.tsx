@@ -19,7 +19,7 @@ export default function MySectObserve({ children, targetContainers }: MySectObse
           return;
         }
 
-        console.log(entry.target);
+        //console.log(entry.target);
         entry.target.classList.add('intersecting');
         observer.unobserve(entry.target);
       });

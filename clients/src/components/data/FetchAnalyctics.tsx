@@ -9,14 +9,17 @@ export default function FetchAnalytics() {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState("");
   const [total, setTotal] = useState(0);
+  const [dateRange, setDateRange] = useState("all");
 
-   const limit = 50;
+
+   const limit = 15;
 
    useEffect(() => {
     setLoading(true);
     setError(null);
 
-    fetch(`/api/analytics?limit=${limit}&offset=${page * limit}&type=${filter}`)
+    fetch(`/api/analytics?limit=${limit}&offset=${page * limit}&type=${filter}&range=${dateRange}`)
+
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -28,15 +31,21 @@ export default function FetchAnalytics() {
       })
       .catch(() => setError("Network error"))
       .finally(() => setLoading(false));
-  }, [page, filter]);
+  }, [page, filter, dateRange]);
 
   const totalPages = Math.ceil(total / limit);
 
   return (
     <div className="p-6">
       <h3>Events</h3>
+      {loading && <p>Loading...</p>}
+      {error && <p className="errors">{error}</p>}
 
-      <div>
+      {!loading && !error && (
+        <>
+          <div className="table-wrapper">
+                    <caption className="analytics-caption">
+        <div>
         <label htmlFor="filter">Filter by type:</label>
         <select
           id="filter"
@@ -53,38 +62,51 @@ export default function FetchAnalytics() {
           <option value="hover">Hover</option>
           <option value="custom">Custom</option>
         </select>
-      </div>
-
-      {loading && <p>Loading...</p>}
-      {error && <p className="errors">{error}</p>}
-
-      {!loading && !error && (
-        <>
-          <div className="table-wrapper">
+     </div>
+     <div>
+  <label htmlFor="range">Date range:</label>
+  <select
+    id="range"
+    value={dateRange}
+    onChange={(e) => {
+      setPage(0);
+      setDateRange(e.target.value);
+    }}
+    className="select-analytics"
+  >
+    <option value="all">All</option>
+    <option value="1w">Previous week</option>
+    <option value="2w">Previous 2 weeks</option>
+    <option value="1m">Previous month</option>
+    <option value="6m">Previous 6 months</option>
+  </select>
+</div>
+              </caption>
             <table className="table-analytics">
+      
               <thead>
                 <tr>
-                  <th className="text-left p-2">Type</th>
-                  <th className="text-left p-2">Slug</th>
-                  <th className="text-left p-2">IP</th>
-                  <th className="text-left p-2">Country</th>
-                  <th className="text-left p-2">User</th>
-                  <th className="text-left p-2">Time</th>
-                  <th className="text-left p-2">Btn</th>
+                  <th className="text-left t-clr">Type</th>
+                  <th className="text-left t-clr">Slug</th>
+                  <th className="text-left t-clr">IP</th>
+                  <th className="text-left t-clr">Country</th>
+                  <th className="text-left t-clr">User</th>
+                  <th className="text-left t-clr">Time</th>
+                  <th className="text-left t-clr">Btn</th>
                 </tr>
               </thead>
               <tbody>
                 {events.map((e: TrackingEvent, i) => (
                   <tr key={i}>
-                    <td className="p-2">{e.type}</td>
-                    <td className="p-2">{e.slug}</td>
-                    <td className="p-2">{e.ip}</td>
-                    <td className="p-2"> {e.geo
+                    <td className="t-clr"data-cell="type">{e.type}</td>
+                    <td className="t-clr"data-cell="slug">{e.slug}</td>
+                    <td className="t-clr"data-cell="ip">{e.ip}</td>
+                    <td className="t-clr"data-cell="country"> {e.geo
                       ? `${e.geo.city}, ${e.geo.region}, ${e.geo.country}`
                       : "—"}</td>
-                    <td className="p-2">{e.userId || "—"}</td>
-                    <td className="p-2">{new Date(e.createdAt).toLocaleString()}</td>
-                     <td className="p-2">{e.type === "click" && e.meta && "clickTarget" in e.meta
+                    <td className="t-clr" data-cell="user">{e.userId || "—"}</td>
+                    <td className="t-clr" data-cell="time">{new Date(e.createdAt).toLocaleString()}</td>
+                     <td className="t-clr" data-cell="btn">{e.type === "click" && e.meta && "clickTarget" in e.meta
                         ? e.meta.clickTarget
                         : "—"}</td>
                   </tr>

@@ -143,9 +143,13 @@ export default function ContactForm() {
   }, [updateMessage, formError])
 
      return (
-        <form onSubmit={handleSubmit(onSubmit)} id='form-contact' className='form-contact'>
-          {formError && <span className="errors">{formError}</span>}
+
+      <>
+      {formError && <span className="errors">{formError}</span>}
           {updateMessage && <span>{updateMessage}</span>}
+      
+        <form onSubmit={handleSubmit(onSubmit)} id='form-contact' className='form-contact'>
+          
 
           {Object.entries(emailInputs).map(([key, field], index) => {
             const property = key as EmailProperties
@@ -213,6 +217,7 @@ export default function ContactForm() {
         disabled={isPending}
         >{isMutating ? "Sending message…" : "Send"}</button>
         </form>
+        </>
      )
 
 }

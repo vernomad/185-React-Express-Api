@@ -5,6 +5,7 @@ import DiamondGridLoading from "../components/image-comp/diamond-grid-loading.ts
 // import { TooltipWrapper } from "react-tooltip";
 import useProjectData from "../hooks/useProjectData.ts";
 import { usePageView } from "../hooks/usePageView.ts";
+import ErrorBoundary from "../components/ui/ErrorBoundary.tsx";
 
 export default function Projects() {
  const {projects, error, loading} = useProjectData()
@@ -15,8 +16,14 @@ usePageView('/projects')
     {
       path: "",
       element: (
-        <div className="main-grid bg" id="main-grid-projects">
-        <div className="container-projects">
+        <ErrorBoundary>
+        <div className="main-grid" id="main-grid-projects">
+          <div id="3d-contact" className="container-3d">
+            <div id="grid-lines-contact" className="grid-lines ceiling"></div>
+            <div id="grid-lines-contact" className="grid-lines floor">
+            </div>
+  
+        
        <div className="diamond-grid">
           <DiamondGridLoading error={error} loading={loading} projects={projects} />
 
@@ -27,9 +34,9 @@ usePageView('/projects')
           </div>
           </div>
           
-          
+           </div>
           </div>
-          </div>
+       </ErrorBoundary>
         //    <ViewTransitionLayout clsName="projects" id="from">
         //   <ProjectsComponent />
         // </ViewTransitionLayout>

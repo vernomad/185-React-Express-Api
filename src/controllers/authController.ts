@@ -101,7 +101,7 @@ export const registerUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
   const { username, password } = req.body;
   let passExt = password;
-  console.log("Req.body:", req.body);
+  // console.log("Req.body:", req.body);
  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
  const displayIp = ip === '::1' ? '127.0.0.1' : ip;
 
@@ -269,6 +269,11 @@ export const logoutUser = async (req: Request, res: Response) => {
     maxAge: 0, // Set to 0 to immediately expire the cookie
     path: "/", // Match the original cookie's path
   });
+
+  res.status(200).json({ message: "Logged out!" });
+};
+export const logoutHacker = async (req: Request, res: Response) => {
+
   res.cookie("accessHackToken", "", {
     httpOnly: true,
     sameSite: "strict", // Match the original cookie's attribute

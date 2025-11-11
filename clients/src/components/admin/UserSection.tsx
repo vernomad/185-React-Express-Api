@@ -18,7 +18,7 @@ export default function UserSection({  userToken, verified }: Props) {
     loading,
   } = useUserData( userToken, verified );
 
-if (loading) return <p>Loading...</p>;
+if (loading) return <p className="">Loading...</p>;
 if (error) return <p>Failed: {error}</p>;
   return (
     <div className="admin-container">

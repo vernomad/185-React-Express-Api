@@ -1,5 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import HomeComponet from "../components/page/HomeComponent";
+import ErrorBoundary from "../components/ui/ErrorBoundary";
 // import { useUser } from '../useUser';
 // import Admin from "./Admin";
 
@@ -13,7 +14,7 @@ export default function Home() {
   const routes = useRoutes([
     {
       path: "",
-      element: <HomeComponet />,
+      element: <ErrorBoundary><HomeComponet /></ErrorBoundary>,
     },
     // {
     //   path: "",
