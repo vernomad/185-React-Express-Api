@@ -161,7 +161,7 @@ export const getEvent = async (req: Request, res: Response) => {
 export const getEvents = async (req: Request, res: Response) => {
     try {
     const events = await getJsonEvents()
-
+    
     res.status(200).json(events || [])
     } catch (err) {
     console.error(err);

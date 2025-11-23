@@ -34,7 +34,7 @@ const ProjectInputs: Record<
   duration: {
     type: "checkboxes",
     label: "duration",
-   options: ProjectDuration.options as ProjectDurationType[],
+    options: ProjectDuration.options as ProjectDurationType[],
   },
   mainImage: {
     type: "file",

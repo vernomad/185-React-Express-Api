@@ -4,9 +4,14 @@ import useProjectBySlug from "../hooks/useProjectBySlug";
 import { useIsMobile } from "../lib/deviceDetect";
 import { usePageView } from "../hooks/usePageView";
 import ErrorBoundary from "../components/ui/ErrorBoundary";
+import RefreshButton from "../components/buttons/RefreshButton";
+import ImageLoader from "../components/image-comp/ThumbnailLoader";
+import { useUser } from "../useUser";
+// import ImageLoader from "../components/image-comp/CustomImageLoader";
 // import ImageLoader from "../components/image-comp/DetailsImageLoader";
 
 export default function ProjectDetail() {
+  const {state} = useUser()
   const { id, project } = useParams(); // slug + filename
   const slug = project ?? "";
   const navigate = useNavigate();
@@ -42,10 +47,13 @@ const allImages: string[] = useMemo(() => {
   return Array.from(new Set(images));
 }, [projectById]);
 
-  //console.log("All images main", allImages)
-
+ // console.log("All images main", allImages)
   // State for main image — default to `id` from URL if present
   const [activeImage, setActiveImage] = useState("");
+
+  const black = state.preferences.theme === "dark" ? "#000" : "#191684"
+  const white = state.preferences.theme === "light" ? "#000" : "#ccc"
+
 
   //console.log("Active image", activeImage)
 
@@ -67,7 +75,10 @@ const allImages: string[] = useMemo(() => {
       return <div className="error-loading-project-details"><p className="loading-error">Loading...</p></div>
     }
     if (error) {
-      return <div className="error-loading-project-details" style={{ height: "100dvh"}}><p className="loading-error">Error: <span className="errors">{error.message}</span></p></div>
+      return <div className="error-loading-project-details" style={{ height: "100dvh"}}>
+        <p className="loading-error errors">Error: <span>{error.message}</span>
+        <RefreshButton />
+        </p></div>
     }
     if (!projectById) {
       return null
@@ -75,7 +86,6 @@ const allImages: string[] = useMemo(() => {
     
   }
    
-
   return (
     <ErrorBoundary>
     <div className="projects-grid">
@@ -97,9 +107,6 @@ const allImages: string[] = useMemo(() => {
         {/* Main Image */}
         <div className="projects-wrapper-full">
           <div className="view-wrapper">
-            {/* <ImageLoader 
-            className="full"
-            /> */}
             <button onClick={openModal} className="action-button open-button" type="button">view</button>
             <img
               className="full"
@@ -125,25 +132,34 @@ const allImages: string[] = useMemo(() => {
 
         {/* Thumbnails */}
         <div className="thumbnail-gallery">
-          {allImages.map((image, index) => {
-            const fileName = image.split("/").pop() ?? "";
+          {projectById.images?.map((img) => {
+            const fileName = img.full.split("/").pop() ?? "";
             return (
-              <div className="thumbnail-item"
+              <div className="thumbnail-thumbnail"
               key={fileName}
-              style={{
-                border: activeImage === image ? "2px solid black" : "1px solid #ccc",
+               style={{
+                border: activeImage === img.full ? `2px solid ${black}` : `1px solid ${white}`,
               }}
               >
-                <picture>
-               <img
+              
+               <ImageLoader
+          imageUrl={img.full}
+          thumbUrl={img.thumb}
+          onClick={() => {
+            setActiveImage(img.full);
+            navigate(`/projects/${slug}/${fileName}`);
+          }}
+         
+        />
+               {/* <img
                 src={image}
                 alt={`Thumbnail ${index}`}
                 onClick={() => {
                   setActiveImage(image);
                   navigate(`/projects/${slug}/${fileName}`); // update URL with clicked file
                 }}
-              />
-                </picture>
+              /> */}
+           
               
               </div>
             );

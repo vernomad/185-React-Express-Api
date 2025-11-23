@@ -2,7 +2,7 @@ import { MongoClient, Db } from 'mongodb';
 import serverConfig from './serverConfig'
 let db: Db | null = null; // Cache the database instance
 
-export const connectDB = async (): Promise<Db> => {
+export const connectDB = async (): Promise<Db | null> => {
   try {
     if (db) {
       // Return the cached database instance if already connected
@@ -13,10 +13,10 @@ export const connectDB = async (): Promise<Db> => {
     await client.connect();
     db = client.db(serverConfig.DB_NAME);
 
-    console.log('MongoDB connected successfully');
     return db;
   } catch (err) {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
+    console.error('❌ MongoDB connection error:', err);
+    console.warn('⚠️ Continuing without database connection...');
+    return null; // don't exit; return null
   }
 };

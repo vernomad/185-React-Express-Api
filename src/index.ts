@@ -71,11 +71,19 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'clients/dist', 'index.html'));
 });
 
-connectDB();
-
 app.use(errorHandler);
 
+// --- Startup logic ---
+(async () => {
+  const db = await connectDB();
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+  if (!db) {
+    console.warn('⚠️ Database not connected. Some features may not work.');
+  } else {
+    console.log('✅ Mongodb connected!');
+  }
+})();
+
+  app.listen(port, () => {
+    console.log(`🚀 Server running at http://localhost:${port}`);
+  });

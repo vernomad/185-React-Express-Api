@@ -1,4 +1,4 @@
-// -------- Event Metadata --------
+/* ---------- Matching backend meta types ---------- */
 export type ViewMeta = {
   device?: string;
   geo?: string;
@@ -6,13 +6,14 @@ export type ViewMeta = {
   os?: string;
   target?: string;
   referrer?: string;
+  durationOnPage?: number; 
 };
 
 export type ClickMeta = {
   location: string;
   device?: string;
   clickTarget: string;
-  durationOnPage?: number;
+  timeSincePageLoad?: number;
 };
 
 export type HoverMeta = {
@@ -20,33 +21,42 @@ export type HoverMeta = {
   duration: number;
 };
 
-export type CustomMeta = Record<string, string | number | boolean>;
-
-// -------- Aggregated Stats --------
-export type AggregatedStat = {
-  views: number;
-  authenticated: number;
-  uniqueSessions: number;
-  meta: {
-    device: Record<string, number>;
-    geo: Record<string, number>;
-    browser: Record<string, number>;
-    os: Record<string, number>;
-    target: Record<string, number>;
-  };
+export type GeoData = {
+  country: string;
+  region: string;
+  city: string;
+  lat: number;
+  lon: number;
+  timezone?: string;
 };
 
-// -------- Tracking Event --------
-export type TrackingEventType = "click" | "view" | "hover" | "custom";
+export type CustomMeta = Record<string, string | number | boolean>;
+
+/* ---------- Union for event types ---------- */
+export type TrackingEventType = "view" | "click" | "hover" | "custom";
+
+/* ---------- Type mapping for event-specific metadata ---------- */
+type EventMetaMap = {
+  view: ViewMeta;
+  click: ClickMeta;
+  hover: HoverMeta;
+  custom: CustomMeta;
+};
+
+/* ---------- Generic input for a tracking event ---------- */
+export type TrackEventInput<T extends TrackingEventType = TrackingEventType> = {
+  type: T;
+  slug: string;
+  meta?: EventMetaMap[T];
+};
 
 export type TrackingEvent = {
-  id: string;
   type: TrackingEventType;
   slug: string; // e.g. "/home", "button-cta", "hero-section"
-  sessionId: string;
+  sessionId: string | null;
   userId?: string | null;
   createdAt: string; // ISO string is safer for file logging
-  ip: string;
+  ip?: string;
+  geo?: GeoData;
   meta?: ViewMeta | ClickMeta | HoverMeta | CustomMeta;
-  isAuthenticated?: boolean;
 };

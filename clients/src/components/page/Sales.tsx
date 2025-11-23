@@ -1,6 +1,9 @@
+import { usePageView } from "../../hooks/usePageView";
 import { useEffect } from "react";
 
 export default function SalesComponent() {
+
+ usePageView('/4sale')
 
    useEffect(() => {
     const hash = window.location.hash;

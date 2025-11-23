@@ -73,7 +73,7 @@ export function useUserData(
       });
 
       if (!res.ok) {
-        setError("You are not authorized to view this data.");
+        setError("Something has gone wrong with the connection to database, try refreshing browser and if problem persists contact i t support..");
       } else {
         const raw = await res.json();
 

@@ -10,6 +10,7 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enNZ } from "date-fns/locale/en-NZ"; // or en-US if you prefer
 import useEventData from "../../hooks/useEventData";
 import { CalendarEventEntry } from "@models/event/EventLog";
+import RefreshButton from "../buttons/RefreshButton";
 
 const locales = {
   "en-NZ": enNZ,
@@ -113,7 +114,10 @@ export default function EventComponent() {
 
           <div className="event-wall-upper">
             <span>Select for view on wall</span>
-            {error && (<div className="loading-error">Error: <p className="errors">{error.message}</p></div>)}
+            {error && (<div className="loading-error errors">Error: 
+              <p className="errors">{error.message}
+                <RefreshButton />
+                </p></div>)}
           </div>
           {wallEvent && (
             <div className="event-wall" key={wallEvent.id}>
@@ -158,102 +162,3 @@ export default function EventComponent() {
     </>
   );
 }
-
-// import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-// import { format, parse, startOfWeek, getDay } from "date-fns";
-// import { enNZ } from "date-fns/locale";
-// import "react-big-calendar/lib/css/react-big-calendar.css";
-// import { useState } from "react";
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { z } from "zod";
-
-// const locales = { "en-NZ": enNZ };
-// const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
-
-// export const CalendarEventSchema = z.object({
-//   title: z.string().min(2),
-//   description: z.string().optional(),
-//   date: z.string(),
-//   start: z.date(),
-//   end: z.date(),
-//   location: z.string().optional(),
-// });
-
-// type EventFormValues = z.infer<typeof CalendarEventSchema>;
-
-// export default function CalendarWithForm() {
-//   const [selectedSlot, setSelectedSlot] = useState<{ start: Date; end: Date } | null>(null);
-
-//   const { register, handleSubmit, setValue, reset, watch } = useForm<EventFormValues>({
-//     resolver: zodResolver(CalendarEventSchema),
-//     defaultValues: {
-//       title: "",
-//       description: "",
-//       date: new Date().toISOString().slice(0, 10),
-//       start: new Date(),
-//       end: new Date(),
-//       location: "",
-//     },
-//   });
-
-//   const onSubmit = (data: EventFormValues) => {
-//     console.log("Submitting event:", data);
-//     reset();
-//     setSelectedSlot(null);
-//   };
-
-//   const handleSelectSlot = (slotInfo: { start: Date; end: Date }) => {
-//     setSelectedSlot(slotInfo);
-
-//     const startLocal = new Date(slotInfo.start.getTime() - slotInfo.start.getTimezoneOffset() * 60000);
-//     const endLocal = new Date(slotInfo.end.getTime() - slotInfo.end.getTimezoneOffset() * 60000);
-
-//     setValue("start", startLocal);
-//     setValue("end", endLocal);
-//     setValue("date", startLocal.toISOString().slice(0, 10));
-//   };
-
-//   return (
-//     <div>
-//       <h2>Event Calendar</h2>
-//       <Calendar
-//         localizer={localizer}
-//         events={[]}
-//         selectable
-//         onSelectSlot={handleSelectSlot}
-//         startAccessor="start"
-//         endAccessor="end"
-//         style={{ height: 500, marginBottom: "2rem" }}
-//       />
-
-//       {selectedSlot && (
-//         <form onSubmit={handleSubmit(onSubmit)}>
-//           <input {...register("title")} placeholder="Title" required />
-//           <br />
-//           <textarea {...register("description")} placeholder="Description" />
-//           <br />
-//           <input {...register("date")} type="date" />
-//           <br />
-//           <input
-//             {...register("start")}
-//             type="datetime-local"
-//             value={watch("start").toISOString().slice(0, 16)}
-//             readOnly
-//           />
-//           <br />
-//           <input
-//             {...register("end")}
-//             type="datetime-local"
-//             value={watch("end").toISOString().slice(0, 16)}
-//             readOnly
-//           />
-//           <br />
-//           <input {...register("location")} placeholder="Location" />
-//           <br />
-//           <button type="submit">Save Event</button>
-//         </form>
-//       )}
-//     </div>
-//   );
-// }

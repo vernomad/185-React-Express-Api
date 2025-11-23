@@ -56,6 +56,10 @@ export const registerUser = async (req: Request, res: Response) => {
 
   try {
     const usersCollection = await UserLogs;
+     if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
 
     const usernameExists = await usersCollection.findOne({
       username: user.username,
@@ -125,7 +129,12 @@ export const loginUser = async (req: Request, res: Response) => {
 
   const usersCollection = await UserLogs;
 
-  const foundUser = await usersCollection.findOne({ username: username });
+ if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
+
+const foundUser = await usersCollection.findOne({ username });
 
   if (!foundUser) {
     // throw new ErrorWithStatusCode("User not found", 401);
@@ -294,6 +303,10 @@ export const deleteUser = async (req: Request, res: Response) => {
 
   try {
     const usersCollection = await UserLogs;
+     if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
     const result = await usersCollection.deleteOne({
       _id: new ObjectId(String(_id)),
     });

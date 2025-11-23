@@ -10,7 +10,11 @@ export type UserLogWithObjectId = WithId<UserLogEntry>;
 
 const initializeUserLogs = async () => {
     const db = await connectDB(); // Connects to DB
-    return db.collection<UserLogEntry>("users");
-  };
+     if (!db) {
+  console.error("No database connection");
+  return null
+     }
+  return db.collection<UserLogEntry>("users");
+};
 
   export const UserLogs = initializeUserLogs(); 

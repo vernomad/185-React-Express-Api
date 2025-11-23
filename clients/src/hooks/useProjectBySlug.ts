@@ -14,7 +14,7 @@ export default function useProjectBySlug(slug: string) {
 
     fetch(`${baseUrl}/api/project/${slug}`, { signal: controller.signal, credentials: "include" })
       .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}. Contact it support...`);
         return res.json();
       })
       .then((data: ProjectEntry) => setProject(data))

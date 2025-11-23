@@ -4,36 +4,37 @@ import { Legend as RechartsLegend } from "recharts";
 import { useUser } from "../../useUser";
 import CustomTooltip from "../page/CustomTooltip";
 
-export type GeoCounts = Record<string, number>;
-
-type GeoChartProps = {
-  geoCounts: GeoCounts;
+type DurationPieProps = {
+  buckets: Record<string, number>;
    isAnimationActive?: boolean;
 };
 
-export function GeoChart({ geoCounts, isAnimationActive = true }: GeoChartProps) {
-const {state} = useUser()
+export function DurationBucketChart({ buckets, isAnimationActive = true }: DurationPieProps) {
+  const { state } = useUser();
   const Legend = RechartsLegend as unknown as React.FC;
 
-  // Convert to Recharts data format
-  const data = Object.entries(geoCounts).map(([country, count]) => ({
-    name: country,
+  const data = Object.entries(buckets).map(([label, count]) => ({
+    name: label,
     value: count,
   }));
 
-  // Color palette
-  const COLORS = ["#1c78c8ff", "#00C49F", "#FFBB28", "#FF8042", "#AF19FF"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A"];
+  const STROKE =
+    state.preferences.theme === "dark" ? "#cececeff" : "#1b1b1bff";
 
-  const STROKE = state.preferences.theme === "dark" ? "#cececeff" : "#1b1b1bff"
- 
-
-  if (data.length === 0) {
-    return <p style={{ textAlign: "center", marginTop: "2rem", color: "#5f7a87ff" }}>No geo data available</p>;
-  }
-
+  if (data.every((d) => d.value === 0)) {
   return (
-    <div id="chart-geo">
-      <h3 style={{ textAlign: "left" }}>Events by Country</h3>
+    <h3 style={{ textAlign: "center" }}>
+      No duration data available
+    </h3>
+  );
+}
+
+//  console.log("data duration buckets", data)
+  return (
+    <div>
+       <h3 style={{ textAlign: "left" }}>Time on Page</h3>
+
       <PieChart style={{ width: '100%', maxWidth: '400px', maxHeight: '300px', aspectRatio: 1 }} responsive>
               
               <Pie 
@@ -48,22 +49,21 @@ const {state} = useUser()
               >
           {data.map((_, index) => (
             <Cell
-              key={`cell-${index}`}
+              key={index}
               fill={COLORS[index % COLORS.length]}
               stroke={STROKE}
             />
           ))}
         </Pie>
-        {/* ✅ Recharts components are fine to render directly */}
-        <>
-          <Tooltip 
+
+         <Tooltip 
   content={<CustomTooltip />}  
   wrapperStyle={{ outline: "none" }}
 />
-  
-          <Legend />
-        </>
+        <Legend />
       </PieChart>
     </div>
   );
 }
+
+

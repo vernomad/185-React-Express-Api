@@ -15,11 +15,15 @@ export default function ProjectSection() {
 const {projects, loading, error} = useProjectData()
 
 if (loading) return <p>Loading...</p>;
-if (error) return <p>Failed: {error.message}</p>;
+// if (error) return <p>Failed: {error.message}</p>;
 
   return (
     <div className="admin-container">
       <h2>Projects</h2>
+       {!loading && error ? (
+      <p>Failed: <span className="errors">{error.message}</span></p>
+     ): (
+      <>
       <ShowButton
       showWhat="Show project"
       content={
@@ -47,6 +51,8 @@ if (error) return <p>Failed: {error.message}</p>;
               </div>
             }
           />
+    </>
+     )}
     </div>
   );
 }

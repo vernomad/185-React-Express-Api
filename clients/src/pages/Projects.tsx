@@ -6,6 +6,7 @@ import DiamondGridLoading from "../components/image-comp/diamond-grid-loading.ts
 import useProjectData from "../hooks/useProjectData.ts";
 import { usePageView } from "../hooks/usePageView.ts";
 import ErrorBoundary from "../components/ui/ErrorBoundary.tsx";
+import { BlurLoadProvider } from "../components/image-comp/BlurLoadComponent.tsx";
 
 export default function Projects() {
  const {projects, error, loading} = useProjectData()
@@ -45,12 +46,13 @@ usePageView('/projects')
     {
       path: ":project/:id", 
       element: (
+        <BlurLoadProvider>
         <div className="main-grid bg" id="main-grid-projects">
         <ViewTransitionLayout clsName="projects" id="to">
           <ProjectDetail />
         </ViewTransitionLayout>
         </div>
-
+        </BlurLoadProvider>
       ),
     },
   ]);

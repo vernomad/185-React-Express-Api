@@ -62,23 +62,25 @@ export default function Admin() {
       </div>
       
         {/* {userError && <span className="errors">{userError}</span>} */}
-        {authUser && hasPermission(authUser, "create:users") && (
+        {authUser && hasPermission(authUser, "create:users") ? (
         <UserSection verified={verified}  userToken={userToken ?? ""} />    
+        ): (
+          <div className="admin-container">
+            <h2>Users</h2>
+          </div>
         )} 
-        {authUser && hasPermission(authUser, "create:projects") && (
+        {authUser && hasPermission(authUser, "create:projects") ? (
         <ProjectSection />
+        ): (
+           <div className="admin-container">
+            <h2>Projects</h2>
+          </div>
         )} 
         {authUser && hasPermission(authUser, "create:events") && (
         <EventSection />
          )} 
          <AnalyticsSection />
       <div className="admin-secret">
-        {/* <ShowButton 
-        showWhat="Show secret"
-        content={
-          <img src="/assets/img/600.jpg" />
-        }
-        /> */}
         <ShowCtaButton
         showWhat="ShowSecret"
          content={

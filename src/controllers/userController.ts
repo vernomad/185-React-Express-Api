@@ -8,6 +8,10 @@ const { id }= req.params
   console.log("ID:", id)
 try {
   const usersCollection = await UserLogs; 
+   if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
   const user = await usersCollection.findOne({_id: new ObjectId(id)})
 
   if (user) {
@@ -25,12 +29,16 @@ try {
 export const getUsers = async (req: Request, res: Response) => {
   try {
     const usersCollection = await UserLogs; // Resolve the collection
-
+ if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
      // Convert aggregate cursor to an array
      const users = await usersCollection.aggregate<UserLogEntryWithId>([]).toArray();
 
      // Remove the password field from each user
      const safeUsers = users.map(({  ...safeUser }) => safeUser);
+     
  
      res.json({ users: safeUsers });
   } catch (err) {

@@ -12,7 +12,7 @@ export default function useEventData() {
 
     fetch(`${baseUrl}/api/event`, { signal: controller.signal, credentials: "include" })
        .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}. Contact i t support...`);
         return res.json();
       })
       .then((data: CalendarEventEntry[]) => {

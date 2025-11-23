@@ -13,7 +13,10 @@ export default function useProjectById(id: string) {
     const controller = new AbortController();
 
     fetch(`${baseUrl}/api/project/${id}`, { signal: controller.signal, credentials: "include" })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}. Contact i t support...`);
+        return res.json();
+      })
       .then((data: ProjectEntry) => setProject(data))
       .catch((err) => {
         if (err.name !== "AbortError") setError(err);

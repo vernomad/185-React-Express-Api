@@ -85,10 +85,6 @@ export default function FetchProjects({ projectData, onProjectFetched }: Project
             id={selectedProject.id}
             projectName={selectedProject.name}
             />
-            {/* <img
-              src={selectedProject.mainImage?.full}
-              alt={selectedProject.name}
-            /> */}
           </picture>
           )}
           

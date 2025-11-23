@@ -12,7 +12,7 @@ export default function useProjectData() {
 
     fetch(`${baseUrl}/api/project`, { signal: controller.signal, credentials: "include" })
       .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}. Problems reading data - contact i t support...`);
         return res.json();
       })
       .then((data: ProjectEntry[]) => setProjects(data))

@@ -16,6 +16,10 @@ export const updateUser = async (req: Request, res: Response) => {
 
   try {
     const usersCollection = await UserLogs; // Connect to collection
+     if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
       // ✅ remove _id to avoid overwriting it
     delete updateData._id;
     //  console.log("Update-api", updateData)
@@ -86,6 +90,10 @@ export const updateUser = async (req: Request, res: Response) => {
       }
 
     const usersCollection = await UserLogs; 
+     if (!usersCollection) {
+  console.warn("⚠️ Database unavailable, skipping user lookup");
+  return res.status(503).json({ error: "Database unavailable" });
+}
     const result = await usersCollection.deleteOne({ _id: new ObjectId(id) });
 
       if (result.deletedCount === 0) {

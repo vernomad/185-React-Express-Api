@@ -19,12 +19,14 @@ export default function UserSection({  userToken, verified }: Props) {
   } = useUserData( userToken, verified );
 
 if (loading) return <p className="">Loading...</p>;
-if (error) return <p>Failed: {error}</p>;
+// if (error) return <p>Failed: {error}</p>;
   return (
     <div className="admin-container">
       <h2>Users</h2>
-     
-        <>
+     {!loading && error ? (
+      <p>Failed: <span className="errors">{error}</span></p>
+     ): (
+       <>
           <ShowButton
             showWhat="Show users"
             content={
@@ -55,6 +57,8 @@ if (error) return <p>Failed: {error}</p>;
             }
           />
         </>
+     )}
+       
     </div>
   );
 }

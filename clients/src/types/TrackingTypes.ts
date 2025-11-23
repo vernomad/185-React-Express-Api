@@ -1,4 +1,21 @@
 /* ---------- Matching backend meta types ---------- */
+export type Meta = {
+  os?: string;
+  device?: string;
+  browser?: string;
+  durationOnPage?: number;
+  [key: string]: unknown; // catch-all for other meta fields
+};
+
+export type PageStats = {
+  slug: string;
+  views: number;
+  clicks: number;
+  hovers: number;
+  custom: number;
+  total: number;
+};
+
 export type ViewMeta = {
   device?: string;
   geo?: string;
@@ -6,13 +23,14 @@ export type ViewMeta = {
   os?: string;
   target?: string;
   referrer?: string;
+  durationOnPage?: number; 
 };
 
 export type ClickMeta = {
   location: string;
   device?: string;
   clickTarget: string;
-  durationOnPage?: number;
+  timeSincePageLoad?: number;
 };
 
 export type HoverMeta = {

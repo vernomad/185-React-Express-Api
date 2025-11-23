@@ -11,24 +11,23 @@ export default function EventSection() {
   const [event, setEvent ] = useState<EventUpdateType | null>(null)
   const {events, loading, error} = useEventData()
 
-// if (loading) return <p>Loading...</p>;
- if (error) return <p>Failed: {error.message}</p>;
+if (loading) return <p>Loading...</p>;
+//  if (error) return <p>Failed: {error.message}</p>;
 
   return (
     <div className="admin-container">
       <h2>Events</h2>
+      {!loading && error ? (
+        <p className="errors">Failed: {error.message}</p>
+      ): (
+        <>
           <ShowButton
             showWhat="Show events"
             content={
               <div className="button-wrapper">
-                {loading ? (
-                  <p>Loading...</p>
-                ): error  ? (
-                  <p>Failed: {error}</p>
-                ): (
+         
                   <FetchEvents calendarData={events} onEventFetched={setEvent} />
-                )}
-               
+       
               </div>
             }
           />
@@ -50,6 +49,9 @@ export default function EventSection() {
               </div>
             }
           />
+        </>
+      )}
+        
     </div>
   );
 }

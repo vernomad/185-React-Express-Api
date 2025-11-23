@@ -43,27 +43,8 @@ export default function ProjectsComponet() {
         }}
       />
       </div>
-       {/* <div className="image-wrapper">
-      <img
-        id="thumbnail"
-        className="thumbnail"
-        width={200}
-        height={250}
-        src="./assets/dash.jpg"
-        onClick={() => handleClick("dash")}
-        alt="Project 2"
-          style={{
-          cursor: "pointer",
-          width: "200px",
-        }}
-      />
-      </div> */}
       </div>
       </div>
-   
-
-  
-    {/* <Services /> */}
   </div>
   )
 }
