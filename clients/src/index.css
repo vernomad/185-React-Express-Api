@@ -503,7 +503,7 @@ code {
 .sidebar {
   display: none;
   width: 100vw;
-  min-height: calc((var(--vh) * 100) - 4rem);
+  min-height: calc(100vh - 4rem);
   background-color: hsl(var(--foreG));
 
   justify-content: center;
@@ -648,7 +648,7 @@ input[type="checkbox"] {
 }
 .sales-container {
   gap: 1rem;
-  min-height: calc((var(--vh) * 100) - var(--header-height) - 50px);
+  min-height: calc(100vh - var(--header-height) - 50px);
   display: flex;
   flex-direction: column;
 
@@ -666,7 +666,7 @@ input[type="checkbox"] {
 }
 .container-login {
   place-content: center;
-  height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 .login-wrapper {
   grid-column: 1 / -1;
@@ -808,8 +808,8 @@ input[type="checkbox"] {
 .hero {
   --title-row: calc(100px + 2rem);
   grid-row: 2;
-  height: calc((var(--vh) * 100) - var(--header-height));
-  grid-template-rows: calc((var(--vh) * 100) - var(--header-height) - var(--title-row)) var(
+  height: calc(100vh - var(--header-height));
+  grid-template-rows: calc(100vh - var(--header-height) - var(--title-row)) var(
       --title-row
     );
   grid-auto-flow: row dense;
@@ -889,7 +889,7 @@ input[type="checkbox"] {
 .background img {
   position: relative;
   width: 100%;
-  height: calc(var(--vh) * 100);
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
 }
@@ -937,7 +937,7 @@ input[type="checkbox"] {
   grid-auto-flow: dense;
   align-items: center;
   align-content: center;
-  min-height: calc((var(--vh) * 100) - 7rem);
+  min-height: calc(100vh - 7rem);
 }
 
 #about-section-2 {
@@ -1316,7 +1316,7 @@ h1 span {
   }
   .hero {
     --title-row: calc(70px + 2rem);
-    grid-template-rows: calc((var(--vh) * 100) - var(--header-height) - var(--title-row) - 100px
+    grid-template-rows: calc(100vh - var(--header-height) - var(--title-row) - 100px
       ) var(--title-row) 100px;
   }
   .hero__body {
@@ -1655,11 +1655,11 @@ textarea::placeholder {
   text-align: center;
 }
 .admin-errors {
-  height: calc((var(--vh) * 100) - var(--header-height) - 50px);
+  height: calc(100vh - var(--header-height) - 50px);
 }
 .error-boundary {
   display: inline;
-  min-height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   margin: auto;
   color: hsl(var(--foreG) / .8)
 }
@@ -1671,7 +1671,7 @@ textarea::placeholder {
 }
 .error-loading-project-details {
   display: grid;
-  height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 .btn-refresh {
   display: flex;
@@ -2235,7 +2235,7 @@ form .response-message {
   --_grid-sq: 150px;
   width: 100%;
   height: var(--_grid-height);
-  min-height: calc(var(--vh) * 100);
+  min-height: 100vh;
   perspective: 500px;
   /* perspective: calc(var(--_grid-height) * 0.75); */
   overflow: hidden;
@@ -2438,7 +2438,7 @@ form .response-message {
     bottom: 0;
   }
   .container-3d {
-    --_grid-sq: calc(var(--vh) * 100);
+    --_grid-sq: 100vh;
   }
   .ceiling {
     top: -120px;
