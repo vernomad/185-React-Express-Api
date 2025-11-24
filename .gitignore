@@ -5,3 +5,5 @@ txt
 
 # Ignore everything in the clients folder
 /clients/node_modules
+
+/data/logs/

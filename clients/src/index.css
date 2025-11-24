@@ -15,126 +15,104 @@
   color-scheme: light dark;
   interpolate-size: allow-keywords;
 
-  --gray-50: 0 0 95;
-  --gray-75: 0 0 90;
-  --gray-100: 0 0 86;
-  --gray-200: 0 0 77;
-  --gray-300: 0 0 68;
-  --gray-400: 0 0 59;
-  --gray-500: 0 0 50;
-  --gray-600: 0 0 41;
-  --gray-700: 0 0 32;
-  --gray-800: 0 0 23;
-  --gray-900: 0 0 14;
-  --gray-950: 0 0 5;
+  --gray-50: 0 0% 95%;
+  --gray-75: 0 0% 90%;
+  --gray-100: 0 0% 86%;
+  --gray-200: 0 0% 77%;
+  --gray-300: 0 0% 68%;
+  --gray-400: 0 0% 59%;
+  --gray-500: 0 0% 50%;
+  --gray-600: 0 0% 41%;
+  --gray-700: 0 0% 32%;
+  --gray-800: 0 0% 23%;
+  --gray-900: 0 0% 14%;
+  --gray-950: 0 0% 5%;
 
-  --yellow-50: 60 100 95;
-  --yellow-100: 0 100 86;
-  --yellow-200: 0 100 77;
-  --yellow-300: 0 100 68;
-  --yellow-400: 0 100 59;
-  --yellow-500: 0 100 50;
-  --yellow-600: 0 100 41;
-  --yellow-700: 0 100 32;
-  --yellow-800: 0 100 23;
-  --yellow-900: 0 100 14;
-  --yellow-950: 0 100 5;
+  --yellow-50: 60 100% 95%;
+  --yellow-100: 0 100% 86%;
+  --yellow-200: 0 100% 77%;
+  --yellow-300: 0 100% 68%;
+  --yellow-400: 0 100% 59%;
+  --yellow-500: 0 100% 50%;
+  --yellow-600: 0 100% 41%;
+  --yellow-700: 0 100% 32%;
+  --yellow-800: 0 100% 23%;
+  --yellow-900: 0 100% 14%;
+  --yellow-950: 0 100% 5%;
 
- /* --blue-50:  240 100 9;
---blue-100:  240 100 8;
---blue-200:  240 100 7;
---blue-300:  240 100 6;
---blue-400:  240 100 5;
---blue-500:  240 100 5;
---blue-600:  240 100 4;
---blue-700:  240 100 3;
---blue-800:  240 100 2;
---blue-900:  240 100 1;
---blue-950:  240 100 5; */
 
---blue-50: 216 100 95;
---blue-100: 216 100 86;
---blue-200: 216 100 77;
---blue-300: 216 100 68;
---blue-400: 216 100 58;
---blue-500: 216 100 50;
---blue-600: 216 100 41;
---blue-700: 216 100 32;
---blue-800: 216 100 23;
---blue-900: 215 100 14;
---blue-950: 217 100 5;
+--blue-50: 216 100% 95%;
+--blue-100: 216 100% 86%;
+--blue-200: 216 100% 77%;
+--blue-300: 216 100% 68%;
+--blue-400: 216 100% 58%;
+--blue-500: 216 100% 50%;
+--blue-600: 216 100% 41%;
+--blue-700: 216 100% 32%;
+--blue-800: 216 100% 23%;
+--blue-900: 215 100% 14%;
+--blue-950: 217 100% 5%;
 
-/* --grayblue-50: 214 28 95;
---grayblue-100: 213 29 84;
---grayblue-200: 212 29 77;
---grayblue-300: 213 29 68;
---grayblue-400: 213 29 59;
---grayblue-500: 213 29 50;
---grayblue-600: 212 29 41;
---grayblue-700: 213 29 32;
---grayblue-800: 214 29 23;
---grayblue-900: 211 30 14;
---grayblue-950: 214 28 5; */
 
---grayblue-50: 220 14 96;
---grayblue-100: 220 13 87;
---grayblue-200: 218 14 78;
---grayblue-300: 221 14 69;
---grayblue-400: 221 14 60;
---grayblue-500: 219 14 50;
---grayblue-600: 219 14 41;
---grayblue-700: 219 14 32;
---grayblue-800: 221 14 23;
---grayblue-900: 222 14 14;
---grayblue-950: 225 15 5;
+--grayblue-50: 220 14% 96%;
+--grayblue-100: 220 13% 87%;
+--grayblue-200: 218 14% 78%;
+--grayblue-300: 221 14% 69%;
+--grayblue-400: 221 14% 60%;
+--grayblue-500: 219 14% 50%;
+--grayblue-600: 219 14% 41%;
+--grayblue-700: 219 14% 32%;
+--grayblue-800: 221 14% 23%;
+--grayblue-900: 222 14% 14%;
+--grayblue-950: 225 15% 5%;
 
---purple-50: 265 76 95;
---purple-100: 265 75 86;
---purple-200: 265 74 77;
---purple-300: 265 74 68;
---purple-400: 265 74 59;
---purple-500: 265 74 50;
---purple-600: 265 74 41;
---purple-700: 265 74 35;
---purple-800: 265 74 23;
---purple-900: 265 75 14;
---purple-950: 265 76 5;
+--purple-50: 265 76% 95%;
+--purple-100: 265 75% 86%;
+--purple-200: 265 74% 77%;
+--purple-300: 265 74% 68%;
+--purple-400: 265 74% 59%;
+--purple-500: 265 74% 50%;
+--purple-600: 265 74% 41%;
+--purple-700: 265 74% 35%;
+--purple-800: 265 74% 23%;
+--purple-900: 265 75% 14%;
+--purple-950: 265 76% 5%;
 
-  --brown-50: 0 60 95;
-  --brown-100: 0 58 86;
-  --brown-200: 0 59 77;
-  --brown-300: 0 60 68;
-  --brown-400: 0 59 59;
-  --brown-500: 0 59 50;
-  --brown-600: 0 59 41;
-  --brown-700: 0 60 32;
-  --brown-800: 0 59 23;
-  --brown-900: 0 58 14;
-  --brown-950: 0 60 5;
+  --brown-50: 0 60% 95%;
+  --brown-100: 0 58% 86%;
+  --brown-200: 0 59% 77%;
+  --brown-300: 0 60% 68%;
+  --brown-400: 0 59% 59%;
+  --brown-500: 0 59% 50%;
+  --brown-600: 0 59% 41%;
+  --brown-700: 0 60% 32%;
+  --brown-800: 0 59% 23%;
+  --brown-900: 0 58% 14%;
+  --brown-950: 0 60% 5%;
 
---cieling-50: 195 31 95;
---cieling-100: 193 32 86;
---cieling-200: 194 33 77;
---cieling-300: 193 33 68;
---cieling-400: 194 33 59;
---cieling-500: 194 33 50;
---cieling-600: 194 33 42;
---cieling-700: 194 33 32;
---cieling-800: 194 33 23;
---cieling-900: 193 32 14;
---cieling-950: 195 31 5;
+--cieling-50: 195 31% 95%;
+--cieling-100: 193 32% 86%;
+--cieling-200: 194 33% 77%;
+--cieling-300: 193 33% 68%;
+--cieling-400: 194 33% 59%;
+--cieling-500: 194 33% 50%;
+--cieling-600: 194 33% 42%;
+--cieling-700: 194 33% 32%;
+--cieling-800: 194 33% 23%;
+--cieling-900: 193 32% 14%;
+--cieling-950: 195 31% 5%;
 
-  --theme-50: 27 36 95;
-  --theme-100: 28 33 86;
-  --theme-200: 27 34 77;
-  --theme-300: 26 34 68;
-  --theme-400: 26 34 59;
-  --theme-500: 26 34 50;
-  --theme-600: 26 34 42;
-  --theme-700: 26 34 32;
-  --theme-800: 26 34 23;
-  --theme-900: 25 33 14;
-  --theme-950: 27 36 5;
+  --theme-50: 27 36% 95%;
+  --theme-100: 28 33% 86%;
+  --theme-200: 27 34% 77%;
+  --theme-300: 26 34% 68%;
+  --theme-400: 26 34% 59%;
+  --theme-500: 26 34% 50%;
+  --theme-600: 26 34% 42%;
+  --theme-700: 26 34% 32%;
+  --theme-800: 26 34% 23%;
+  --theme-900: 25 33% 14%;
+  --theme-950: 27 36% 5%;
 
   --clr-ft-dark: hsl(0, 0%, 70%);
   /* --clr-ft-light: rgb(211, 211, 211); */
@@ -525,7 +503,7 @@ code {
 .sidebar {
   display: none;
   width: 100vw;
-  min-height: calc(100dvh - 4rem);
+  min-height: calc((var(--vh) * 100) - 4rem);
   background-color: hsl(var(--foreG));
 
   justify-content: center;
@@ -670,7 +648,7 @@ input[type="checkbox"] {
 }
 .sales-container {
   gap: 1rem;
-  min-height: calc(100dvh - var(--header-height) - 50px);
+  min-height: calc((var(--vh) * 100) - var(--header-height) - 50px);
   display: flex;
   flex-direction: column;
 
@@ -688,7 +666,7 @@ input[type="checkbox"] {
 }
 .container-login {
   place-content: center;
-  height: calc(100dvh - var(--header-height) - var(--footer-height));
+  height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
 }
 .login-wrapper {
   grid-column: 1 / -1;
@@ -830,8 +808,8 @@ input[type="checkbox"] {
 .hero {
   --title-row: calc(100px + 2rem);
   grid-row: 2;
-  height: calc(100dvh - var(--header-height));
-  grid-template-rows: calc(100dvh - var(--header-height) - var(--title-row)) var(
+  height: calc((var(--vh) * 100) - var(--header-height));
+  grid-template-rows: calc((var(--vh) * 100) - var(--header-height) - var(--title-row)) var(
       --title-row
     );
   grid-auto-flow: row dense;
@@ -911,7 +889,7 @@ input[type="checkbox"] {
 .background img {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
   object-fit: cover;
   z-index: -1;
 }
@@ -959,7 +937,7 @@ input[type="checkbox"] {
   grid-auto-flow: dense;
   align-items: center;
   align-content: center;
-  min-height: calc(100dvh - 7rem);
+  min-height: calc((var(--vh) * 100) - 7rem);
 }
 
 #about-section-2 {
@@ -1338,8 +1316,7 @@ h1 span {
   }
   .hero {
     --title-row: calc(70px + 2rem);
-    grid-template-rows: calc(
-        100dvh - var(--header-height) - var(--title-row) - 100px
+    grid-template-rows: calc((var(--vh) * 100) - var(--header-height) - var(--title-row) - 100px
       ) var(--title-row) 100px;
   }
   .hero__body {
@@ -1597,7 +1574,7 @@ h1 span {
 @media (max-width: 660px) {
   .form-contact {
     grid-template-columns: 1fr;
-    padding: 2rem;
+    padding: 2rem 0;
   }
   .btn-contact {
     grid-column: span 1;
@@ -1678,11 +1655,11 @@ textarea::placeholder {
   text-align: center;
 }
 .admin-errors {
-  height: calc(100dvh - var(--header-height) - 50px);
+  height: calc((var(--vh) * 100) - var(--header-height) - 50px);
 }
 .error-boundary {
   display: inline;
-  min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+  min-height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
   margin: auto;
   color: hsl(var(--foreG) / .8)
 }
@@ -1694,7 +1671,7 @@ textarea::placeholder {
 }
 .error-loading-project-details {
   display: grid;
-  height: calc(100dvh - var(--header-height) - var(--footer-height));
+  height: calc((var(--vh) * 100) - var(--header-height) - var(--footer-height));
 }
 .btn-refresh {
   display: flex;
@@ -2258,7 +2235,7 @@ form .response-message {
   --_grid-sq: 150px;
   width: 100%;
   height: var(--_grid-height);
-  min-height: 100dvh;
+  min-height: calc(var(--vh) * 100);
   perspective: 500px;
   /* perspective: calc(var(--_grid-height) * 0.75); */
   overflow: hidden;
@@ -2461,7 +2438,7 @@ form .response-message {
     bottom: 0;
   }
   .container-3d {
-    --_grid-sq: 100dvh;
+    --_grid-sq: calc(var(--vh) * 100);
   }
   .ceiling {
     top: -120px;
