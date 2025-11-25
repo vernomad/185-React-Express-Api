@@ -91,7 +91,7 @@
 .img-wrapper-projects {
     display: grid;
     grid-template-columns: 28% 72%;
-    grid-template-rows: 55dvh 25dvh auto;
+    grid-template-rows: 55vh 25vh auto;
     /* min-height: 70dvh 20dvh auto; */
     align-items: start;
     justify-items: center;
@@ -133,7 +133,7 @@
 }
 @media (max-width: 650px) {
   .img-wrapper-projects {
-    grid-template-rows: 55dvh 30dvh auto;
+    grid-template-rows: 55vh 30vh auto;
   }
 }
 @media (max-width: 502px) {
