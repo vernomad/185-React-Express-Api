@@ -459,31 +459,36 @@ footer {
 footer a {
   color: hsl(var(--foreG));
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
 }
 .copyright-row {
-  grid-column: 1 / 5;
+  grid-column: 1 / 4;
   font-size: 0.7rem;
   margin-left: 0.3rem;
-  padding-top: .4rem;
+  padding-top: .7rem;
   opacity: .9;
+}
+@media(max-width: 449px) {
+  /* .copyright-row {
+  padding-top: 0rem;
+  padding-bottom: .5rem;
+} */
 }
 .copyright-row svg {
   padding:  0.2rem;
   color: hsl(var(--foreG));
 }
 .social-row {
-  grid-column: 6 / -1;
+  grid-column: 4 / -1;
   grid-row: 1;
   display: flex;
   justify-content: flex-end;
   gap: 0.7rem;
-  padding-bottom: 0.5rem;
   margin-right: 0.7rem;
 
   svg {
-    width: 25px;
-    height: 15px;
+    width: 30px;
+    height: 25px;
     outline: 2px solid var(--theme-clr-font);
     outline-offset: 2px;
     border-radius: 2px;
@@ -1815,7 +1820,7 @@ form .response-message {
 }
 .title-wrapper-projects {
   grid-column: 1 / -1;
-  grid-row: 3;
+  grid-row: 2;
   display: flex;
   width: 100%;
   align-items: flex-end;
@@ -1830,18 +1835,21 @@ form .response-message {
 
 .diamond-grid {
   grid-column: 1 /-1;
+  grid-row: 2 / 3;
   display: grid;
+  gap: 3rem;
   place-items: center;
   justify-content: center;
   width: 100%;
-  grid-template-rows: minmax(7rem, 1fr) 55vh minmax(100px, 1fr);
+  /* grid-template-rows: minmax(7rem, 1fr) 55vh minmax(100px, 1fr); */
+  grid-template-rows: auto 60px;
 }
 
 .gallery-diamond {
   --gap: 0.25rem;
   --scale: 0.8;
   --img-size: calc(100px - 0.5rem / 2);
-  grid-row: 2;
+  grid-row: 1;
   display: grid;
   grid-template-columns: repeat(6, 100px);
   grid-template-rows: repeat(3, 100px);
@@ -1919,17 +1927,17 @@ form .response-message {
   }
 } */
 
-/* @media (max-width: 503px) {
+@media (max-width: 503px) {
 .gallery-diamond {
   rotate: 90deg;
   margin-left: 100px;
-  margin-bottom: 50px;
+  margin-top: 7rem;
 
   .img-container img {
     rotate: -90deg;
   }
 }
-} */
+}
 /* @media (max-width: 600px) {
   .gallery-diamond {
   --scale: .7;

@@ -18,7 +18,6 @@ usePageView('/projects')
       path: "",
       element: (
         <ErrorBoundary>
-        <div className="main-grid" id="main-grid-projects">
           <div id="3d-contact" className="container-3d">
             <div id="grid-lines-contact" className="grid-lines ceiling"></div>
             <div id="grid-lines-contact" className="grid-lines floor">
@@ -36,7 +35,7 @@ usePageView('/projects')
           </div>
           
            </div>
-          </div>
+       
        </ErrorBoundary>
         //    <ViewTransitionLayout clsName="projects" id="from">
         //   <ProjectsComponent />
