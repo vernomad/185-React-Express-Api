@@ -8,7 +8,6 @@ type Prop = {
 };
 
 export default function UpdateEvent({ earlyEventInjection }: Prop) {
-  const [expanded, setExpanded] = useState(false);
   const [event, setEvent] = useState<EventUpdateType | null>(null)
 
    useEffect(() => {
@@ -19,18 +18,11 @@ export default function UpdateEvent({ earlyEventInjection }: Prop) {
 
   return (
     <>
-      {expanded && (
-              <div className="button-wrapper">
               {!event ? (
                 <FetchEventForm onEventFetched={setEvent} />
               ) : (
                 <UpdateEventForm event={event} />
               )}
-              </div>
-            )}
-       <button className={`readmore ${expanded ? "expanded" : ""}`} type="button" onClick={() => setExpanded((prev) => !prev)}>
-        {expanded ? "Show less" : "Update event"}
-      </button>
     </>
   );
 }

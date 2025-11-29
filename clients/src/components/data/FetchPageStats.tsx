@@ -3,6 +3,8 @@ import { PageStats } from "../../types/TrackingTypes";
 type AnalyticProps = {
     sortedPages: PageStats[];
   
+    filter: string;
+    setFilter: React.Dispatch<React.SetStateAction<string>>;
 
     dateRange: string;
     setDateRange: React.Dispatch<React.SetStateAction<string>>;
@@ -10,6 +12,8 @@ type AnalyticProps = {
 
 export default function FetchPageStats({
     sortedPages,
+    filter,
+    setFilter,
     dateRange,
     setDateRange,
 
@@ -20,6 +24,24 @@ export default function FetchPageStats({
               <h3>Page Statistics</h3>
           <div className="table-wrapper">
                  <div className="analytics-caption">
+                   <div>
+                <label htmlFor="filter-1">Filter by type:</label>
+                <select
+                  id="filter-1"
+                  value={filter}
+                  onChange={(e) => {
+                    // setPage(0); // reset to first page
+                    setFilter(e.target.value);
+                  }}
+                  className="select-analytics"
+                >
+                  <option value="">All</option>
+                  <option value="view">View</option>
+                  <option value="click">Click</option>
+                  <option value="hover">Hover</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
               <div>
                 <label htmlFor="range-2">Date range:</label>
                 <select
@@ -52,7 +74,7 @@ export default function FetchPageStats({
                 </thead>
         
                 <tbody>
-                  {sortedPages.map((p, i) => (
+                     {sortedPages.map((p, i) => (
                     <tr key={i}>
                       <td className="t-clr" data-cell="Slug">{p.slug}</td>
                       <td className="t-clr" data-cell="Views">{p.views}</td>
@@ -61,7 +83,7 @@ export default function FetchPageStats({
                       <td className="t-clr" data-cell="Custom">{p.custom}</td>
                       <td className="t-clr" data-cell="Total">{p.total}</td>
                     </tr>
-                  ))}
+                  ))}         
                 </tbody>
               </table>
             </div>

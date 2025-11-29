@@ -8,7 +8,6 @@ interface Prop {
 }
 
 export default function UpdateProjects({earlyProjectInjection}: Prop) {
-  const [expanded, setExpanded] = useState(false);
   const [project, setProject] = useState<ProjectEditType| null>(null);
 
   
@@ -19,18 +18,13 @@ export default function UpdateProjects({earlyProjectInjection}: Prop) {
   }, [earlyProjectInjection]);
   return (
     <>
-      {expanded && (
-        <div className="button-wrapper">
+
         {!project ? (
           <FetchProjectForm  onProjectFetched={setProject}/>
         ) : (
           <UpdateProjectForm  project={project} />
         )}
-        </div>
-      )}
-      <button className={`readmore ${expanded ? "expanded" : ""}`} type="button" onClick={() => setExpanded((prev) => !prev)}>
-        {expanded ? "Show less" : "Update project"}
-      </button>
+
     </>
   );
 }

@@ -31,8 +31,17 @@ if (loading) return <p>Loading...</p>;
               </div>
             }
           />
-          <UpdateEvent earlyEventInjection={event}/>
+          <ShowButton
+            showWhat="Update events"
+            content={
+              <div className="button-wrapper">
          
+                <UpdateEvent earlyEventInjection={event}/>
+       
+              </div>
+            }
+          />
+
           <ShowButton
           showWhat="Create event"
           content={

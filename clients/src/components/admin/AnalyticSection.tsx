@@ -18,7 +18,6 @@ import { ClickButtonChart } from "../ui/ClickButtonChart";
 export default function AnalyticsSection() {
   const {
     events,
-    loading,
     error,
     total,
     page,
@@ -36,7 +35,6 @@ export default function AnalyticsSection() {
     durationBuckets: durationBuckets,
     sessions: sessions,
     events: ChartEvents,
-    loading: chartLoading,
     error: chartError,
     filter: chartFilter,
     setFilter: setChartFilter,
@@ -71,7 +69,7 @@ export default function AnalyticsSection() {
               </h4>
             </div>
             <div className="button-wrapper">
-              {!loading && !error && (
+              {!error ? (
                 <FetchEvents
                   events={events}
                   total={total}
@@ -83,6 +81,8 @@ export default function AnalyticsSection() {
                   dateRange={dateRange}
                   setDateRange={setDateRange}
                 />
+              ): (
+                <p className="errors">Failed: {error}</p>
               )}
             </div>
           </>
@@ -92,13 +92,17 @@ export default function AnalyticsSection() {
         showWhat="Show page stats"
         content={
           <div className="button-wrapper">
-            {!loading && !error && (
+            {!error ? (
               <FetchPageStats
+                filter={filter}
+                setFilter={setFilter}
                 sortedPages={sortedPages}
                 dateRange={dateRange}
                 setDateRange={setDateRange}
               />
-            )}
+            ): (
+                <p className="errors">Failed: {error}</p>
+              )}
           </div>
         }
       />
@@ -147,7 +151,7 @@ export default function AnalyticsSection() {
                 </select>
               </div>
             </div>
-            {!chartLoading && !chartError && sessions.length > 0 && (
+            {!chartError && sessions.length > 0 && (
               <div className="chart-grid">
                 <DeviceChart events={sessions} />
 

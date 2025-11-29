@@ -1,6 +1,7 @@
 import { TrackingEvent } from "../../types/TrackingTypes";
 
 type AnalyticProps = {
+
   events: TrackingEvent[];
   total: number;
   limit: number;
@@ -24,8 +25,6 @@ export default function FetchEvents({
   setDateRange,
 }: AnalyticProps) {
  
-  // const [dateRange, setDateRange] = useState("all");
-
 
   const totalPages = Math.ceil(total / limit);
 

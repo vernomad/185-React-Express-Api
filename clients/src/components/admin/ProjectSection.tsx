@@ -32,7 +32,14 @@ if (loading) return <p>Loading...</p>;
         </div>
       }
       />
-       <UpdateProjects earlyProjectInjection={project} />
+      <ShowButton
+      showWhat="Update project"
+      content={
+        <div className="button-wrapper">
+             <UpdateProjects earlyProjectInjection={project} />
+        </div>
+      }
+      />
 
           <ShowButton
             showWhat="Create new project"

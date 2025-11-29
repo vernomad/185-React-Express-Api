@@ -14,7 +14,7 @@ export default function useChartData() {
   // const [geoCounts, setGeoCounts] = useState<Record<string, number>>({});
 
 
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const [filter, setFilter] = useState("all");
@@ -77,7 +77,6 @@ export default function useChartData() {
     total,
     countsByType,
     durationBuckets,
-    loading,
     error,
 
     filter, setFilter,

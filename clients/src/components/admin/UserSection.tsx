@@ -35,8 +35,15 @@ if (loading) return <p className="">Loading...</p>;
               </div>
             }
           />
-
-           <UpdateUsers token={userToken} />
+          <ShowButton
+          showWhat="Update user"
+          content={
+           <div className="button-wrapper">
+                 <UpdateUsers token={userToken} />
+              </div>
+          }
+          />
+          
 
           <ShowButton
             showWhat="Create new user"

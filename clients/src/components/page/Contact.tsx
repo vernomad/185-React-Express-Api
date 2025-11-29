@@ -94,7 +94,7 @@ export default function ContactComponent() {
   )
 
   return (
-    <div className="main-grid" id="main-grid-contact">
+    <>
       <div id="3d-contact" className="container-3d">
         <div id="grid-lines-contact" className="grid-lines ceiling"></div>
         <div id="grid-lines-contact" className="grid-lines floor">
@@ -163,6 +163,6 @@ export default function ContactComponent() {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }

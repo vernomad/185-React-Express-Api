@@ -6,7 +6,8 @@ import { TrackingEvent, PageStats } from "../types/TrackingTypes";
 export default function useAnalyticData(limit = 15) {
   const [events, setEvents] = useState<TrackingEvent[]>([]);
   const [sortedPages, setSortedPages] = useState<PageStats[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
+
   const [error, setError] = useState<string | null>(null);
 
   const [total, setTotal] = useState(0);
@@ -60,7 +61,6 @@ export default function useAnalyticData(limit = 15) {
 
   return {
     events,
-    loading,
     error,
     total,
 
