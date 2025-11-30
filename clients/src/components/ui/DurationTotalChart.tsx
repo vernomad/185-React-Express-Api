@@ -28,22 +28,16 @@ function formatDuration(ms: number): string {
 export function DurationTotalChart({ totals, topN = 5, isAnimationActive = true }: DurationPieChartProps) {
   const { state } = useUser();
   const Legend = RechartsLegend as unknown as React.FC;
-   const [n, setN] = useState(topN);
+  const [n, setN] = useState(topN);
 
-   const sortedEntries = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+  const sortedEntries = Object.entries(totals).sort((a, b) => b[1] - a[1]);
 
-  // Take top N, rest into "Other"
-  
-  // const top = sortedEntries.slice(0, topN);
-  // const rest = sortedEntries.slice(topN);
-     const effectiveN = Math.min(n, sortedEntries.length);
+  const effectiveN = Math.min(n, sortedEntries.length);
 
   const top = sortedEntries.slice(0, effectiveN);
   const rest = sortedEntries.slice(effectiveN);
 
   const otherTotal = rest.reduce((sum, [, val]) => sum + val, 0);
-
-
 
   const data = [
     ...top.map(([slug, total]) => ({ name: slug, value: total, formatted: formatDuration(total) })),

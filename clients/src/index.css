@@ -1240,7 +1240,9 @@ h1 span {
  color: rgb(213, 213, 213);
  outline-color: blue;
 } */
-
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+  background-color: hsl(var(--cieling-200)) !important;
+}
 
 .rbc-calendar {
    /* --_colour: hsl(var(--brown-50)); */
