@@ -67,7 +67,7 @@ async function enrichGeo(ip: string) {
 
 export const trackEvents = async (req: Request, res: Response) => {
 
-  console.log("Api-trak:", req.body)
+  console.log("Apitrak:", "initiated.......")
   const sessionId = req.cookies.sessionId || "anonymous";
   const slug = req.body.slug || "unknown";
   const type = req.body.type;
