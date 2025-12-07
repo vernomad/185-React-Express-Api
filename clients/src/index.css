@@ -153,6 +153,7 @@
 }
 
 .light {
+  --bg-clr-toggle: var(--theme-clr-font);
   --hm-img: url("/assets/porche/porche-stencil.png");
   --root-bg: hsl(var(--grayblue-50));
 
@@ -183,6 +184,7 @@
   --table-clr: var(--gray-900);
 }
 .dark {
+  --bg-clr-toggle: hsl(var(--gray-100));
   --hm-img: url("/assets/porche/porche-mod.jpg");
   --root-bg: rgb(28, 28, 28);
 
@@ -337,17 +339,17 @@ body {
 }
 header.active {
   .theme-selector svg {
-    color: hsl(var(--gray-100));
+    color: var(--bg-clr-toggle);
 
     transition: 200ms ease-out;
   }
   .hamburger::before,
   .hamburger::after {
-    background-color: hsl(var(--gray-100));
+    background-color: var(--bg-clr-toggle);
     transition: 200ms ease-out;
   }
   .hamburger input {
-    background-color: hsl(var(--gray-100));
+    background-color: var(--bg-clr-toggle);
   }
   li a,
   .contact-button-header:not(.navUi .contact-button-header) {
@@ -1703,6 +1705,8 @@ form .response-message {
   opacity: 0;
   animation: opacityImage 0.3s 1.2s ease-in forwards;
 }
+
+
 .title-wrapper-projects {
   grid-column: 1 / -1;
   grid-row: 2;
@@ -1990,9 +1994,12 @@ form .response-message {
   padding-top: 2rem;
 }
 .plate-18 {
-  width: 100px;
+  width: 120px;
+  height: 65px;
   border-radius: 5px;
-  rotate: 5deg;
+}
+.plate-18 .blur-load img {
+  rotate: 2deg;
 }
 .plate-container-contact {
   grid-row: 2 / 3;
@@ -2218,6 +2225,7 @@ form .response-message {
 #grid-lines-events-floor {
   bottom: -50px;
 }
+
 .notes {
   position: absolute;
   display: flex;
@@ -2230,10 +2238,44 @@ form .response-message {
   grid-row: 2 / 3;
   z-index: 1;
 }
-.wall-box.active .figcaption {
+.blur-load  {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.blur-load img {
+  aspect-ratio: 1;
+  position: absolute;
+  inset: 0;
+}
+
+.thumbpin {
+  opacity: 1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+ 
+}
+.fullpin {
+  opacity: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  
+}
+.fullpin.loaded {
+  opacity: 1;
+}
+
+.loaded .thumbpin{
+  opacity: 0;
+}
+
+/* .wall-box.active .figcaption {
   color: blue;
   font-weight: bold;
-}
+} */
 .wall-box {
   --_rotate: 5deg;
   --_reverse-rotate: -11deg;
@@ -2242,12 +2284,12 @@ form .response-message {
   height: 120px;
   z-index: 1;
 }
-.wall-box img {
+/* .wall-box img {
   position: absolute;
   object-fit: cover;
   height: 100%;
   width: 100%;
-}
+} */
 #box-1 img,
 .fig-1 {
   rotate: -4deg;
@@ -2274,6 +2316,7 @@ form .response-message {
 .figcaption:hover {
   color: hsl(199.5deg 17.54% 44.71%);
 }
+
 .side-container {
   grid-row: 2;
   grid-column: 5 / -1;

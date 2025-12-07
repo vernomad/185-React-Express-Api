@@ -24,30 +24,22 @@ export default function HomeComponet() {
   return (
     <>
     {/* <Helmet>
-        <title>My Cool Page</title>
-        <meta name="description" content="A really cool page description." />
+        <title>185 Restorations</title>
+        <meta name="description" content="Custom & classic car refurbishment" />
 
         Open Graph
-        <meta property="og:title" content="My Cool Page" />
-        <meta property="og:description" content="A really cool page description." />
+        <meta property="og:title" content="185 Restorations" />
+        <meta property="og:description" content="Custom & classic car refurbishment" />
         <meta property="og:image" content="https://example.com/images/preview.jpg" />
         <meta property="og:url" content="https://example.com/page" />
         <meta property="og:type" content="website" />
 
         Twitter Card
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="My Cool Page" />
-        <meta name="twitter:description" content="A really cool page description." />
+        <meta name="twitter:title" content="185 Restorations" />
+        <meta name="twitter:description" content="Custom & classic car refurbishment" />
         <meta name="twitter:image" content="https://example.com/images/preview.jpg" />
     </Helmet>     */}
-    {/* <div id="3d-contact" className="container-3d">
-            <div id="grid-lines-contact" className="grid-lines ceiling"></div>
-            <div id="grid-lines-contact" className="grid-lines floor">
-              <div className="main__title hero__title">
-      <h1><span>185</span>Restorations</h1>  
-      </div>
-            </div>
-   </div> */}
     <section className="hero">
        {loading ? (<p>Loading session...</p>
       ): (

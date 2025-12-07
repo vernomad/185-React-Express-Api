@@ -4,12 +4,13 @@ import { BlurLoadContext } from "./BlurLoadComponent";
 type ImageProps = {
   imagUrl: string;
   className?: string;
-  slug: string;
+  // slug: string;
   thumbUrl: string;
   height?: number;
+  width?: number;
 };
 
-const ImageLoader = ({ imagUrl, thumbUrl, className, }: ImageProps) => {
+const ImageLoader = ({ imagUrl, thumbUrl, className, height, width, }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const divRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -35,15 +36,19 @@ const ImageLoader = ({ imagUrl, thumbUrl, className, }: ImageProps) => {
         sizes="13px"
         alt="Thumbnail"
         src={thumbUrl}
-        className="thumbnail-image"
+        className="thumbpin"
+        height={height}
+        width={width}
       />
 
       {/* Full Image */}
       <img
         ref={imgRef}
         sizes="600px"
-        className={`fullImage ${isLoading ? "loading" : "loaded"}`}
-        alt=""
+        className={`fullpin ${isLoading ? "loading" : "loaded"}`}
+        height={height}
+        width={width}
+        alt="Link back image"
         src={imagUrl}
         onLoad={handleImageLoad}
       />

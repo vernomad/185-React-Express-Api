@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ContactForm from "../forms/ContactForm";
 import { usePageView } from "../../hooks/usePageView";
 import GoogleMap from "../ui/GoogleMap";
+import ImageLoader from "../image-comp/DetailsImageLoader";
 // import { BsFillTelephoneFill} from 'react-icons/bs';
 // import { SiMinutemailer } from 'react-icons/si';
 
@@ -105,7 +106,13 @@ export default function ContactComponent() {
         <div className="notes">
           {["form", "details", "map"].map((section, index) => (
             <div id={`box-${index + 1}`} key={section} className="wall-box">
-              <img src="/pinnote.png" width={100} height={80} alt="" />
+              <ImageLoader 
+                imagUrl='/pinote.png'
+                thumbUrl="/pinote-thumb.png"
+                width={100}
+                height={80}
+                className="blur-load"
+              />
               <a href={`#${section}`} aria-label={`scroll link ${section}`}>
                 <figcaption className={`figcaption fig-${index + 1}`}>
                   {section}
@@ -119,7 +126,16 @@ export default function ContactComponent() {
           <CarIcon />
         </div>
         <div className="plate-container-contact">
-          <img src="assets/plate.png" className="plate-18" alt="" />
+          <div className="plate-18">
+          <ImageLoader
+          thumbUrl="/plate-thumb.png"
+          imagUrl="assets/plate.png"
+          width={100}
+          height={80}
+          className=" blur-load"
+          />
+          </div>
+          {/* <img src="assets/plate.png" className="plate-18" alt="" /> */}
         </div>
         {/* ✅ Desktop view: show selected section */}
         {windowWidth > 1090 && (
