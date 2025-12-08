@@ -774,6 +774,7 @@ input[type="checkbox"] {
   span {
     color: hsl(var(--foreG));
     font-family: "Orbitron";
+    font-weight: 600;
   }
   span::before {
     content: "185";
@@ -788,7 +789,7 @@ input[type="checkbox"] {
   span::after {
     content: "";
     position: absolute;
-    height: 1px;
+    height: 1.5px;
     width: 50px;
     left: -50px;
     top: 50%;
