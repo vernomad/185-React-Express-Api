@@ -219,7 +219,10 @@ export const updateProject = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteImage = async (req: Request, res: Response) => {
+export const deleteImage = async (
+  req: Request<{ slug: string; 0: string }>,
+  res: Response
+) => {
   const { slug } = req.params;
   const dir = req.params[0];
 

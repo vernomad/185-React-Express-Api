@@ -3,8 +3,11 @@ import { getUserLogs } from '../../models/user/UserLogs';
 import { UserLogEntryWithId } from '../../models/user/UserLog';
 import { ObjectId } from "mongodb";
 
-export const getUser = async (req: Request, res: Response) => {
-const { id }= req.params
+export const getUser = async (
+  req: Request<{ id: string }>,
+  res: Response
+) => {
+  const { id } = req.params;
   console.log("ID:", id)
 try {
   const usersCollection = await getUserLogs(); 

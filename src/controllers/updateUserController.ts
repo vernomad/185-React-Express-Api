@@ -8,7 +8,10 @@ import bcrypt from "bcryptjs";
 const saltRounds = 10;
 
 
-export const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (
+  req: Request<{ id: string }>,
+  res: Response
+) => {
   const { id } = req.params;
   const updateData = req.body;
 
@@ -82,8 +85,11 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
   
-  export const deleteUser = async (req: Request, res: Response) => {
-   const id = req.params.id
+  export const deleteUser = async (
+  req: Request<{ id: string }>,
+  res: Response
+) => {
+  const { id } = req.params;
    try {
     if (!id) {
         return res.status(400).json({ message: "Invalid request: missing _id" });

@@ -80,7 +80,9 @@ export function DurationAverageChart({ totals, topN = 5, isAnimationActive = tru
           ))}
         </Pie>
          <Tooltip 
-         formatter={(value: number) => formatDuration(value)}
+         formatter={(value) =>
+  typeof value === "number" ? formatDuration(value) : ""
+}
   content={<CustomTooltip />}  
   wrapperStyle={{ outline: "none" }}
 />

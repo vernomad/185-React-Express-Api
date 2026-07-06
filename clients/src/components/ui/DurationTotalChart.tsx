@@ -79,7 +79,9 @@ export function DurationTotalChart({ totals, topN = 5, isAnimationActive = true 
           ))}
         </Pie>
    <Tooltip 
-   formatter={(value: number) => formatDuration(value)}
+   formatter={(value) =>
+  typeof value === "number" ? formatDuration(value) : ""
+}
   content={<CustomTooltip />}  
   wrapperStyle={{ outline: "none" }}
 />

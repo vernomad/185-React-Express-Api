@@ -120,6 +120,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "6.0",
     "typeRoots": ["./src/types", "./node_modules/@types"]
   },
   "include": ["src/**/*.ts", "src/config/db.ts"],
