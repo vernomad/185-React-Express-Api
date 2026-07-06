@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import { Request, Response } from "express";
-import { UserLogs } from "../../models/user/UserLogs";
+import { getUserLogs } from "../../models/user/UserLogs";
 import { UserRole } from "../../models/user/UserLog";
 import { ObjectId } from "mongodb";
 
@@ -55,7 +55,7 @@ export const registerUser = async (req: Request, res: Response) => {
   };
 
   try {
-    const usersCollection = await UserLogs;
+    const usersCollection = await getUserLogs();
      if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });
@@ -127,7 +127,7 @@ export const loginUser = async (req: Request, res: Response) => {
     return;
   }
 
-  const usersCollection = await UserLogs;
+  const usersCollection = await getUserLogs();
 
  if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
@@ -302,7 +302,7 @@ export const deleteUser = async (req: Request, res: Response) => {
   }
 
   try {
-    const usersCollection = await UserLogs;
+    const usersCollection = await getUserLogs();
      if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });

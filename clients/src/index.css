@@ -1716,9 +1716,11 @@ form .response-message {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  background-color: hsl(var(--backG) / .8);
+  background-color: hsl(var(--backG) / .9);
   padding: .5rem 0;
+  box-shadow: 0 0 5px #4a4949;
 }
+
 .title-wrapper-projects p {
   font-family: Orbitron, system-ui;
   padding-left: 0.5rem;
@@ -1795,8 +1797,8 @@ form .response-message {
 }
 .img-container figcaption p {
   padding: 1rem;
-  color: hsl(var(--blue-200));
-  /* color: var(--theme-clr-font); */
+  /* color: hsl(var(--blue-200)); */
+  color: white;
   font-weight: 900;
 }
 

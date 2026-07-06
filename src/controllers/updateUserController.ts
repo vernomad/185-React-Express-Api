@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UserLogs } from '../../models/user/UserLogs';
+import { getUserLogs } from '../../models/user/UserLogs';
 import { UpdateSchema} from '../../models/user/UserLog';
 import { ObjectId } from "mongodb";
 import bcrypt from "bcryptjs";
@@ -15,7 +15,7 @@ export const updateUser = async (req: Request, res: Response) => {
  console.log("ObjectId:", new ObjectId(id));
 
   try {
-    const usersCollection = await UserLogs; // Connect to collection
+    const usersCollection = await getUserLogs(); // Connect to collection
      if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });
@@ -89,7 +89,7 @@ export const updateUser = async (req: Request, res: Response) => {
         return res.status(400).json({ message: "Invalid request: missing _id" });
       }
 
-    const usersCollection = await UserLogs; 
+    const usersCollection = await getUserLogs(); 
      if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });

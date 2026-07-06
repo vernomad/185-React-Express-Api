@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UserLogs } from '../../models/user/UserLogs';
+import { getUserLogs } from '../../models/user/UserLogs';
 import { UserLogEntryWithId } from '../../models/user/UserLog';
 import { ObjectId } from "mongodb";
 
@@ -7,7 +7,7 @@ export const getUser = async (req: Request, res: Response) => {
 const { id }= req.params
   console.log("ID:", id)
 try {
-  const usersCollection = await UserLogs; 
+  const usersCollection = await getUserLogs(); 
    if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });
@@ -28,7 +28,7 @@ try {
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    const usersCollection = await UserLogs; // Resolve the collection
+    const usersCollection = await getUserLogs(); // Resolve the collection
  if (!usersCollection) {
   console.warn("⚠️ Database unavailable, skipping user lookup");
   return res.status(503).json({ error: "Database unavailable" });

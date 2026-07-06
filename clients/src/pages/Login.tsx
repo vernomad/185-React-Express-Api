@@ -40,7 +40,6 @@ export default function Login() {
 });
 
 const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
-console.log("Data-login:", data)
       try {
         setIsFetching(true);
         setFormError("")
@@ -55,7 +54,7 @@ console.log("Data-login:", data)
     
           }) 
           const response = await res.json()
-          console.log("REspnse:" , response)
+          console.log("Respnse:" , response)
           if (!res.ok) {
      
            setFormError(response.message)

@@ -65,78 +65,153 @@ async function enrichGeo(ip: string) {
   }
 }
 
-export const trackEvents = async (req: Request, res: Response) => {
+// export const trackEvents = async (req: Request, res: Response) => {
 
+//   console.log("Apitrak:", "initiated.......")
+//   const sessionId = req.cookies.sessionId || "anonymous";
+//   const slug = req.body.slug || "unknown";
+//   const type = req.body.type;
+
+//   try {
+//     if (!type)
+//       return res
+//         .status(400)
+//         .json({ success: false, message: "Missing event type" });
+
+//     const clickTarget = req.body.meta?.clickTarget || "unknown";
+//     const key = `${sessionId}:${slug}:${type}:${clickTarget}`;
+//     const now = Date.now();
+
+//     // pick TTL by event type, fallback to VIEW_TTL
+//     const ttl = CACHE_TTL[type as keyof typeof CACHE_TTL] || VIEW_TTL;
+
+//     // clean old entries
+//     for (const [k, t] of recentEvents) {
+//       if (now - t > ttl) recentEvents.delete(k);
+//     }
+
+//     // dedupe
+//     if (recentEvents.has(key) && now - (recentEvents.get(key) || 0) < ttl) {
+//       return res
+//         .status(200)
+//         .json({ success: false, message: `Duplicate ${type} ignored` });
+//     }
+
+//     recentEvents.set(key, now);
+
+//     // Extract client IP
+//     const rawIp =
+//       (req.headers["x-forwarded-for"] as string) ||
+//       req.socket.remoteAddress ||
+//       "";
+//     const ip = rawIp.includes(",") ? rawIp.split(",")[0].trim() : rawIp;
+//     // const ip = "43.243.133.102"
+
+//     // Enrich with geolocation
+//     const geo = await enrichGeo(ip);
+
+//     const event = {
+//       ...req.body,
+//       id: uuid(),
+//       sessionId,
+//       createdAt: new Date().toISOString(),
+//       ip,
+//       geo, // ✅ Add geo info here
+//     };
+
+//     const logsDir = path.join(baseDir, "logs"); // folder path
+//     const logPath = path.join(logsDir, "analytics.log"); // file path
+
+//     // Ensure the folder exists
+//     await fsPromises.mkdir(logsDir, { recursive: true });
+
+//     // Ensure the file exists
+//     await fsPromises.access(logPath).catch(async () => {
+//       await fsPromises.writeFile(logPath, ""); // create empty file if missing
+//     });
+
+//     await fsPromises.appendFile(logPath, JSON.stringify(event) + "\n");
+
+//     res.status(201).json({ success: true });
+//   } catch (error) {
+//     console.error("Analytics log error:", error);
+//     res.status(500).json({ success: false });
+//   }
+// };
+
+export const trackEvents = async (req: Request, res: Response) => {
   console.log("Apitrak:", "initiated.......")
   const sessionId = req.cookies.sessionId || "anonymous";
   const slug = req.body.slug || "unknown";
   const type = req.body.type;
+  const clickTarget = req.body.meta?.clickTarget || "unknown";
+  const key = `${sessionId}:${slug}:${type}:${clickTarget}`;
+  const now = Date.now();
 
-  try {
-    if (!type)
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing event type" });
-
-    const clickTarget = req.body.meta?.clickTarget || "unknown";
-    const key = `${sessionId}:${slug}:${type}:${clickTarget}`;
-    const now = Date.now();
-
-    // pick TTL by event type, fallback to VIEW_TTL
-    const ttl = CACHE_TTL[type as keyof typeof CACHE_TTL] || VIEW_TTL;
-
-    // clean old entries
-    for (const [k, t] of recentEvents) {
-      if (now - t > ttl) recentEvents.delete(k);
-    }
-
-    // dedupe
-    if (recentEvents.has(key) && now - (recentEvents.get(key) || 0) < ttl) {
-      return res
-        .status(200)
-        .json({ success: false, message: `Duplicate ${type} ignored` });
-    }
-
-    recentEvents.set(key, now);
-
-    // Extract client IP
-    const rawIp =
-      (req.headers["x-forwarded-for"] as string) ||
-      req.socket.remoteAddress ||
-      "";
-    const ip = rawIp.includes(",") ? rawIp.split(",")[0].trim() : rawIp;
-    // const ip = "43.243.133.102"
-
-    // Enrich with geolocation
-    const geo = await enrichGeo(ip);
-
-    const event = {
-      ...req.body,
-      id: uuid(),
-      sessionId,
-      createdAt: new Date().toISOString(),
-      ip,
-      geo, // ✅ Add geo info here
-    };
-
-    const logsDir = path.join(baseDir, "logs"); // folder path
-    const logPath = path.join(logsDir, "analytics.log"); // file path
-
-    // Ensure the folder exists
-    await fsPromises.mkdir(logsDir, { recursive: true });
-
-    // Ensure the file exists
-    await fsPromises.access(logPath).catch(async () => {
-      await fsPromises.writeFile(logPath, ""); // create empty file if missing
-    });
-
-    await fsPromises.appendFile(logPath, JSON.stringify(event) + "\n");
-
-    res.status(201).json({ success: true });
-  } catch (error) {
-    console.error("Analytics log error:", error);
-    res.status(500).json({ success: false });
+  // --- 1. Deduplication Logic (Keep this at the top) ---
+  if (!type) return res.status(400).json({ success: false, message: "Missing event type" });
+  const ttl = CACHE_TTL[type as keyof typeof CACHE_TTL] || VIEW_TTL;
+  // ... (rest of your deduplication logic) ...
+  if (recentEvents.has(key) && now - (recentEvents.get(key) || 0) < ttl) {
+    return res.status(200).json({ success: false, message: `Duplicate ${type} ignored` });
   }
+  recentEvents.set(key, now);
+  // --- End Deduplication ---
+
+  // Extract client IP
+  const rawIp = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "";
+  const ip = rawIp.includes(",") ? rawIp.split(",")[0].trim() : rawIp;
+
+  // --- 2. Create the base event structure IMMEDIATELY ---
+  const event = {
+    ...req.body,
+    id: uuid(),
+    sessionId,
+    createdAt: new Date().toISOString(),
+    ip,
+    geo: { country: "Pending", region: "", city: "", lat: 0, lon: 0 }, // Placeholder
+  };
+
+  // --- 3. Write the event to the log file RIGHT AWAY (without geo) ---
+  try {
+    const logsDir = path.join(baseDir, "logs");
+    const logPath = path.join(logsDir, "analytics.log");
+    await fsPromises.mkdir(logsDir, { recursive: true });
+    // Write the event with the "Pending" geo
+    await fsPromises.appendFile(logPath, JSON.stringify(event) + "\n");
+    console.log(`Event logged for IP ${ip} (geo pending)`);
+  } catch (writeError) {
+    console.error("CRITICAL: Failed to write initial event to log:", writeError);
+    // If we can't even write the file, then return a 500.
+    return res.status(500).json({ success: false, message: "Failed to save event" });
+  }
+
+  // --- 4. Perform geo-enrichment IN THE BACKGROUND (don't await) ---
+  enrichGeo(ip).then(geoData => {
+    // This runs after the response has already been sent to the client
+    console.log(`Geo enrichment complete for IP ${ip}:`, geoData);
+
+    // Now, update the log file entry. This is tricky with append-only logs.
+    // Option A: For simplicity, log a SECOND "geo-update" event.
+    const geoUpdateEvent = {
+      ...event,
+      type: 'geo-update',
+      geo: geoData,
+      originalEventId: event.id,
+      createdAt: new Date().toISOString(),
+    };
+    fsPromises.appendFile(path.join(baseDir, "logs", "analytics.log"), JSON.stringify(geoUpdateEvent) + "\n")
+      .catch(err => console.error("Failed to write geo update:", err));
+
+    // Option B (More Complex): Read the file, find the line, and replace it.
+    // This is more advanced and can be added later if needed.
+
+  }).catch(geoError => {
+    console.error(`Geo lookup failed for IP ${ip} after event was logged:`, geoError);
+  });
+
+  // --- 5. Send the success response immediately ---
+  res.status(201).json({ success: true });
 };
 
 export const getEvents = async (req: Request, res: Response) => {
