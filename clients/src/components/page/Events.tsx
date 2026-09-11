@@ -77,7 +77,7 @@ export default function EventComponent() {
       <div id="3d-events" className="container-3d">
         
         <div id="grid-lines-events-ceiling" className="grid-lines ceiling">
-          <h1 className="event-title">Calendar Events</h1>
+          <h1 aria-label="Events Calendar" className="event-title hidden">Events Calendar</h1>
         </div>
         <div id="grid-lines-events-floor" className="grid-lines floor"></div>
       {loading ? (<p>Loading events...</p>

@@ -1,10 +1,31 @@
 import { AppActionType, AppDispatch, Preferences } from "./types/AppActionTypes";
 
 
-export const initializeState = (dispatch: AppDispatch) => {
-    const preferences: Preferences = {
-        theme: localStorage.getItem("185Theme") as 'dark' | 'light' || 'light',
-        language: 'en'
+export const initializeState = async (dispatch: AppDispatch) => {
+  let preferences: Preferences = {
+    theme: "dark",
+    language: "en",
+  };
+
+  const stored = localStorage.getItem("preferences");
+
+  if (stored) {
+    try {
+      preferences = {
+        ...preferences,
+        ...JSON.parse(stored),
+      };
+    } catch (error) {
+      console.error("Failed to parse preferences", error);
     }
-    dispatch({ type: AppActionType.SET_PREFERENCES, payload: preferences})
-}
+  }
+
+  requestAnimationFrame(() => {
+    dispatch({
+      type: AppActionType.SET_PREFERENCES,
+      payload: preferences,
+    });
+  });
+
+  return { preferences };
+};

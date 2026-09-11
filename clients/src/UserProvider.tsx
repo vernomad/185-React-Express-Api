@@ -1,5 +1,5 @@
 // UserProvider.tsx
-import { useState, useEffect, ReactNode, useReducer, useCallback, useMemo } from 'react';
+import { useState, useEffect, ReactNode, useReducer, useCallback, useMemo, startTransition } from 'react';
 import { UserContext } from './UserContext'; 
 import { AppState, AppActionType, AppActionTypes } from './types/AppActionTypes';
 import AppInitialState from './AppInitialState';
@@ -19,19 +19,10 @@ function AppReducer(
       ...state,
       drawerOpen: action.payload as boolean,
     };
-    case AppActionType.SET_PREFERENCES: {
-    const { theme } = action.payload;
-    localStorage.setItem("185Theme", theme);
+    case AppActionType.SET_PREFERENCES:
+      return { ...state, preferences: action.payload };
 
-      // Update classes based on preferences
-      document.documentElement.classList.toggle("dark", theme === 'dark');
-      document.documentElement.classList.toggle("light", theme === 'light');
-     return {
-       ...state,
-       preferences: action.payload,
-     };
-  };
-  case AppActionType.SET_USER:
+    case AppActionType.SET_USER:
       return { ...state, user: action.payload };
 
   default:
@@ -41,11 +32,14 @@ function AppReducer(
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [state, dispatch] = useReducer(AppReducer, AppInitialState, (initial) => {
+
      const storedUser = localStorage.getItem("user");
     return storedUser
       ? { ...initial, user: JSON.parse(storedUser) }
       : initial;
   });
+
+  const [isInitialized, setIsInitialized] = useState(false);
 
    const [loading, setLoading] = useState<boolean>(true);
 
@@ -53,7 +47,33 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     setLoading(false)
    }, 0)
 
+  /* ----------------------------- */
+  /* Initial bootstrap             */
+  /* ----------------------------- */
 
+  useEffect(() => {
+  console.log("APP PROVIDER");
+    let mounted = true;
+
+    (async () => {
+      try {
+      const result = await initializeState(dispatch);
+       console.log(
+      "INIT RESULT",
+      result.preferences.theme
+       );
+      } catch (err) {
+        console.error("Initialization error:", err);
+      } finally {
+        console.log("App initialized");
+        if (mounted) setIsInitialized(true);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const toggleDrawer = useCallback(() => {
     dispatch({
@@ -62,18 +82,51 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     });
   }, [state.drawerOpen])
 
-  const setTheme = useCallback((theme: 'dark' | 'light') => {
-    dispatch({ type: AppActionType.SET_PREFERENCES, payload: { ...state.preferences, theme } });
-  }, [state.preferences]);
+   const setTheme = useCallback(
+    (theme: "dark" | "light") => {
+      startTransition(() => {
+        dispatch({
+          type: AppActionType.SET_PREFERENCES,
+          payload: { ...state.preferences, theme },
+        });
+      });
+    },
+    [state.preferences],
+  );
 
    const toggleTheme = useCallback(() => {
-    const newTheme = state.preferences.theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    setTheme(state.preferences.theme === "light" ? "dark" : "light");
   }, [state.preferences.theme, setTheme]);
 
   //  const setUser = (user: AuthenticatedUser | null) => {
   //   dispatch({ type: AppActionType.SET_USER, payload: user });
   // };
+
+  useEffect(() => {
+  if (!isInitialized) return;
+
+  const persist = async () => {
+    const prefs = state.preferences;
+
+    try {
+     localStorage.setItem("preferences", JSON.stringify(prefs));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  persist();
+}, [isInitialized, state.preferences]);
+
+  useEffect(() => {
+  if (!isInitialized) return;
+
+  const isDark = state.preferences.theme === "dark";
+
+  const html = document.documentElement;
+  html.classList.toggle("dark", isDark);
+  html.classList.toggle("light", !isDark);
+}, [isInitialized, state.preferences.theme]);
 
 const contextValue = useMemo(() => ({ 
   state, 
@@ -83,10 +136,6 @@ const contextValue = useMemo(() => ({
   toggleTheme,
    }), [state, dispatch, toggleDrawer, setTheme, toggleTheme]);
 
-   useEffect(() => {
-     console.log("Initializing state");
-     initializeState(dispatch)
-   }, [])
 
   if (loading) {
     return <div className='container'>Loading...</div>;

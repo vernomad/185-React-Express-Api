@@ -105,22 +105,32 @@ export default function ContactComponent() {
         </div>
         <div className="notes">
           {["form", "details", "map"].map((section, index) => (
-            <div id={`box-${index + 1}`} key={section} className="wall-box">
-              <ImageLoader 
+            <div  key={section} className="wall-box">
+              {/* <ImageLoader 
                 imagUrl='/pinote.png'
                 thumbUrl="/pinote-thumb.png"
                 width={100}
                 height={80}
                 className="blur-load"
-              />
+              /> */}
+              <div className="pin"></div>
+              <div className="pinote" id={`box-${index + 1}`}>
+                
               <a href={`#${section}`} aria-label={`scroll link ${section}`}>
                 <figcaption className={`figcaption fig-${index + 1}`}>
                   {section}
                 </figcaption>
               </a>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* <div className="notes">
+          <div className="wall-box" id="box-1"></div>
+          <div className="wall-box" id="box-2"></div>
+          <div className="wall-box" id="box-3"></div>
+        </div> */}
 
         <div className="car-wall">
           <CarIcon />

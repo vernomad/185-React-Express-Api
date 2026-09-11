@@ -36,24 +36,22 @@ export default function HomeComponet() {
         <meta name="twitter:image" content="https://example.com/images/preview.jpg" />
     </Helmet>     */}
     <section className="hero">
-       {loading ? (<p>Loading session...</p>
-      ): (
-        <>
+       {loading && (<p>Loading session...</p>)}
       <div className="hero-image">
       <div id="top" className="img-wrapper"></div>
      </div>
       <div className="main__title hero__title">
-      <h1><span>185</span>Restorations</h1>  
+        <h1>Classic Car Restoration</h1>
+      <h2><span>185</span>Restorations</h2>  
       </div>
       <div className="hero__body">           
       <div className="hero__subtitle">
         <ul>
-          <li><span>NAME<span>:</span></span> 185 Restorations</li>
+          <li><span>BUSINESS NAME<span>:</span></span> 185 Restorations</li>
           <li><span>LOCATION<span>:</span></span> Christchurch</li>
-          <li><span>DESC<span>:</span></span> We are your one stop true specialists for classic & custom car restorations...</li>
+          <li><span>DESC<span>:</span></span> We are your one stop specialists for classic & custom car restorations...</li>
            {/* <button onClick={() => setCrash(true)}>💥 Crash Component</button> */}
         </ul>
-
       </div>
       </div>   
       <div className="call-to-action-wrapper">
@@ -70,12 +68,10 @@ export default function HomeComponet() {
       {error && (<p id="home-error" className="loading-error errors">Error:{error.message}
         <RefreshButton />
       </p>)}
-      </>
-      )}
     </section>
      
     {/* <Services /> */}
   
   </>
-  )
+    )
 }

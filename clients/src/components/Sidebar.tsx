@@ -11,7 +11,7 @@ export default function SideBar() {
 
 {/* <SidebarController /> */}
  
-<aside className="sidebar" id="sidebar">
+<aside className="sidebar" >
   <ul className="navUi">
     {navData.map((item) => (
         <li key={item.id}><Link to={item.slug}>{item.name}</Link></li>

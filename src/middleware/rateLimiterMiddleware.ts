@@ -14,7 +14,7 @@ const limiter = LambdaRateLimiter({
       next()
     })
     .catch(() => {
-      res.status(429).send('To Many Requests')
+      res.status(429).send('Too Many Requests')
     })
   }
   export default rateLimiter

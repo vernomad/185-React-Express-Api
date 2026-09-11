@@ -2,15 +2,18 @@ import { useEffect } from 'react';
 
 const HeaderScrollEffect = () => {
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    const debounce = (func: Function, wait: number) => {
-      let timeout: NodeJS.Timeout;
-      
-      return (...args: unknown[]) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), wait);
-      };
-    };
+  
+    const debounce = <T extends unknown[]>(
+  func: (...args: T) => void,
+  wait: number
+) => {
+  let timeout: ReturnType<typeof setTimeout>;
+
+  return (...args: T) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+};
    
 
     const handleScroll = debounce(() => {
