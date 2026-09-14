@@ -117,7 +117,7 @@
   --clr-ft-dark: hsl(0, 0%, 70%);
   /* --clr-ft-light: rgb(211, 211, 211); */
 
-  --wall-h1: var(--cieling-700);
+  --wall-h1: var(--cieling-900);
   --foreG-invert: #171717;
 
    --calendar: var(--calendar-theme);
@@ -193,7 +193,7 @@
   --hm-img: url("/assets/porche/porche-mod.jpg");
   --root-bg: rgb(28, 28, 28);
 
-  --foreG: var(--grayblue-100);
+  --foreG: var(--grayblue-200);
   --backG: var(--gray-900);
   --theme: var(--theme-dark);
 
@@ -219,7 +219,7 @@
    --table-clr: var(--grayblue-400);
     --table-select-bg: var(--gray-950);
 
-    --calendar-theme: hsl(var(--grayblue-400) / .7);
+    --calendar-theme: hsl(var(--grayblue-400) / 1);
   --contact-btn-bg: hsl(var(--nav-bg));
   /* .bg {
     background: radial-gradient(ellipse at top, hsl(var(--backG)), transparent),
@@ -1278,9 +1278,9 @@ h2 span, h1 span {
   color: hsl(var(--grayblue-500));
 }
 
-.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+/* .rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
   background-color: hsl(var(--grayblue-300)) !important;
-}
+} */
 
 .rbc-off-range-bg {
   background: hsl(var(--cieling-200) / .5 ) !important;
@@ -1334,14 +1334,14 @@ h2 span, h1 span {
   border-top: 1px solid var(--_colour) !important;
 }
 .rbc-btn-group button {
-  color: hsl(var(--grayblue-200) )!important;
-   background-color: hsl(var(--grayblue-600) )!important;
+  color: hsl(var(--grayblue-400) )!important;
+   /* background-color: hsl(var(--grayblue-600) )!important; */
    border: 1px solid hsl(var(--grayblue-400) )!important;
 }
 .rbc-btn-group button:hover,
 .rbc-btn-group .rbc-active {
   color: hsl(var(--grayblue-800) )!important;
-  background-color: hsl(var(--grayblue-500) )!important;
+  background-color: hsl(var(--cieling-100) / .8 )!important;
 }
 
 .rbc-today {
@@ -2080,7 +2080,7 @@ form .response-message {
   max-width: 150px;
   /* border-radius: 100vw; */
   transition: 0.3s ease;
-  border: 3px solid hsl(var(--cieling-500));
+  border: 3px solid hsl(var(--cieling-700));
 }
 .wall-img:hover {
   opacity: 0.8;
@@ -2094,7 +2094,7 @@ form .response-message {
   margin-bottom: 1rem;
 }
 .event-wall h3 {
-  color: hsl(var(--cieling-500));
+  color: hsl(var(--cieling-700));
 }
 .event-wall {
   padding: 1rem;
@@ -2107,6 +2107,7 @@ form .response-message {
   justify-items: center;
   transform: translateX(-20px);
   animation: fade 0.75s ease both;
+ 
 }
 .event-wall > div {
   width: 100%;
@@ -2137,7 +2138,7 @@ form .response-message {
   position: absolute;
   left: -20%;
   bottom: -60px;
-  color: rgb(82, 123, 136);
+  color: rgb(159 187 196);
 }
 .car {
   position: absolute;
@@ -2149,7 +2150,7 @@ form .response-message {
   /* transform: translateX(-50%) translateY(0) rotateX(-60deg); */
 }
 .car svg {
-  color: rgb(82, 123, 136);
+  color: rgb(159 187 196);
   transform-style: preserve-3d;
   transform: translate3d(0px, 90px, 0px);
   height: 500px;
@@ -2300,7 +2301,7 @@ form .response-message {
   
 }
 .fullpin.loaded {
-  opacity: 1;
+  opacity: .5;
 }
 
 .loaded .thumbpin{
@@ -2313,7 +2314,7 @@ form .response-message {
 } */
 .wall-box {
   --_rotate: 5deg;
-  --_reverse-rotate: -11deg;
+  --_reverse-rotate: -18deg;
   position: relative;
   width: 120px;
   height: 120px;
@@ -2331,13 +2332,13 @@ form .response-message {
   left: 50%;
   width: 8px;
   height: 8px;
-  background-color: hsl(var(--grayblue-500));
+  background-color:  hsl(var(--grayblue-600));
   border-radius: 100%;
  }
  .pinote {
   position: absolute;
   inset: 5px;
-  border: 2px solid hsl(var(--grayblue-500)) ;
+  border: 2px solid hsl(var(--grayblue-600));
   opacity: 1;
   border-radius: 3px;
  }
@@ -2359,10 +2360,10 @@ form .response-message {
 .fig-2 {
   rotate: var(--_rotate);
 }
-#box-3 img,
+/* #box-3 img,
 .fig-3 {
   rotate: var(--_reverse-rotate);
-}
+} */
 .figcaption {
   position: absolute;
   top: 35px;
@@ -2373,7 +2374,8 @@ form .response-message {
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
   cursor: pointer;
-  color: hsl(199.5deg 17.54% 44.71%);
+  /* color: hsl(199.5deg 17.54% 44.71%); */
+  color: hsl(var(--grayblue-600));
   font-size: 1.25rem;
   font-weight: 900;
 }
